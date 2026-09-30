@@ -39,6 +39,18 @@ AI systems are interchangeable collaborators.
 - OPS/ - Operational tooling
 - ARCHIVE/ - Historical material
 
+## Crisis Harvest
+
+The project has a formal crisis-harvest specification for anti-stagnation operation.
+
+When the final-harvest-day condition activates, the candidate is selected at the **strategy-lot level** by the smallest **absolute USD/USDC-equivalent gap** to that lot's harvest threshold among lots that have not reached the threshold.
+
+The crisis movement liberates **90% of the selected lot's material anchor**, leaving 10% of that anchor invested. It does not sell 90% of the aggregate wallet balance and does not merge strategy lots.
+
+The actionable notification must identify the exact lot, calculate the native asset quantity for Binance's FROM field from the notification snapshot, and use the Binance-ready move format. If the available position at execution is smaller than the specified quantity, the remaining position is sold rather than canceling the crisis movement.
+
+See SPECS/CRISIS_HARVEST_MECHANICS.md for the full mechanics and worked TAO example.
+
 ## Important Rule
 
 Conversations are source material.
