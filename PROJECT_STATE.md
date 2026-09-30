@@ -112,6 +112,7 @@ The objective is to include businesses that can provide diversification when AI-
 - What evidence is required before accepting a trading hypothesis?
 
 ## Recent Decisions
+- **Crisis Harvest mechanics formalized:** when the final-harvest-day condition activates and normal harvesting has not occurred by market close, select the open strategy lot with the smallest absolute USD/USDC-equivalent gap to its harvest threshold among lots below threshold. Liberate 90% of that lot's material anchor, leave 10% invested, preserve lot identity and anchor, and calculate the native Binance FROM quantity from the notification snapshot. If the available position at execution is smaller than the specified quantity, sell the entire remaining position rather than canceling the crisis movement.
 
 - The canonical trading workflow is already established in the trading book and should be evolved rather than redesigned from scratch.
 - AI-assisted research is a core part of knowledge generation and asset selection, including decisions not to invest.
