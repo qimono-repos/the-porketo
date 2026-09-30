@@ -112,7 +112,10 @@ The objective is to include businesses that can provide diversification when AI-
 - What evidence is required before accepting a trading hypothesis?
 
 ## Recent Decisions
+
 - **Crisis Harvest mechanics formalized:** when the final-harvest-day condition activates and normal harvesting has not occurred by market close, select the open strategy lot with the smallest absolute USD/USDC-equivalent gap to its harvest threshold among lots below threshold. Liberate 90% of that lot's material anchor, leave 10% invested, preserve lot identity and anchor, and calculate the native Binance FROM quantity from the notification snapshot. If the available position at execution is smaller than the specified quantity, sell the entire remaining position rather than canceling the crisis movement.
+
+- **Governance and journal refinement formalized:** the journal is the AI's durable memory of project reasoning, not a waiver form or replacement for source records. It uses concise AI-written reasoning by default while selectively preserving original wording when that wording carries an important conceptual insight, definition, principle, or breakthrough. The AI identifies the single best precedent for a new case; the operator is not required to formally cite or accept it during conversation and may instead overrule or distinguish it. Exceptions/deviations require a disposition, with rationale and outcome preserved. Precedents do not expire merely because time passes; they remain historical knowledge unless explicitly overruled, with applicability evaluated case by case. The first occurrence of a new case type receives full reasoning and later analogous cases may rely on it as precedent. Rule evolution must preserve prior reasoning rather than silently rewriting history. See JOURNAL/2026-09-30-governance-refinement.md.
 
 - The canonical trading workflow is already established in the trading book and should be evolved rather than redesigned from scratch.
 - AI-assisted research is a core part of knowledge generation and asset selection, including decisions not to invest.
