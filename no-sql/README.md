@@ -10,7 +10,7 @@ A JSON array in MongoDB Extended JSON (relaxed), one document per line, ready fo
 
 ```bash
 mongoimport --uri "$MONGODB_URI" --db porketo --collection stock_trades \
-  --file DATA/processed/trading-book/stock-trades.json --jsonArray
+  --file no-sql/stock-trades.json --jsonArray
 ```
 
 - `_id` is the sheet's Event ID, so re-importing the same event is rejected as a duplicate instead of silently creating a second copy.
