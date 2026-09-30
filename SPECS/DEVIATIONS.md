@@ -54,6 +54,22 @@ A deviation may be:
 
 The journal therefore records the case before assigning judgment to it.
 
+## Root Cause Analysis
+
+A material deviation may require a **Root Cause Analysis (RCA)** to determine why the deviation occurred and whether the system should change as a result.
+
+The project's standard RCA technique for deviations is the **Fishbone / Ishikawa / Cause-and-Effect Diagram**.
+
+The Fishbone organizes candidate causes into useful categories. It does not by itself establish a root cause. Candidate causes must be evaluated against evidence before being classified as confirmed, probable, possible, rejected, or unresolved.
+
+The RCA should preserve the reasoning from:
+
+**Deviation → Effect → Candidate Causes → Evidence → Root Cause(s) → Action → Verification → Learning**
+
+The complete RCA method and reusable record template are defined in `SPECS/ROOT_CAUSE_ANALYSIS.md`.
+
+Not every deviation requires a full RCA. The decision to perform or not perform RCA should be based on the materiality and circumstances of the deviation, with rationale recorded when the decision is material.
+
 ## Relationship to Exceptions
 
 An **exception** is a case in which the standard rule is intentionally not followed because a specific circumstance justifies a departure.
