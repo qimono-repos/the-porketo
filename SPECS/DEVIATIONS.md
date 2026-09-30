@@ -123,3 +123,16 @@ Historical reference:
 The objective is not to eliminate every deviation.
 
 The objective is to make deviations **visible, explainable, traceable, and useful for continual improvement**.
+
+
+## Operational Example
+
+`SPECS/DEVIATION_REGISTER_EXAMPLE.csv` is a CSV example based on the reference deviation-register artifact reviewed for this project.
+
+It preserves the reference artifact's terminology and combines its two tracking layers into one flat record:
+
+**Deviation Register → Fishbone / RCA → CAPA → Effectiveness → Closure → Evidence / Management Review**
+
+The example is a repository artifact for illustrating the expected record structure. It is not a live operational register and does not replace source-of-truth execution or accounting records.
+
+The reference example separates the **deviation record** from the linked **Fishbone** and **CAPA** artifacts. The CSV preserves those relationships through `Fishbone ID` and `CAPA ID`.
