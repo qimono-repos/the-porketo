@@ -1,0 +1,160 @@
+# QIMONO Trading Verification Protocol
+
+**Status:** Operational protocol
+**Scope:** Trading, portfolio, market-data, execution, and financial-analysis workflows
+**Principle:** Never guess when missing information can change a financial decision.
+
+## 1. Purpose
+
+Today exposed a class of failure that is merely annoying in a software project but potentially expensive in a financial one: a model confidently operating without first establishing that it has the information required to act correctly.
+
+The trading system therefore follows a fail-closed verification discipline.
+
+> **VERIFY → TIMESTAMP → CALCULATE → ANALYZE → COMMUNICATE**
+
+Not:
+
+> **GUESS → SOUND CONFIDENT → DISCOVER LATER**
+
+## 2. Information classes
+
+Before answering a trading question, distinguish explicitly between:
+
+### 2.1 Known facts
+
+Data actually retrieved from an authoritative source.
+
+### 2.2 Current market state
+
+Price, volume, order book, market status, timestamps, execution quotes, and other state that can change over time. When the question depends on current state, obtain it from current market data.
+
+### 2.3 Historical information
+
+Clearly identify the date/time of the observation. Never present historical data as current.
+
+### 2.4 Inference / analysis
+
+Reasoning derived from the available data. Label it as analysis, not as a market fact.
+
+### 2.5 Missing information
+
+If an essential input is unavailable, stop and state what is missing rather than filling the gap with model knowledge.
+
+## 3. Time awareness
+
+Never confuse:
+
+- the current time,
+- the timestamp of a retrieved market observation,
+- the timestamp of an execution,
+- the conversation start time, or
+- the market session being analyzed.
+
+A timestamp must describe the event or observation it actually belongs to. Never fabricate a timestamp merely because one would make the answer look complete.
+
+When current market state matters, the current observation must be distinguished from historical or workbook data.
+
+## 4. Auditability
+
+For consequential financial analysis, preserve the complete chain:
+
+`SOURCE → TIMESTAMP → DATA → CALCULATION → INTERPRETATION`
+
+Another AI teammate or human operator should be able to inspect that chain and reproduce the conclusion.
+
+A plausible explanation without retrievable supporting data is not a verified answer.
+
+## 5. Fail closed, not open
+
+If essential information is missing, uncertainty reduces the scope of the answer rather than increasing model confidence.
+
+Examples:
+
+- A product-name error may waste research time.
+- An incorrect market state can produce an incorrect position decision and financial loss.
+
+Therefore the system must stop at the boundary of what can be established when a missing input could materially change the decision.
+
+## 6. Retrieval failure is not evidence of absence
+
+If an expected internal source cannot immediately be retrieved, do not conclude that the information does not exist.
+
+Continue appropriate project archaeology across the available project surface before declaring information unavailable.
+
+Distinguish:
+
+- information does not exist,
+- information exists but was not retrieved,
+- information was retrieved but is stale,
+- information was retrieved but is insufficient for the decision.
+
+## 7. Trading evidence hierarchy
+
+When a decision depends on live execution state, use the most authoritative available execution source.
+
+For the trading sprint, the operational runbook establishes that the broker/exchange receipt is execution truth and that the event log records reality after execution. Intended trades must not be pre-booked as if they were executions.
+
+A workbook value is not automatically a current market fact. Current prices must be refreshed from the appropriate live source when current state matters.
+
+## 8. Calculation discipline
+
+Do not calculate from an unverified input merely because the resulting number looks reasonable.
+
+For every consequential calculation:
+
+1. Identify the source of each input.
+2. Record the applicable timestamp.
+3. Preserve the raw value.
+4. Show or preserve the calculation.
+5. State the resulting interpretation separately from the raw fact.
+6. Identify assumptions and unresolved uncertainty.
+
+## 9. Multi-LLM handoff
+
+When ChatGPT, Claude, Gemini, Grok, or another model contributes financial analysis, record:
+
+- **What was checked**
+- **What source was used**
+- **What timestamp applies**
+- **What raw data was retrieved**
+- **What was calculated**
+- **What interpretation was produced**
+- **What remains uncertain**
+
+The next model should inherit the evidence, not merely the prose.
+
+Recommended handoff structure:
+
+`CHECKED → SOURCE → TIMESTAMP → RAW DATA → CALCULATION → INTERPRETATION → UNCERTAINTY`
+
+## 10. Operational gate
+
+Before giving or executing consequential trading analysis, ask:
+
+**Can I prove the inputs required for this decision?**
+
+- **Yes:** proceed with calculation and analysis.
+- **Partially:** constrain the answer to what the evidence supports and identify the missing inputs.
+- **No, and the missing information is decision-critical:** stop and fail closed.
+
+## 11. Relationship to the trading event model
+
+The verification protocol complements the trading event-sourced workflow:
+
+`REAL EXECUTION → SOURCE EVENT LOG → DERIVED POSITION → STRATEGY LOT → DASHBOARD`
+
+Verification comes before interpretation of the event, position, strategy lot, or dashboard state.
+
+Receipt truth remains execution truth. Derived sheets must not be treated as independent evidence when their upstream inputs are stale or unverified.
+
+## 12. Core rule
+
+> **Never guess when the missing information can change a financial decision.**
+
+Confidence must be downstream of verification, never upstream of it.
+
+## 13. Final doctrine
+
+> **Verify → timestamp → calculate → analyze → communicate.**
+>
+> **Not: guess → sound confident → discover later.**
