@@ -88,7 +88,21 @@ Distinguish:
 - information was retrieved but is stale,
 - information was retrieved but is insufficient for the decision.
 
-## 7. Trading evidence hierarchy
+## 7. Financial market-data source protocol
+
+For current financial market-price checks, **Yahoo Finance is the first external financial source to consult and the first source to mention explicitly in the response**.
+
+When a current price is used, identify the source and timestamp rather than presenting the number as an unexplained fact. Use explicit wording such as:
+
+> **Yahoo Finance:** ETP current price is **$X.XX** at **[timestamp]**.
+
+Yahoo Finance is a market-data reference source, not execution truth. If the asset or workflow has a more authoritative execution venue, that venue remains authoritative for execution and fill details.
+
+For the crypto trading workflow, Binance live Convert/execution data remains the execution test and the successful receipt remains execution truth. Yahoo Finance does not override a live exchange execution quote or receipt.
+
+When useful, corroborate Yahoo Finance with another appropriate market source, but preserve the distinction between reference-market data and execution data.
+
+## 8. Trading evidence hierarchy
 
 When a decision depends on live execution state, use the most authoritative available execution source.
 
@@ -96,7 +110,9 @@ For the trading sprint, the operational runbook establishes that the broker/exch
 
 A workbook value is not automatically a current market fact. Current prices must be refreshed from the appropriate live source when current state matters.
 
-## 8. Calculation discipline
+For market-price reporting, apply the financial market-data source protocol in Section 7 first, then distinguish any execution-venue data used for the actual trade decision.
+
+## 9. Calculation discipline
 
 Do not calculate from an unverified input merely because the resulting number looks reasonable.
 
@@ -109,7 +125,7 @@ For every consequential calculation:
 5. State the resulting interpretation separately from the raw fact.
 6. Identify assumptions and unresolved uncertainty.
 
-## 9. Multi-LLM handoff
+## 10. Multi-LLM handoff
 
 When ChatGPT, Claude, Gemini, Grok, or another model contributes financial analysis, record:
 
@@ -127,7 +143,7 @@ Recommended handoff structure:
 
 `CHECKED → SOURCE → TIMESTAMP → RAW DATA → CALCULATION → INTERPRETATION → UNCERTAINTY`
 
-## 10. Operational gate
+## 11. Operational gate
 
 Before giving or executing consequential trading analysis, ask:
 
@@ -137,7 +153,7 @@ Before giving or executing consequential trading analysis, ask:
 - **Partially:** constrain the answer to what the evidence supports and identify the missing inputs.
 - **No, and the missing information is decision-critical:** stop and fail closed.
 
-## 11. Relationship to the trading event model
+## 12. Relationship to the trading event model
 
 The verification protocol complements the trading event-sourced workflow:
 
@@ -147,13 +163,13 @@ Verification comes before interpretation of the event, position, strategy lot, o
 
 Receipt truth remains execution truth. Derived sheets must not be treated as independent evidence when their upstream inputs are stale or unverified.
 
-## 12. Core rule
+## 13. Core rule
 
 > **Never guess when the missing information can change a financial decision.**
 
 Confidence must be downstream of verification, never upstream of it.
 
-## 13. Final doctrine
+## 14. Final doctrine
 
 > **Verify → timestamp → calculate → analyze → communicate.**
 >
