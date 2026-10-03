@@ -6,21 +6,21 @@
 
 ## Decision
 
-For every trade from this point forward, whenever a Binance Convert, Binance Instant, or broker receipt shows a **rounded 0.00 fee**, always book a **conservative friction of 1% of the converted / gross proceeds** as the Fees / Friction value, and label it in the notes as an assumption.
+For every trade from this point forward, whenever a Binance Convert, Binance Instant, or broker receipt shows a **rounded 0.00 fee**, always book a **conservative friction of 2% of the converted / gross proceeds** as the Fees / Friction value, and label it in the notes as an assumption.
 
-If a higher actual fee is known from the receipt, use the actual fee instead. The 1% figure is a floor applied only when the displayed fee is a rounded zero.
+If a higher actual fee is known from the receipt, use the actual fee instead. The 2% figure is a floor applied only when the displayed fee is a rounded zero.
 
 ## Why
 
 - A displayed 0.00 fee is almost always a rounding artifact, not a true zero cost. Treating it as literally zero overstates reusable cash and causes fee starvation across many small repeated harvests and buys.
 - This formalizes the book's existing Rule 7 ("Rounded fee displays are not zero") into a standing, always-applied policy so it does not have to be re-decided per trade.
-- Confirmed explicitly by the operator on 2026-10-03: "Always apply the conservative friction."
+- Confirmed explicitly by the operator on 2026-10-03: "Always apply the conservative friction." The friction floor was set at 2% on 2026-10-03 (revised up from an initial 1%).
 
 ## Key Knowledge / Mechanics
 
-- Friction = 1% of the converted amount (USDC-equivalent for crypto, converted USD amount for stocks).
+- Friction = 2% of the converted amount (USDC-equivalent for crypto, converted USD amount for stocks).
 - Materialized amount = converted amount − booked friction.
-- The assumption must be stated in the trade's Notes field (e.g. "Receipt showed 0.00 fee; booked conservative 1% friction per this policy as an assumption").
+- The assumption must be stated in the trade's Notes field (e.g. "Receipt showed 0.00 fee; booked conservative 2% friction per this policy as an assumption").
 - Net cash flow and Harvest Reserve receive gross proceeds minus the booked friction.
 
 ## Related
