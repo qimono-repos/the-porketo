@@ -174,3 +174,29 @@ Confidence must be downstream of verification, never upstream of it.
 > **Verify → timestamp → calculate → analyze → communicate.**
 >
 > **Not: guess → sound confident → discover later.**
+
+## 15. Wrapped and tokenized asset reference resolution
+
+When a portfolio asset is represented by a wrapped, tokenized, synthetic, or otherwise platform-specific ticker, resolve the held instrument to its underlying asset before performing external market-price or reference-data lookups.
+
+This is a **generic protocol rule for all current and future assets**, not a special case for individual tickers.
+
+The workflow is:
+
+`HELD / EXECUTION TICKER → INSTRUMENT IDENTIFICATION → UNDERLYING-ASSET RESOLUTION → EXTERNAL REFERENCE-PRICE LOOKUP`
+
+The original ticker used by the exchange, wallet, or execution venue remains the **portfolio and execution identifier**. The resolved underlying ticker is used only for reference-market data and analysis where the underlying instrument is the intended reference.
+
+Examples:
+
+- `TSLAB → TSLA`
+- `SPCXB → SPCX`
+
+Do not substitute the wrapper's market quote for the underlying asset's reference quote merely because the wrapper is the instrument held in Binance or another wallet.
+
+If an external provider cannot supply a verified quote for the resolved underlying asset, leave that provider unavailable rather than mixing instruments or silently substituting the wrapper quote.
+
+The underlying-asset mapping should be treated as data that can grow as the portfolio grows. Do not encode the protocol as a finite list of today's examples.
+
+This rule applies regardless of whether the wrapper originates from Binance, another exchange, a wallet, a tokenization platform, or another execution venue.
+
