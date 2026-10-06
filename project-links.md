@@ -5,6 +5,16 @@ resources. When an AI teammate is uncertain which repository or workbook is
 meant, resolve the reference here **before** asking the user to restate it.
 See `JOURNAL/2026-10-06-repository-identification-failure.md`.
 
+## Who These Policies Bind
+
+The project's operating policies — recorded in `PROJECT_STATE.md` and the
+`JOURNAL/` fatal-error reports — are **agent-neutral**. They bind **every**
+teammate working on this project: all large language models (Claude, ChatGPT,
+Gemini, and any other) **and** the human operator. The standard is the standard
+regardless of who is at the keyboard; "the AI got it wrong" is not an exemption,
+and neither is "the human did it by hand". A policy derived from one agent's
+failure applies to all.
+
 ## Canonical Repository
 
 - **The repository** → `qimono-repos/the-porketo` (branch: `trunk`).

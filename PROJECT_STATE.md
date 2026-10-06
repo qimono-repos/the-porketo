@@ -24,6 +24,15 @@ anchored in `project-links.md`. Resolve "the repository" (→ `qimono-repos/the-
 and "the book" (→ TRADE-October-26-Sprint) there before asking the user to
 restate them.
 
+## Who These Policies Bind
+
+All operating policies in this document and in the `JOURNAL/` fatal-error reports
+are **agent-neutral**. They bind every teammate on this project — all large
+language models (Claude, ChatGPT, Gemini, and any other) **and** the human
+operator. The standard holds regardless of who is at the keyboard. A policy
+derived from one agent's failure applies to all; "the AI got it wrong" and "the
+human did it by hand" are equally non-exemptions. See `project-links.md`.
+
 ## Role
 
 The project owner is explicitly both:
@@ -33,9 +42,13 @@ The project owner is explicitly both:
 
 ## Recent Decisions
 
+- **Policies are agent-neutral (October 6, 2026):** all project operating policies bind every teammate — every large language model and the human operator alike. A policy derived from one agent's failure applies to all; being an AI or acting by hand is not an exemption. See the "Who These Policies Bind" section above and project-links.md.
+
 - **Contextual-disclosure discipline + timezone-label convention (October 6, 2026):** do not volunteer location, time, or country when the task does not require it. Timestamps coordinate against a GMT−3 reference clock (tracking the NYSE trading day); the city named is a readable label for that offset, not a location claim. Halifax is the warm-cycle label; Paramaribo (fixed GMT−3) is the winter catch, and the Halifax→Paramaribo switch signals the winter cycle. Greenland was dropped (it is at GMT−2 when Halifax is at GMT−4). See JOURNAL/2026-10-06-contextual-disclosure-and-timezone-convention.md.
 
 - **Repository-identification continuity (October 6, 2026):** before asking the user to identify an established project resource, search the project context and canonical reference files. A `project-links.md` anchor now provides the explicit canonical mapping. See JOURNAL/2026-10-06-repository-identification-failure.md.
+
+- **Claude self-report, Fatal Error Report 006 (October 6, 2026):** retrieval before interpretation, respect for settled decisions, and prompt use of known workarounds are continuity obligations binding on all teammates. See JOURNAL/2026-10-06-claude-fatal-error-report-006.md.
 
 - **Canonical trading book identified (October 3, 2026):** "the book" refers to the Google Sheet titled TRADE-October-26-Sprint (ID 1N_osVjWlUVElmZ8UoPUIa5aFex-gfSvy4nJ02k-_KrY). It is the live workbook read and updated during trading sessions. The earlier Sep 15 Sprint workbook is frozen as September history. See the "The Book" section above.
 
