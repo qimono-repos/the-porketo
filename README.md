@@ -39,6 +39,30 @@ AI systems are interchangeable collaborators.
 - OPS/ - Operational tooling
 - ARCHIVE/ - Historical material
 
+## Harvest Calculator Tooling
+
+The repository now includes a small cross-language harvest-calculation scaffold:
+
+```text
+src/
+├── python/        # Python package + CLI
+├── clojure/       # Clojure REPL/project
+└── kotlin/        # Wear OS calculator scaffold
+```
+
+The Python and Clojure implementations share the same 50% harvest rule documented in the strategy decision. The Kotlin module provides a calculator-style Wear OS UI with:
+
+- asset/currency selector,
+- current-price input,
+- position input,
+- material-anchor input,
+- calculation result,
+- Binance Convert destination.
+
+The Wear OS UI is deliberately a **pre-trade calculator**, not an execution client. It does not authenticate with Binance or place orders.
+
+See `TRADING/harvest-cli.md` and `src/kotlin/README.md`.
+
 ## Crisis Harvest
 
 The project has a formal crisis-harvest specification for anti-stagnation operation.
