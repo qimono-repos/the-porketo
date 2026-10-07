@@ -37,10 +37,21 @@ Eligible universe: held assets + this watchlist.
 - CP4 → CP22 of 98 (2026-10-07 10:00 → 2026-10-11 22:00 Halifax) = 19 × 0.75 = 14.25 USDC.
 - **IonQ 5.17 USDC counts fully** (operator decision 2026-10-07): covers
   CP4–CP9 (6 × 0.75 = 4.50) + 0.67 credit toward CP10.
-- **No buys due at CP5–CP9** (Wed 16:00 → Thu 16:00). CP10 (Thu 22:00) owes 0.08.
-- Remaining budget before Monday: 0.08 + CP11–CP22 (12 × 0.75) = **9.08 USDC**.
-- 5 assets still need ≥2 each → 3 buys × 0.75 = 2.25 each = 11.25 → **short ≈2.17**:
-  4 of the 5 fit by Monday; one more must slip or be decided.
+
+### Top-up pot (operator decision 2026-10-07)
+
+- Source: **43.00529321 USDC** — the only part of the Lemon Cash IONQ sale
+  that stayed in the experiment (arrived in Binance Spot 2026-10-07).
+- Use: keep buying at the slots the IonQ prepayment covered, so the
+  experiment does not pause. One 0.75 buy per slot, one asset each:
+
+| Slot (Halifax) | Asset | Funded by | Status |
+|---|---|---|---|
+| CP5 — Wed 07 Oct 16:00 | AMDB | top-up pot | TO DO |
+| CP6 — Wed 07 Oct 22:00 | NVDAB | top-up pot | TO DO |
+| CP7 — Thu 08 Oct 04:00 | L1: CC (Canton), if on Convert | top-up pot | TO DO |
+| CP8 — Thu 08 Oct 10:00 | Infra #1: DOT (Polkadot), if on Convert | top-up pot | TO DO |
+| CP9 — Thu 08 Oct 16:00 | back to normal 0.75 cadence | — | — |
 
 ## Split (confirmed 2026-10-07)
 
@@ -49,11 +60,11 @@ Eligible universe: held assets + this watchlist.
 | Asset | Type | Invested so far | Notes |
 |---|---|---|---|
 | IonQ | Binance Stocks (direct) | 5.17 USDC, 2026-10-07 14:45:52 | ✅ ≥2 met — checkpoint budget (CP4–CP9) |
-| MUB (Micron) | bStock | 0.00 | Confirm ticker in Convert |
-| AMDB (AMD) | bStock | 0.00 | Confirm ticker in Convert |
-| NVDAB (Nvidia) | bStock | 0.00 | Lot identity vs Lemon NVDA to decide |
-| L1 #1 — CC (Canton) | crypto | 0.00 | Check Convert availability |
-| Infra #1 — DOT (Polkadot) | crypto | 0.00 | Check Convert availability |
+| MUB (Micron) | bStock | 0.00 (unconfirmed — see USDC gap below) | Confirm ticker in Convert |
+| AMDB (AMD) | bStock | 0.00 | CP5 from top-up pot |
+| NVDAB (Nvidia) | bStock | 0.00 | CP6 from top-up pot; lot identity vs Lemon NVDA to decide |
+| L1 #1 — CC (Canton) | crypto | 0.00 | CP7 from top-up pot; check Convert availability |
+| Infra #1 — DOT (Polkadot) | crypto | 0.00 | CP8 from top-up pot; check Convert availability |
 
 ### Deferred past Monday (4 slots)
 
@@ -64,8 +75,11 @@ Eligible universe: held assets + this watchlist.
 | Rigetti | RGTIB not verified on Binance | DEFERRED |
 | Infra #2 | HYPE, ENA, JTO | DEFERRED |
 
-Crypto candidate source: Crypto Banter portfolio sheet (undated snapshot —
-name universe only, not prices).
+## Wallet check 2026-10-07 (Halifax, afternoon)
+
+- Binance Spot USDC (screenshot): **107.66510093**.
+- Expected from known moves: 70.57980772 − 5.17 + 43.00529321 = 108.41510093.
+- Gap: **0.75000000** — exactly one checkpoint buy; receipt not yet seen.
 
 ## Execution notes
 
