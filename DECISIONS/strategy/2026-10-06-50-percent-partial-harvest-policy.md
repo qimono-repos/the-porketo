@@ -319,6 +319,44 @@ Use arbitrary-precision `BigDecimal` arithmetic:
 
 These are reference implementations. The applicable Binance precision, step size, minimum executable quantity, and live conversion constraints must always be verified before execution.
 
+## CLI Reference
+
+The policy is implemented as a deterministic pre-trade CLI in:
+
+- `harvest.py` — Python `Decimal` implementation.
+- `harvest.clj` — Clojure `BigDecimal` implementation.
+- `the-porketo` — command-line launcher.
+
+Example:
+
+```bash
+./the-porketo --harvest --to ETH --current 12345 --position 0.250 --anchor 3055.3875
+```
+
+With those placeholder values:
+
+$
+H_{50}
+=
+\frac{(0.250\times12345)-3055.3875}{2\times12345}
+=
+0.00125\ \text{ETH}
+$
+
+The CLI therefore produces an action-oriented instruction of the form:
+
+```text
+GO TO https://www.binance.com/en/convert/ETH/USDT
+sell 0.00125 ETH
+expected proceeds ≈ 15.43125 USDT
+```
+
+The material anchor is required. Current price and position alone do not determine the harvest quantity.
+
+The CLI never submits an order and never treats its calculation as execution truth. The live Binance conversion interface and resulting receipt remain authoritative.
+
+See `TRADING/harvest-cli.md` for usage and implementation details.
+
 ## Accounting Rules
 
 1. The strategy lot's **material anchor does not change** because of a harvest.
