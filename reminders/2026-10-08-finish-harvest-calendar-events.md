@@ -1,26 +1,33 @@
-# REMINDER — 2026-10-08 (Halifax): finish the harvest calendar events
+# REMINDER — finish the harvest calendar events
 
-Status: OPEN
+Status: OPEN (updated 2026-10-07 evening, Halifax)
 Created: 2026-10-07 (Halifax), during the harvesting-strategy session.
 
-## Why this exists
+## Progress
 
-The harvest calendar build was paused on 2026-10-07 after reaching the
-per-session limit. 51 of 98 events exist; 47 remain.
+- Session 1 (2026-10-07 early): Harvest 1 → 51 created.
+- Session 2 (2026-10-07 ~16:10 Halifax): Harvest 52 → 75 created
+  (Mon 2026-10-19 10:15 → Sun 2026-10-25 04:15 Halifax). Paused at the
+  per-turn tool limit.
 
 ## Done (do NOT recreate — avoid duplicates)
 
-- Harvest 1 of 98 → Harvest 51 of 98
-- From Tue 2026-10-06 16:15 to Mon 2026-10-19 04:15 Halifax
+- Harvest 1 of 98 → Harvest 75 of 98
+- From Tue 2026-10-06 16:15 to Sun 2026-10-25 04:15 Halifax
 - Calendar: alberto.gruning.zen@gmail.com (primary)
 
 ## To do
 
-- Harvest 52 of 98 → Harvest 98 of 98
-- From **Mon 2026-10-19 10:15** to **Fri 2026-10-30 22:15** Halifax
-- Before starting: list events titled "Harvest" from 2026-10-19 onward to
-  confirm 52 does not already exist.
-- Create in small batches (avoid hammering the Calendar API).
+- Harvest 76 of 98 → Harvest 98 of 98 (23 events)
+- From **Sun 2026-10-25 10:15** to **Fri 2026-10-30 22:15** Halifax
+- Before starting: list events titled "Harvest" from 2026-10-25 onward to
+  confirm 76 does not already exist.
+- Create in small batches.
+
+## Numbering helper
+
+Harvest n on day D (October): 04:15 → n = 4·(D−7)+3; 10:15 → +1; 16:15 → +2; 22:15 → +3.
+Check: 25 Oct 04:15 = 75; 30 Oct 22:15 = 98.
 
 ## Schedule rule
 
@@ -82,14 +89,10 @@ https://chatgpt.com/g/g-p-6abc2892f6f48191b4f9922cc0627e68/project
 Source: Harvesting strategy agreed 2026-10-07 (pending README/repo commit). TRADE-October-26-Sprint.
 ```
 
-## Harvesting rules agreed 2026-10-07 (context; still pending README commit)
+## Other calendar events created
 
-- Separate harvest checkpoints, 15 min after each investment checkpoint.
-- Deployment-style obligation: a no-go harvest triggers a forced harvest;
-  missed obligations carry forward.
-- Forced harvest = crisis-rule selection (lot with smallest dollar gap below
-  its harvest threshold), selling **50%** of that lot's anchor (not 90%).
-- Harvests settle into **USDT**.
+- 📊 TSMC Q3 Earnings · TSMB · Trading — Thu 2026-10-15 03:00–04:00 Halifax
+  (official: 14:00 Taiwan / 02:00 ET). Reminders: 24h, 1h, at start.
 
 ## Close-out
 
