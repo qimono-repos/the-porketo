@@ -24,8 +24,8 @@ budget** (operator decision 2026-10-07).
 |---|---|---|---|---|
 | Sell (close position) | 2026-10-07 14:28 | Lemon Cash | 3.292296279 IONQ @ US$40.92 = 134.73 USDT; fee 0.5% = 0.67; received **134.06 USDT**. Tx `b944dc43-6161-4879-bcf8-36c74158f73d` | Migration (exit) — to book |
 | New position | 2026-10-07 14:45:52 | Binance Stocks (direct, not bStock) | 0.122135912 IONQ @ ≈40.94; 5.00 + 0.17 USDC fee = **5.17 USDC** | **Checkpoint budget**: covers CP4–CP9, 0.67 credit to CP10 — to book |
-| Funds moved | 2026-10-07 (after sale) | Lemon Cash → Binance Spot | Local currency from the sale converted → **43.00529321 USDC** received in Spot | Migration (funding) — to book |
-| Remainder | — | Lemon Cash | ≈ 91 of the 134.06 not yet accounted for (assumed still in Lemon Cash) | PENDING |
+| Funds kept | 2026-10-07 (after sale) | Lemon Cash → Binance Spot | Local currency from the sale converted → **43.00529321 USDC** received in Spot. Becomes the **top-up pot** for CP5–CP8 (see new_investments.md) | Migration (funding) — to book |
+| Remainder withdrawn | 2026-10-07 | Lemon Cash | Rest of the 134.06 USDT (≈91) **leaves the experiment** — operator's personal hardware study | Capital withdrawal — to book |
 
 Lesson: Binance Stocks has a ~5 USDC minimum and a flat 0.17 USDC fee.
 
