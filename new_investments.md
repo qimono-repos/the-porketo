@@ -6,9 +6,9 @@ Deadline: **before Monday 2026-10-12** (Halifax)
 
 ## Goal
 
-Every asset on this list must be inside the experiment before Monday
-2026-10-12, with **at least 2 USD invested in each**. From now on these
-have heavy priority at every investment checkpoint.
+Assets in the "this week" group below must be inside the experiment before
+Monday 2026-10-12, with **at least 2 USD invested in each**. From now on
+these have heavy priority at every investment checkpoint.
 
 ## Trigger phrase (valid until Sunday 2026-10-11)
 
@@ -32,49 +32,42 @@ assets (held + watchlist), using the weights below.
 
 Eligible universe: held assets + this watchlist.
 
-## The list
+## Split (confirmed 2026-10-07)
 
-### Stocks (Binance bStocks — 24/7, booked on the stock side per [ticker]B rule)
+Budget: 19 checkpoints (4 → 22 of 98) × 0.75 = 14.25 USDC ≈ 6 assets × 3 buys.
 
-| Asset | Status | Invested so far | Notes |
+### This week — before Monday 2026-10-12 (6 assets)
+
+| Asset | Type | Invested so far | Notes |
 |---|---|---|---|
-| MUB (Micron) | APPROVED | 0.00 | Confirm ticker in Convert before buying |
-| AMDB (AMD) | APPROVED | 0.00 | Confirm ticker in Convert before buying |
-| NVDAB (Nvidia) | APPROVED | 0.00 | NVDA also held on Lemon Cash — lot identity (same holding or separate lot) to decide |
+| MUB (Micron) | bStock | 0.00 | Confirm ticker in Convert |
+| AMDB (AMD) | bStock | 0.00 | Confirm ticker in Convert |
+| NVDAB (Nvidia) | bStock | 0.00 | Lot identity vs Lemon NVDA to decide |
+| IonQ | Binance Stocks (direct) | 5.17 USDC (incl. 0.17 fee), 2026-10-07 14:45:52 | ≥2 met. Classification (budget vs migration) PENDING |
+| L1 #1 — CC (Canton) | crypto | 0.00 | Check Convert availability |
+| Infra #1 — DOT (Polkadot) | crypto | 0.00 | Check Convert availability |
 
-### Quantum (2 extra slots)
-
-| Asset | Status | Invested so far | Notes |
-|---|---|---|---|
-| IonQ | APPROVED | 0.00 (Binance) | IONQ already held on Lemon Cash. IONQB on Binance NOT verified — check Convert |
-| Rigetti | PENDING — if available | 0.00 | RGTIB on Binance NOT verified — check Convert |
-
-### Crypto (5 slots — names pending decision)
+### Deferred past Monday (4 slots)
 
 | Slot | Candidates | Status |
 |---|---|---|
-| Gaming #1 | none yet — Crypto Banter list has no gaming picks | PENDING (need another source) |
-| Gaming #2 | none yet | PENDING |
-| L1 #1 | CC (Canton) leading; GRAM (Telegram) unverified | PENDING |
-| Infra #1 | DOT (Polkadot) leading | PENDING |
-| Infra #2 | HYPE, ENA, JTO challengers | PENDING |
+| Gaming #1 | none yet (Crypto Banter list has no gaming picks) | DEFERRED |
+| Gaming #2 | none yet | DEFERRED |
+| Rigetti | RGTIB not verified on Binance | DEFERRED |
+| Infra #2 | HYPE, ENA, JTO | DEFERRED |
 
-Source for crypto candidates: Crypto Banter portfolio sheet (undated
-snapshot — used as a name universe only, not for prices). Held assets were
-excluded: BTC, ETH, SOL, ZEC, TAO, NEAR, SUI, PUMP already in the book.
-Binance Convert availability of CC, HYPE, DOT still to verify.
+Crypto candidate source: Crypto Banter portfolio sheet (undated snapshot —
+name universe only, not prices).
 
-## Budget reality check (open issue)
+## Execution notes
 
-- Up to 10 new assets × 2 USD = **up to 20 USD** needed.
-- Checkpoints left before Monday (4 → 22 of 98, i.e. 2026-10-07 10:00 to
-  2026-10-11 22:00 Halifax) = 19 × 0.75 = **14.25 USDC**.
-- At 0.75 per buy, reaching 2 USD needs 3 buys per asset (2.25) → 30 buys,
-  but only 19 checkpoints remain.
-- **Decision pending:** larger buys per checkpoint, harvest proceeds,
-  dropping/deferring some slots, or accepting partial coverage by Monday.
+- Binance Stocks (direct stock product): minimum order ≈ 5 USDC + 0.17
+  USDC flat fee (3.4% on a 5.17 order). Not compatible with 0.75 checkpoint
+  buys. Fine for migration-sized orders (0.17 on ~134 ≈ 0.13%).
+- Binance Convert bStocks ([ticker]B): no displayed fee, ~0.7–0.8% spread
+  baked into the rate; works at 0.75.
 
 ## Close-out
 
-When every row shows ≥ 2.00 invested (or is explicitly dropped), set
-Status to DONE and note the date.
+When every "this week" row shows ≥ 2.00 invested (or is explicitly
+dropped), set Status to DONE and note the date.
