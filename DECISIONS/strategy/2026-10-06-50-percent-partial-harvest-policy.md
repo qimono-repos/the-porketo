@@ -6,165 +6,318 @@
 
 ## Decision
 
-From this point forward, when a strategy lot crosses its harvest criterion, the project harvests **50% of the quantity produced by the legacy harvest formula**, rounded **down** to a Binance-compatible precision.
+From this point forward, when an open strategy lot crosses its harvest criterion, the project harvests **50% of the calculated excess position**, rounded **down** to a Binance-compatible executable precision.
 
-The governing rule is:
+The calculation is expanded explicitly from the strategy-lot quantities and current market price.
 
-$$
-H_{50}
-=
-\operatorname{RoundDown}_{\text{Binance}}
-\left(
-\frac{H_{\text{legacy}}}{2}
-\right)
-$$
+Let:
 
-where:
+- $U$ = current units held in the selected strategy lot
+- $P$ = verified current market price of the asset in the strategy lot's quote currency
+- $A$ = material anchor of the selected strategy lot
+- $V$ = current market value of the lot
 
-- $H_{\text{legacy}}$ is the quantity produced by the existing harvest formula.
-- $H_{50}$ is the new executable target quantity.
-- $\operatorname{RoundDown}_{\text{Binance}}$ means round downward, never upward, to the precision accepted for the Binance conversion.
-
-In compact pseudocode:
-
-```text
-H₅₀ = round_down_to_binance_precision(H_legacy / 2)
-```
-
-> **The 50% rule applies to the calculated harvest quantity, not to the strategy lot's material anchor.**
-
-This is a **quantity rule**. It does not change the harvest criterion, the material anchor, or the highest-active-rung selection protocol.
-
-## Why 50%?
-
-The change deliberately makes harvests more conservative.
-
-It reduces:
-
-- fee and friction exposure,
-- quote drift between calculation and execution,
-- slippage risk,
-- minimum-precision / dust problems,
-- accidental over-harvesting during fast market movement.
-
-The intent is to liberate part of the excess while retaining meaningful exposure in the strategy lot.
-
-## Formal Mechanics
-
-Let the legacy calculation produce a quantity $H_{\text{legacy}}$.
-
-First take exactly half:
+First calculate current market value:
 
 $$
-H_{\text{half}} = \frac{H_{\text{legacy}}}{2}
+V = U \times P
 $$
 
-Then apply Binance-compatible downward rounding:
+Then calculate the excess value above the material anchor:
 
 $$
-\boxed{
-H_{\text{target}}
-=
-\operatorname{RoundDown}_{\text{Binance}}
-\left(
-H_{\text{half}}
-\right)
-}
+E = V - A
 $$
 
 Therefore:
 
 $$
+E = (U \times P) - A
+$$
+
+Convert that excess value back into asset units:
+
+$$
+H_{\text{calc}}
+=
+\frac{E}{P}
+$$
+
+Substituting the expanded expression for $E$:
+
+$$
+H_{\text{calc}}
+=
+\frac{(U \times P)-A}{P}
+$$
+
+which is equivalently:
+
+$$
+H_{\text{calc}}
+=
+U - \frac{A}{P}
+$$
+
+The new 50% harvest target is therefore:
+
+$$
 \boxed{
-H_{\text{target}}
+H_{50}
 =
 \operatorname{RoundDown}_{\text{Binance}}
 \left(
-\frac{H_{\text{legacy}}}{2}
+\frac{1}{2}
+\left[
+\frac{(U \times P)-A}{P}
+\right]
 \right)
 }
 $$
 
-The important ordering is:
-
-**legacy calculation → divide by 2 → round down → Binance execution**
-
-Never:
-
-**legacy calculation → round → divide by 2 → round**
-
-and never round upward merely to reach the theoretical target.
-
-## Worked Example
-
-Suppose the legacy formula produces:
+or, in its simplified form:
 
 $$
-H_{\text{legacy}} = 0.02411932\ \text{AAVE}
-$$
-
-Half is:
-
-$$
-H_{\text{half}}
+\boxed{
+H_{50}
 =
-\frac{0.02411932}{2}
-=
-0.01205966\ \text{AAVE}
+\operatorname{RoundDown}_{\text{Binance}}
+\left(
+\frac{U - A/P}{2}
+\right)
+}
 $$
 
-The executable target is then:
+This is the canonical harvest formula.
+
+### Trigger condition
+
+The quantity calculation is performed only after the strategy lot has crossed its documented harvest criterion:
+
+$$
+V \geq A + T
+$$
+
+where $T$ is the strategy lot's target-profit threshold.
+
+Equivalently:
+
+$$
+U \times P \geq A + T
+$$
+
+The target-profit threshold determines **when a lot becomes harvest-eligible**. It is not subtracted from the excess quantity being harvested.
+
+## Operational Sequence
+
+The complete calculation is:
+
+$$
+\boxed{
+\text{Units}
+\rightarrow
+\text{Market Value}
+\rightarrow
+\text{Excess Value}
+\rightarrow
+\text{Excess Units}
+\rightarrow
+50\%
+\rightarrow
+\text{Round Down}
+\rightarrow
+\text{Binance}
+}
+$$
+
+More explicitly:
+
+$$
+U
+\xrightarrow{\times P}
+V
+\xrightarrow{-A}
+E
+\xrightarrow{/P}
+H_{\text{calc}}
+\xrightarrow{/2}
+H_{50}
+\xrightarrow{\operatorname{RoundDown}_{\text{Binance}}}
+H_{\text{target}}
+$$
+
+The order matters.
+
+Do not round before dividing by two.
+
+Do not round upward.
+
+Do not calculate 50% of the material anchor.
+
+Do not change the material anchor.
+
+## Worked Example: AAVE
+
+For the AAVE strategy lot:
+
+$$
+U = 0.158\ \text{AAVE}
+$$
+
+$$
+A = 19.84164\ \text{USDC}
+$$
+
+Using a verified market price of approximately:
+
+$$
+P = 179.13\ \text{USDT/AAVE}
+$$
+
+First calculate market value:
+
+$$
+V = 0.158 \times 179.13
+$$
+
+$$
+V = 28.30254\ \text{USDT}
+$$
+
+Then calculate excess value:
+
+$$
+E = 28.30254 - 19.84164
+$$
+
+$$
+E = 8.46090\ \text{USDT}
+$$
+
+Convert the excess back into AAVE:
+
+$$
+H_{\text{calc}}
+=
+\frac{8.46090}{179.13}
+$$
+
+$$
+H_{\text{calc}}
+\approx 0.04723329\ \text{AAVE}
+$$
+
+Apply the new 50% rule:
+
+$$
+H_{50}
+=
+\frac{0.04723329}{2}
+$$
+
+$$
+H_{50}
+\approx 0.02361665\ \text{AAVE}
+$$
+
+The actual executable quantity is then:
 
 $$
 H_{\text{target}}
 =
 \operatorname{RoundDown}_{\text{Binance}}
-(0.01205966)
+(0.02361665)
 $$
 
-The final quantity must be checked against Binance's live conversion constraints before execution.
+The final precision/step must come from the live Binance execution context.
 
-### Python reference implementation
+## Reference Implementations
 
-Use decimal arithmetic for the calculation, not binary floating-point arithmetic:
+### Python
+
+Use decimal arithmetic for financial quantities rather than binary floating-point arithmetic:
 
 ```python
 from decimal import Decimal, ROUND_DOWN
 
-def harvest_50_percent(legacy_qty: str, binance_step: str) -> Decimal:
-    qty = Decimal(legacy_qty)
+def round_down_to_step(quantity: Decimal, step: Decimal) -> Decimal:
+    return (quantity / step).to_integral_value(
+        rounding=ROUND_DOWN
+    ) * step
+
+
+def harvest_50_percent(
+    units: str,
+    price: str,
+    material_anchor: str,
+    binance_step: str,
+) -> Decimal:
+    U = Decimal(units)
+    P = Decimal(price)
+    A = Decimal(material_anchor)
     step = Decimal(binance_step)
 
-    half = qty / Decimal("2")
-    return (half / step).to_integral_value(rounding=ROUND_DOWN) * step
+    market_value = U * P
+    excess_value = market_value - A
+    calculated_harvest = excess_value / P
+    half_harvest = calculated_harvest / Decimal("2")
+
+    return round_down_to_step(half_harvest, step)
 
 
-target = harvest_50_percent("0.02411932", "0.000001")
+target = harvest_50_percent(
+    "0.158",
+    "179.13",
+    "19.84164",
+    "0.000001",
+)
+
 print(target)
-# 0.012059
 ```
 
-The `binance_step` value must come from the applicable live Binance market/conversion constraints. It must not be guessed.
+### Clojure
 
-### Clojure reference implementation
-
-The same rule can be expressed with arbitrary-precision `BigDecimal` arithmetic:
+Use arbitrary-precision `BigDecimal` arithmetic:
 
 ```clojure
 (import '[java.math BigDecimal RoundingMode])
 
-(defn harvest-50-percent [legacy-qty binance-step]
-  (let [qty  (BigDecimal. legacy-qty)
-        step (BigDecimal. binance-step)
-        half (.divide qty (BigDecimal. "2") 18 RoundingMode/HALF_UP)
-        n    (.setScale (.divide half step 0 RoundingMode/DOWN) 0 RoundingMode/DOWN)]
+(defn round-down-to-step [quantity step]
+  (let [n (.divide quantity step 0 RoundingMode/DOWN)]
     (.multiply n step)))
 
-(harvest-50-percent "0.02411932" "0.000001")
-;; => 0.012059
+(defn harvest-50-percent
+  [units price material-anchor binance-step]
+  (let [U    (BigDecimal. units)
+        P    (BigDecimal. price)
+        A    (BigDecimal. material-anchor)
+        step (BigDecimal. binance-step)
+
+        market-value
+        (.multiply U P)
+
+        excess-value
+        (.subtract market-value A)
+
+        calculated-harvest
+        (.divide excess-value P 18 RoundingMode/HALF_UP)
+
+        half-harvest
+        (.divide calculated-harvest
+                 (BigDecimal. "2")
+                 18
+                 RoundingMode/HALF_UP)]
+
+    (round-down-to-step half-harvest step)))
+
+(harvest-50-percent
+  "0.158"
+  "179.13"
+  "19.84164"
+  "0.000001")
 ```
 
-These snippets are **reference implementations**, not substitutes for verifying the live Binance constraints.
+These are reference implementations. The applicable Binance precision, step size, minimum executable quantity, and live conversion constraints must always be verified before execution.
 
 ## Accounting Rules
 
@@ -173,12 +326,13 @@ These snippets are **reference implementations**, not substitutes for verifying 
 3. The event log records the **actual Binance execution**, not the calculated target.
 4. The Binance receipt remains execution truth.
 5. The calculation is a pre-trade target only.
-6. The applicable Binance precision/step must be verified from the live execution context.
-7. If Binance requires a smaller executable quantity, use the valid rounded-down quantity.
-8. Never round upward merely to reach the calculated target.
-9. A partial harvest is still a harvest. Do not create a new strategy lot.
-10. Multiple active rungs continue to follow the existing **highest-active-rung** selection protocol. The 50% rule changes the quantity harvested from the selected rung; it does not change which rung is selected.
-11. If the resulting quantity is below Binance's executable minimum, do not fabricate an order. Preserve the signal for a later executable opportunity.
+6. $P$ must come from a verified current market-price source appropriate to the screening stage.
+7. Binance execution constraints must be verified at execution time.
+8. If Binance requires a smaller executable quantity, use the valid rounded-down quantity.
+9. Never round upward merely to reach the calculated target.
+10. A partial harvest is still a harvest. Do not create a new strategy lot.
+11. Multiple active rungs continue to follow the existing **highest-active-rung** selection protocol. The 50% rule changes the quantity harvested from the selected rung; it does not change which rung is selected.
+12. If the resulting quantity is below Binance's executable minimum, do not fabricate an order. Preserve the signal for a later executable opportunity.
 
 ## Historical Precedent
 
@@ -192,7 +346,7 @@ $$
 
 That execution is historical execution truth and is **not retroactively rewritten** by this policy.
 
-The new 50% rule governs future harvest calculations.
+The new formula governs future harvest calculations.
 
 ## Relationship to Fee/Friction Policy
 
@@ -204,18 +358,21 @@ A 50% harvest does **not** remove the requirement to apply the project's establi
 
 Before proposing a harvest:
 
-1. Verify the current strategy-lot state.
+1. Verify the current strategy-lot state and selected rung.
 2. Verify that the harvest criterion has been crossed.
-3. Calculate $H_{\text{legacy}}$ using the established formula.
-4. Calculate $H_{\text{legacy}} / 2$.
-5. Verify the applicable Binance precision and execution constraints.
-6. Round **down** to the Binance-compatible quantity.
-7. Present the target quantity and expected quote proceeds.
-8. Execute only against the live Binance conversion/execution interface.
-9. Treat the Binance receipt as execution truth.
-10. Record actual execution data in the source event log.
-11. Recalculate the derived position and strategy lot.
-12. Read the Dashboard last.
+3. Verify the current price $P$.
+4. Calculate market value $V=U\times P$.
+5. Calculate excess value $E=V-A$.
+6. Calculate excess units $H_{\text{calc}}=E/P$.
+7. Divide the calculated quantity by 2.
+8. Verify the applicable Binance precision and execution constraints.
+9. Round **down** to the Binance-compatible quantity.
+10. Present the target quantity and expected quote proceeds.
+11. Execute only against the live Binance conversion/execution interface.
+12. Treat the Binance receipt as execution truth.
+13. Record actual execution data in the source event log.
+14. Recalculate the derived position and strategy lot.
+15. Read the Dashboard last.
 
 ## Precedence
 
