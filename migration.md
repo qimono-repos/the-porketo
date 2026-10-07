@@ -53,5 +53,7 @@ Related open TODO: IBM → IBM/IBMB switch (see ibm-ibmb notes).
   takes a new one.
 - Does a migrated lot merge with an existing [ticker]B lot (QBTS→QBTSB,
   HOOD→HOODB, DUK→DUKB) or stay a separate lot?
-- Execution timing: Lemon Cash sells only during US market hours, so the
-  sell leg must sit in a 10:00 / 16:00 Halifax event window.
+- Execution timing: Lemon Cash sells only during US market hours
+  (09:30–16:00 ET = 10:30–17:00 Halifax). Of the calendar slots, only the
+  **16:00 investment / 16:15 harvest** events fall inside market hours;
+  10:00 / 10:15 Halifax are before the US open.
