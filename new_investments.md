@@ -34,16 +34,18 @@ Eligible universe: held assets + this watchlist.
 
 ## Split (confirmed 2026-10-07)
 
-Budget: 19 checkpoints (4 → 22 of 98) × 0.75 = 14.25 USDC ≈ 6 assets × 3 buys.
+Budget: 19 checkpoints (4 → 22 of 98) × 0.75 = 14.25 USDC.
+IonQ is covered by the migration (no budget used), so 5 assets × 3 buys =
+15 checkpoints are needed → **4 checkpoints spare**.
 
-### This week — before Monday 2026-10-12 (6 assets)
+### This week — before Monday 2026-10-12
 
 | Asset | Type | Invested so far | Notes |
 |---|---|---|---|
 | MUB (Micron) | bStock | 0.00 | Confirm ticker in Convert |
 | AMDB (AMD) | bStock | 0.00 | Confirm ticker in Convert |
 | NVDAB (Nvidia) | bStock | 0.00 | Lot identity vs Lemon NVDA to decide |
-| IonQ | Binance Stocks (direct) | 5.17 USDC (incl. 0.17 fee), 2026-10-07 14:45:52 | ≥2 met. Classification (budget vs migration) PENDING |
+| IonQ | Binance Stocks (direct) | 5.17 USDC, 2026-10-07 14:45:52 | ✅ ≥2 met. **Migration**, not checkpoint budget (see migration.md) |
 | L1 #1 — CC (Canton) | crypto | 0.00 | Check Convert availability |
 | Infra #1 — DOT (Polkadot) | crypto | 0.00 | Check Convert availability |
 
@@ -55,6 +57,9 @@ Budget: 19 checkpoints (4 → 22 of 98) × 0.75 = 14.25 USDC ≈ 6 assets × 3 b
 | Gaming #2 | none yet | DEFERRED |
 | Rigetti | RGTIB not verified on Binance | DEFERRED |
 | Infra #2 | HYPE, ENA, JTO | DEFERRED |
+
+The 4 spare checkpoints could bring one deferred slot back this week
+(decision pending).
 
 Crypto candidate source: Crypto Banter portfolio sheet (undated snapshot —
 name universe only, not prices).
