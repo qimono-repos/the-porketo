@@ -42,6 +42,8 @@ The project owner is explicitly both:
 
 ## Recent Decisions
 
+- **50% partial harvest policy (October 6, 2026):** from this point forward, when a strategy lot crosses its harvest criterion, the default harvest quantity is 50% of the quantity produced by the legacy harvest formula, then rounded down to Binance-compatible precision. Canonical expression: `new_harvest_quantity = ROUND_DOWN_TO_BINANCE_USDT_PRECISION(old_harvest_formula / 2)`. The strategy lot's material anchor is unchanged, the selected highest-active-rung protocol remains unchanged, and actual Binance execution remains the source of truth. See DECISIONS/strategy/2026-10-06-50-percent-partial-harvest-policy.md.
+
 - **Policies are agent-neutral (October 6, 2026):** all project operating policies bind every teammate — every large language model and the human operator alike. A policy derived from one agent's failure applies to all; being an AI or acting by hand is not an exemption. See the "Who These Policies Bind" section above and project-links.md.
 
 - **Contextual-disclosure discipline + timezone-label convention (October 6, 2026):** do not volunteer location, time, or country when the task does not require it. Timestamps coordinate against a GMT−3 reference clock (tracking the NYSE trading day); the city named is a readable label for that offset, not a location claim. Halifax is the warm-cycle label; Paramaribo (fixed GMT−3) is the winter catch, and the Halifax→Paramaribo switch signals the winter cycle. Greenland was dropped (it is at GMT−2 when Halifax is at GMT−4). See JOURNAL/2026-10-06-contextual-disclosure-and-timezone-convention.md.
