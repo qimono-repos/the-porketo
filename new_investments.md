@@ -32,20 +32,26 @@ assets (held + watchlist), using the weights below.
 
 Eligible universe: held assets + this watchlist.
 
-## Split (confirmed 2026-10-07)
+## Checkpoint budget this week
 
-Budget: 19 checkpoints (4 → 22 of 98) × 0.75 = 14.25 USDC.
-IonQ is covered by the migration (no budget used), so 5 assets × 3 buys =
-15 checkpoints are needed → **4 checkpoints spare**.
+- CP4 → CP22 of 98 (2026-10-07 10:00 → 2026-10-11 22:00 Halifax) = 19 × 0.75 = 14.25 USDC.
+- **IonQ 5.17 USDC counts fully** (operator decision 2026-10-07): covers
+  CP4–CP9 (6 × 0.75 = 4.50) + 0.67 credit toward CP10.
+- **No buys due at CP5–CP9** (Wed 16:00 → Thu 16:00). CP10 (Thu 22:00) owes 0.08.
+- Remaining budget before Monday: 0.08 + CP11–CP22 (12 × 0.75) = **9.08 USDC**.
+- 5 assets still need ≥2 each → 3 buys × 0.75 = 2.25 each = 11.25 → **short ≈2.17**:
+  4 of the 5 fit by Monday; one more must slip or be decided.
+
+## Split (confirmed 2026-10-07)
 
 ### This week — before Monday 2026-10-12
 
 | Asset | Type | Invested so far | Notes |
 |---|---|---|---|
+| IonQ | Binance Stocks (direct) | 5.17 USDC, 2026-10-07 14:45:52 | ✅ ≥2 met — checkpoint budget (CP4–CP9) |
 | MUB (Micron) | bStock | 0.00 | Confirm ticker in Convert |
 | AMDB (AMD) | bStock | 0.00 | Confirm ticker in Convert |
 | NVDAB (Nvidia) | bStock | 0.00 | Lot identity vs Lemon NVDA to decide |
-| IonQ | Binance Stocks (direct) | 5.17 USDC, 2026-10-07 14:45:52 | ✅ ≥2 met. **Migration**, not checkpoint budget (see migration.md) |
 | L1 #1 — CC (Canton) | crypto | 0.00 | Check Convert availability |
 | Infra #1 — DOT (Polkadot) | crypto | 0.00 | Check Convert availability |
 
@@ -58,17 +64,14 @@ IonQ is covered by the migration (no budget used), so 5 assets × 3 buys =
 | Rigetti | RGTIB not verified on Binance | DEFERRED |
 | Infra #2 | HYPE, ENA, JTO | DEFERRED |
 
-The 4 spare checkpoints could bring one deferred slot back this week
-(decision pending).
-
 Crypto candidate source: Crypto Banter portfolio sheet (undated snapshot —
 name universe only, not prices).
 
 ## Execution notes
 
 - Binance Stocks (direct stock product): minimum order ≈ 5 USDC + 0.17
-  USDC flat fee (3.4% on a 5.17 order). Not compatible with 0.75 checkpoint
-  buys. Fine for migration-sized orders (0.17 on ~134 ≈ 0.13%).
+  USDC flat fee (3.4% on a 5.17 order). Overshoots a 0.75 checkpoint; when
+  used, the excess prepays following checkpoints.
 - Binance Convert bStocks ([ticker]B): no displayed fee, ~0.7–0.8% spread
   baked into the rate; works at 0.75.
 
