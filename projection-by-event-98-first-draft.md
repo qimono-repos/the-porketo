@@ -32,20 +32,20 @@ Projected squad total at Event 98: roughly 373 + 65.25 ≈ **438 USDC** invested
 
 | # | Player | Engine | Invested now | **Invested at Event 98** |
 |---|---|---|---:|---:|
-| 1 | DOT | crypto | 2.25 | **≈ 11** |
-| 2 | ALGO | crypto | 2.25 | **≈ 11** |
-| 3 | BLK | stock | 2.49 | **≈ 11** |
-| 4 | DUK | stock | 2.49 | **≈ 11** |
-| 5 | SPCXB | stock | 4.90 | **≈ 11** |
-| 6 | HOOD | stock | 4.97 | **≈ 11** |
-| 7 | RONIN | crypto | 6.50 | **≈ 11** |
-| 8 | ZEC | crypto | 6.53 | **≈ 11** |
-| 9 | TAO | crypto | 8.98 | **≈ 11** |
-| 10 | CVX | stock | 9.95 | **≈ 11** |
-| 11 | OKLO | stock | 9.95 | **≈ 11** |
-| 12 | AVGO | stock | 10.00 | **≈ 11** |
-| 13 | QBTS | stock | 10.00 | **≈ 11** |
-| 14 | ETH | crypto | 10.75 | **≈ 11** |
+| 1 | DOT | crypto | 2.25 | **11.23** |
+| 2 | ALGO | crypto | 2.25 | **11.23** |
+| 3 | BLK | stock | 2.49 | **11.23** |
+| 4 | DUK | stock | 2.49 | **11.23** |
+| 5 | SPCXB | stock | 4.90 | **11.23** |
+| 6 | HOOD | stock | 4.97 | **11.23** |
+| 7 | RONIN | crypto | 6.50 | **11.23** |
+| 8 | ZEC | crypto | 6.53 | **11.23** |
+| 9 | TAO | crypto | 8.98 | **11.23** |
+| 10 | CVX | stock | 9.95 | **11.23** |
+| 11 | OKLO | stock | 9.95 | **11.23** |
+| 12 | AVGO | stock | 10.00 | **11.23** |
+| 13 | QBTS | stock | 10.00 | **11.23** |
+| 14 | ETH | crypto | 10.75 | **11.23** |
 | 15 | IMX | crypto | 12.00 | 12.00 |
 | 16 | TSLAB | stock | 14.70 | 14.70 |
 | 17 | NVDA | stock | 14.92 | 14.92 |
@@ -68,7 +68,7 @@ The biggest top-ups go to the bottom four (DOT, ALGO, BLK, DUK), roughly 9 USDC 
 
 ### Correction note
 
-The figure first quoted in conversation was a waterline of ~13.9. Raising the bottom 15 players to 13.9 would cost about 104 USDC, more than the 65.25 available. With 65.25 the waterline is roughly **11**.
+An earlier estimate made by eye in conversation put the waterline higher. Computed exactly, 65.25 USDC lifts the bottom 14 players to **11.23 USDC**, and no further: reaching the next player up (IMX at 12.00) would need more than the budget allows.
 
 ## Sensitivity — Binance lots missing from the Sprint tabs
 
