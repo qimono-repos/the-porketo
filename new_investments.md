@@ -39,10 +39,11 @@ vote); if the event triggers a pullback, **add more**.
 | 2 | Tue 06 Oct 22:00 | budget | ETH 0.75 |
 | 3 | Wed 07 Oct 04:00 | budget | HOODB 0.75 |
 | 4–10 | Wed 07 Oct 10:00 → Thu 08 Oct 22:00 | budget | IonQ 5.17 + MUB 0.75 = 5.92 → covers CP4–CP10 (5.25) + 0.67 credit to CP11 |
-| 11 | Fri 09 Oct 04:00 | budget | **0.08 due** |
-| 12+ | from Fri 09 Oct 10:00 | budget | 0.75 each |
+| 11–18 | Fri 09 Oct 04:00 → Sat 10 Oct 22:00 | budget | **MU/MUB 6.00 (STT-0031)** = 8 slots (6.00); 0.67 prior credit carries to CP19 |
+| 19 | Sun 11 Oct 04:00 | budget | **0.08 due** (covered by the 0.67 credit) |
+| 20+ | from Sun 11 Oct 10:00 | budget | 0.75 each |
 
-Investment backlog as of 2026-10-08 05:00: **0.00**.
+Investment backlog as of 2026-10-09 04:10: **0.00**.
 
 ## Top-up pot (43.00529321 USDC; 31.29 = IONQ experiment proceeds + 11.71 new capital — split pending booking)
 
@@ -64,11 +65,23 @@ Pot balance: 43.00529321 − 9.00 = **34.00529321**.
 | TSMB (replaced NVDAB) | 2.25 | ✅ — earnings Thu 15 Oct 03:00 Halifax (calendar event) |
 | DOT (Infra #1) | 2.25 | ✅ |
 | ALGO (L1 — replaced Canton CC) | 2.25 | ✅ — post-quantum thesis |
-| MUB (Micron) | 0.75 | needs +1.25 more (≥2) |
+| MUB (Micron) | 6.58 | ✅ — 0.75 @ 1087.59 (07 Oct) + 6.00 MU buy (STT-0031, anchor 5.83) |
 
 Out / deferred: NVDAB (same sector as TSMB), Canton CC (replaced by ALGO,
 2026-10-08: thesis aligns with the quantum narrative), Gaming ×2, Rigetti,
 Infra #2 (HYPE / ENA / JTO; ZRO after its 20 Oct unlock).
+
+## MUB / Micron — momentum watch (2026-10-09)
+
+Low-investment objective is CLOSED (≥2 USD met, 6.58 invested). Keep Micron on
+the radar as a **momentum / add-on candidate**, not a floor-filler: if the
+8 Oct selloff continues on the live catalysts — Taiwan Taoyuan union strike
+authorisation (1,994 of 2,012 voted to authorise, profit-sharing dispute) plus
+macro (Brent >104, 10y >5.3%) — and MU pulls back further with the AI-memory
+demand thesis intact, that is a buy-the-dip add per the "buy before / add on
+pullback" rule. Reference points: 8 Oct close 1,035.84 (−4.8%), overnight
+~1,056, 52-week high 1,255, our avg entry ~1,075 (0.75 @ 1087.59 + 6.00 buy @
+1056.38). Strike *announcement* is the next catalyst to watch.
 
 ## ALGO thesis (2026-10-08)
 
@@ -83,7 +96,11 @@ into a spike above daily R1 (0.1237), unconfirmed by the daily close.
 
 … 103.16510093 → −2.25 DOT = 100.91510093 → −2.25 ALGO = **98.66510093**.
 The earlier 0.75 gap = MUB 0.75 @ 1087.59 (2026-10-07 14:42).
+2026-10-09: −6.00 MU/MUB (STT-0031, checkpoint budget) = **92.66510093**
+(subject to fill confirmation — limit order, see booking note).
 
 ## Close-out
 
 When every "this week" row shows ≥ 2.00 (or is dropped), set DONE.
+All "this week" rows now ≥ 2.00 — ready to set DONE once MU/MUB fill is
+confirmed.
