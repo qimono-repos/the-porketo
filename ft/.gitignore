@@ -1,0 +1,8 @@
+# Clojure / tools.deps
+.cpcache/
+.clj-kondo/.cache/
+target/
+*.class
+
+# FT program output
+out/
