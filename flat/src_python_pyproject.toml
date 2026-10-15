@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qimono-harvest"
+version = "0.1.0"
+description = "Qimono 50% partial-harvest calculator"
+requires-python = ">=3.11"
+
+[project.scripts]
+qimono-harvest = "qimono_harvest.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]

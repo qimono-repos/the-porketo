@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
+case "${1:-}" in
+  --harvest|-harvest)
+    exec python3 "$ROOT/harvest.py" "$@"
+    ;;
+  *)
+    cat <<'EOF'
+the-porketo
+
+Available command:
+  the-porketo --harvest --to ETH --current 12345 --position 0.250 --anchor 3055.3875
+
+The harvest command is pre-trade only. It never places an order.
+EOF
+    exit 2
+    ;;
+esac
