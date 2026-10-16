@@ -3,11 +3,23 @@
 **Date:** 2026-10-16, ~03:00–07:30 ART (GMT−3). **Operator:** Albert. **Agents:** ChatGPT (research), Claude (review, criteria, booking).
 **Outcome:** successful end-to-end investment mechanics, wallet verified.
 
+## 0. The proxy chain (purpose of this exercise)
+
+**TSMB → TSMC → NVDA**
+
+- TSMB is a proxy for TSMC (tokenized stock → underlying).
+- TSMC is a proxy for NVIDIA (TSMC fabs NVIDIA's chips; NVIDIA is its largest AI customer).
+- The investigation started at TSMB/TSMC and followed the chain to NVIDIA, ending in the NVDAB investment.
+
+Recorded in the book: `Positions!V` ("Proxy For") — TSMB row = `TSMB + TSMC + NVDA`, NVDAB row = `NVDAB + NVDA`.
+
+**Why it matters (operator intent):** discovering proxies is the point of these manual exercises. Later in the experiment the same work is to be done not by hand but with **correlations** and **dimension discovery with big data** — finding which assets move together and which hidden factors drive them. Each hand-discovered chain is a labelled example to test those methods against.
+
 ## 1. Starting point: TSMC (ChatGPT)
 - ChatGPT wrote `INSIGHTS/Case Study TSMC.md` (commit baba15e, 03:05Z).
 - Facts: TSMC Q3 revenue US$46.72bn (+41.2% YoY), net income NT$763.06bn (+68.7%), GM 66.4%, NPM 51.1%; Q4 guide US$52.3–54.3bn (~14.1% sequential at midpoint, verified); node mix 3nm 33%, 5nm 28%, 7nm 10%, 2nm 8%.
 - Verdict: positive fundamentals, no confirmed intraday buy signal.
-- **Proxy-stock link:** the study used NVDA as the intraday proxy (NVDA is TSMC's largest AI customer; scenario table keyed off NVDA prior low 212.85, 15 Oct close 217.23). That is how the investigation moved from TSMC/TSMB to NVIDIA/NVDAB.
+- The study used NVDA as the intraday proxy (scenario table keyed off NVDA prior low 212.85, 15 Oct close 217.23) — the second link of the chain.
 
 ## 2. Claude's review of the study
 - Strength: separates facts, calculations and inferences; no fabricated URLs.
@@ -20,7 +32,7 @@
 ## 4. The NVDAB decision and the mistake
 - First call: skip NVDAB. Dip measured against the lot anchor (224.587) looked ~3%.
 - Operator's live Binance convert screen (07:07): NVDAB/USDC 217.653, past week −7.40%, 9 Oct high 235.059, 15 Oct low 214.065.
-- Measured against the swing high (the correct buy yardstick), the dip is ~7.4%. Call revised: **Tier C, one unit (0.75 USDC)**; remaining two units to TSMB as Tier B.
+- Measured against the swing high (the correct investment yardstick), the dip is ~7.4%. Call revised: **Tier C, one unit (0.75 USDC)**; remaining two units to TSMB as Tier B.
 - Watch levels: break and hold below 214 = upgrade to Tier B next slot; reclaim ~225 = dip gone, don't add.
 - Mistake logged in `INSIGHTS/mistakes/2026-10-16-nvdab-wrong-dip-yardstick.md`.
 
@@ -42,7 +54,9 @@
 - Live venue screen as price truth instead of the book's stale prices.
 - Operator challenge caught the agent's wrong yardstick before money moved.
 - Pre-computing the expected wallet balance made verification instant.
+- Following the proxy chain end to end, by hand.
 
 ## 8. Next
 - TSMB investment, 1.50 USDC (Tier B), to complete the slot.
 - Harvest review with live P/L screen.
+- Positions numeric columns for TSMB/NVDAB wait on the Trades-October → Positions feed fix.
