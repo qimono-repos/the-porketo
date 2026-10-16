@@ -60,16 +60,18 @@ Neither leg is finished, so Albert is currently the integration layer — taking
 
 ## 9. The Apple worked example
 
+> **Clarification (Albert, 2026-10-15): Apple was only an illustrative example** used in the meeting to explain research-before-development and horizon-vs-catalyst thinking. It is **not** a planned trade, position, or committed study.
+
 - Research precedes development; the first research question is always "**what is the asset?**" Apple = mega-cap tech selling hardware + services; a slow-moving, highly liquid blue chip that mostly drifts.
 - Therefore a 6h / 1h / 10m horizon on Apple is only useful in **specific catalyst moments** — earnings, a product launch, a shock. Horizon = asset × moment, not asset alone.
-- The catalyst studied this week: a **claimed Apple HomeView smart-home display announcement around Oct 13** (7-inch, Siri AI, ~$299, shipping ~Nov 13).
+- The catalyst used for the example: a **claimed Apple HomeView smart-home display announcement around Oct 13** (7-inch, Siri AI, ~$299, shipping ~Nov 13).
 - **⚠ UNVERIFIED.** This event and any price impact are treated as a lead, not fact, until confirmed from reliable primary sources and logged. No calculations are built on it until then.
 
 ## 10. Open items
 
 - Define harvest rule / trigger signals / risk limits formally (still undefined in the repo).
 - Pin down the **confidence bar** that fires a harvest.
-- Confirm the HomeView event from primary sources (my next task — source review file).
-- Set up genuine intraday AAPL price+volume pull around the verified timestamp; measure returns across horizons vs. baseline, out-of-sample, costs included.
+- (Optional, since Apple was only an example) Confirm the HomeView event from primary sources — see EVIDENCE/apple-homeview-source-review.md.
+- If the example is ever turned into a real study: pull genuine intraday AAPL price+volume around the verified timestamp; measure returns across horizons vs. baseline, out-of-sample, costs included.
 
 _Note on process: a prior turn in this meeting arrived under my name that I did not author; attribution between agents should be handled carefully. Files are split per-agent on the shared branch to avoid collisions._
