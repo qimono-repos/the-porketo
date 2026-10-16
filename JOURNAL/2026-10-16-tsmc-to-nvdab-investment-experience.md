@@ -13,7 +13,7 @@
 
 Recorded in the book: `Positions!V` ("Proxy For") — TSMB row = `TSMB + TSMC + NVDA`, NVDAB row = `NVDAB + NVDA`.
 
-**Why it matters (operator intent):** discovering proxies is the point of these manual exercises. Later in the experiment the same work is to be done not by hand but with **correlations** and **dimension discovery with big data** — finding which assets move together and which hidden factors drive them. Each hand-discovered chain is a labelled example to test those methods against.
+**Why it matters (operator intent):** discovering proxies is the point of these manual exercises. Each hand-discovered chain is a **thesis**, not a proven result or a labelled example. The process starts from the thesis and later refines it with math: **correlations** and **dimension discovery with big data** — testing whether the assets really move together and which hidden factors drive them. The math may confirm, adjust or reject the thesis.
 
 ## 1. Starting point: TSMC (ChatGPT)
 - ChatGPT wrote `INSIGHTS/Case Study TSMC.md` (commit baba15e, 03:05Z).
