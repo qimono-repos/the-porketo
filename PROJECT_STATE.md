@@ -11,13 +11,13 @@ The project has two purposes that are treated as one unified system:
 
 ## The Book
 
-As of October 16, 2026, the canonical trading workbook — referred to as "the book" — is the Google Sheet titled **TRADE-October-26-Sprint** (ID `1Q6QGj6LJjJTSRSIzYMAL_whBkjHm0xBmiNcFYo8F2vE`).
+As of October 16, 2026, the canonical trading workbook — referred to as "the book" — is the Google Sheet titled **TRADE-October-26-Sprint** (ID `1nZTQEyHT9dCP3ugEjTtLdDClNON0bkT90Qoq-x-io1Y`).
 
 Whenever "the book" is mentioned anywhere in this project, it refers to this Google Sheet. It is the live workbook that is read and updated during trading sessions.
 
 The earlier workbook, **Sep 15 Sprint - $100 Trading Ticket**, is frozen as September history and is not the live book.
 
-The previous ID (`1N_osVjWlUVElmZ8UoPUIa5aFex-gfSvy4nJ02k-_KrY`) was replaced on 2026-10-16 when the README sheet was refreshed with the current buy/harvest decision criteria, 50% partial harvest rule, and USDT harvest settlement. The old file was moved to Trash.
+Previous IDs were replaced on 2026-10-16 (README mechanics refresh, then QNTB trade booking as STT-0046). Old files moved to Trash.
 
 ## Canonical References
 
@@ -65,7 +65,7 @@ The project owner is explicitly both:
 
 - **Claude self-report, Fatal Error Report 006 (October 6, 2026):** retrieval before interpretation, respect for settled decisions, and prompt use of known workarounds are continuity obligations binding on all teammates. See JOURNAL/2026-10-06-claude-fatal-error-report-006.md.
 
-- **Canonical trading book identified (October 3, 2026; ID refreshed October 16, 2026):** "the book" refers to the Google Sheet titled TRADE-October-26-Sprint (current ID `1Q6QGj6LJjJTSRSIzYMAL_whBkjHm0xBmiNcFYo8F2vE`). It is the live workbook read and updated during trading sessions. The earlier Sep 15 Sprint workbook is frozen as September history. See the "The Book" section above.
+- **Canonical trading book identified (October 3, 2026; ID refreshed October 16, 2026):** "the book" refers to the Google Sheet titled TRADE-October-26-Sprint (current ID `1nZTQEyHT9dCP3ugEjTtLdDClNON0bkT90Qoq-x-io1Y`). It is the live workbook read and updated during trading sessions. The earlier Sep 15 Sprint workbook is frozen as September history. See the "The Book" section above.
 
 - **Crisis Harvest mechanics formalized:** when the final-harvest-day condition activates and normal harvesting has not occurred by market close, select the open strategy lot with the smallest absolute USD/USDC-equivalent gap to its harvest threshold among lots below threshold. Liberate 90% of that lot's material anchor, leave 10% invested, preserve lot identity and anchor, and calculate the native Binance FROM quantity from the notification snapshot. If the available position at execution is smaller than the specified quantity, sell the entire remaining position rather than canceling the crisis movement.
 
