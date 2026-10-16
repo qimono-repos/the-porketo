@@ -24,10 +24,11 @@ failure applies to all.
 ## Canonical Book
 
 - **The book** → Google Sheet **TRADE-October-26-Sprint**
-  (ID `1N_osVjWlUVElmZ8UoPUIa5aFex-gfSvy4nJ02k-_KrY`).
+  (ID `1Q6QGj6LJjJTSRSIzYMAL_whBkjHm0xBmiNcFYo8F2vE`).
 - Any reference to "the book" means this live workbook, read and updated during
   trading sessions. The earlier **Sep 15 Sprint - $100 Trading Ticket** is
   frozen as September history and is not the live book.
+- Previous ID `1N_osVjWlUVElmZ8UoPUIa5aFex-gfSvy4nJ02k-_KrY` was replaced on 2026-10-16 when the README sheet was refreshed with the current buy/harvest criteria, 50% harvest rule, and USDT settlement mechanics. The old file was moved to Trash.
 
 ## Timezone-Label Convention
 
