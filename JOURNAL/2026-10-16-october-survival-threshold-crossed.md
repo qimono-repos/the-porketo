@@ -38,3 +38,23 @@ Today's four harvests were done live by voice, one at a time, entering the USDT 
 - Month 1 of self-funding: passed.
 - November is unlocked. Every harvest from now to 31 Oct widens the margin.
 - Paying the bills from USDT reduces the harvest reserve. Book the payment as a withdrawal when it happens.
+
+## November plan (decided 2026-10-16)
+
+**Mechanics unchanged:** every checkpoint deploys the full **3 units × 0.75 = 2.25 USDC**. Tiers (A/B/C) decide how a slot's 3 units are split across players. They never reduce the slot. Missed checkpoints or over/under-deployment are evened out in the following checkpoints.
+
+**Budget math:**
+
+| Item | USDC |
+|---|---|
+| November slots: 30 days × 4 checkpoints = 120 × 2.25 | **270.00** |
+| USDC now (after STT-0042/0043) | 191.17 |
+| Rest of October: ~59 slots × 2.25 | −132.75 |
+| Carry-over into November | ≈ 58.42 |
+| **New funding needed** | **≈ 212** |
+
+**Actions:**
+
+1. **In the last days of October, add 212 USDC** of fresh investment budget (operator). Book it as a FUND row when it lands.
+2. **November calendar events:** checkpoints every 6h, 04:00 / 10:00 / 16:00 / 22:00 GMT−3, from 1 Nov 04:00 to 30 Nov 22:00 (120 slots). Created 2026-10-16.
+3. Subscriptions ($20) continue to be paid from USDT harvests, not from the 212.
