@@ -1,5 +1,14 @@
 # Trading
 
+> ## ⚠️ MANDATORY FIRST READ — every agent and the operator
+>
+> **Before recommending, scoring or executing any BUY or HARVEST, read [`DECISIONS/strategy/2026-10-16-buy-and-harvest-decision-criteria.md`](DECISIONS/strategy/2026-10-16-buy-and-harvest-decision-criteria.md).** It is the single source of truth for decision criteria. It binds ChatGPT, Claude, Grok, Gemini, any other model, and the human operator alike.
+>
+> - **BUY** → look at the **market**: the dip from the recent swing high (last ~2 months) **and** the news, always both together.
+> - **HARVEST** → look at **your own lot**: current lot value vs its material anchor (what was actually paid).
+>
+> Never mix the two yardsticks. Measuring a buy-side dip against a lot's anchor is the error that created this rule (2026-10-16, NVDAB).
+
 A model-independent trading research, knowledge, experimentation, and decision system.
 
 ## Core Principle
