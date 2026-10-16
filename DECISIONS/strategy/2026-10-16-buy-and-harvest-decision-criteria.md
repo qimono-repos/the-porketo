@@ -1,7 +1,7 @@
 # Buy and Harvest Decision Criteria
 
 **Status:** canonical, written 2026-10-16 at operator request. Binds every teammate (all LLMs and the operator).
-**Why this exists:** on 2026-10-16 an agent measured an NVDAB "dip" against the lot anchor instead of the 2-month swing high, understating it (~3% vs ~7.4%). The two decisions use DIFFERENT references. This file says which one to look at for each.
+**Why this exists:** on 2026-10-16 an agent measured an NVDAB "dip" against the lot anchor instead of the 2-month swing high, understating it (~3% vs ~7.4%). The two decisions use DIFFERENT references. This file says which one to look at for each. See INSIGHTS/mistakes/2026-10-16-nvdab-wrong-dip-yardstick.md.
 
 ## The one rule to remember
 
@@ -11,6 +11,15 @@
 | SELL / HARVEST (what to take out) | The lot: material anchor vs live price | The swing high or news narrative |
 
 Buying asks "how far has the MARKET fallen and why?" Harvesting asks "is MY LOT above what I paid?"
+
+## 0. Operating rule vs research direction
+
+`INSIGHTS/Claude-Code-Team-Meeting-Insights.md` (2026-10-14) says there is "no fixed harvest rule by design" and proposes information/confidence-driven or Fourier-based triggers. That is the **research direction**, not the operating rule.
+
+- **Operating rule (in force now):** the criteria in this file, including the 50% anchor-based harvest.
+- **Research direction:** information- or Fourier-driven triggers may replace the anchor rule **only after** passing an out-of-sample, fee-inclusive backtest recorded in the repo and approved by the operator.
+
+If any other file appears to contradict this one, this file wins until it is explicitly amended.
 
 ## 1. BUY / INVEST criteria
 
