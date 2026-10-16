@@ -24,11 +24,11 @@ failure applies to all.
 ## Canonical Book
 
 - **The book** → Google Sheet **TRADE-October-26-Sprint**
-  (ID `1nZTQEyHT9dCP3ugEjTtLdDClNON0bkT90Qoq-x-io1Y`).
+  (ID `1X5JbgerRy5gv6uttPw3dOlw3Dj-qXfmOBDKlx1vX9V0`).
 - Any reference to "the book" means this live workbook, read and updated during
   trading sessions. The earlier **Sep 15 Sprint - $100 Trading Ticket** is
   frozen as September history and is not the live book.
-- Previous IDs replaced on 2026-10-16: README mechanics refresh, then QNTB (Quantinuum) trade booking as STT-0046. Old files moved to Trash.
+- Previous IDs replaced on 2026-10-16 (README refresh, QNTB booking, RGTI CEDEAR booking). Old files moved to Trash.
 
 ## Timezone-Label Convention
 
