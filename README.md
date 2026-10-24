@@ -14,6 +14,7 @@
 > Slot status lives in the book's **`Slots` tab** (summary on `Dashboard!A18`): `UP TO DATE`, `CATCH UP · N units` or `AHEAD · WAIT`.
 > Follow [`protocols/catch-up-process.md`](protocols/catch-up-process.md): time → latest move → harvest → invest → log the slot.
 > When ahead, follow [`protocols/ahead-wait-process.md`](protocols/ahead-wait-process.md).
+> To size a catch-up batch with any AI, paste [`AI/prompts/catch-up-investment-batch.md`](AI/prompts/catch-up-investment-batch.md). The owed number is **units** (× 0.75 = USDC), never dollars.
 > The price worker refreshes at 03:00, 09:00, 15:00 and 21:00 Halifax, one hour before each slot (04, 10, 16, 22). So at every slot, the Prices tab is at most an hour old.
 
 A model-independent trading research, knowledge, experimentation, and decision system.

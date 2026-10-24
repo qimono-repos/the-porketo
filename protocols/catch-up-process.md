@@ -13,6 +13,19 @@ Adopted: 2026-10-24. Use this at **every** checkpoint, whoever runs it: Albert, 
    - `AHEAD · WAIT`: do not invest. Follow [`ahead-wait-process.md`](ahead-wait-process.md).
 5. **Log the slot.** Book each fill in its trade tab, with the slot # in the trade row's slot column. Then in `Slots`, on the row of the slot window the money was spent in, type the USDC paid (fee included) in column F, the event IDs in G and the harvest result in H. The status updates by itself.
 
+## Catch-up batch (how to size it)
+
+Ready-made prompt for any AI: [`AI/prompts/catch-up-investment-batch.md`](../AI/prompts/catch-up-investment-batch.md).
+
+1. **N is units, not dollars.** Read it on `Slots!B16`. 1 unit = 0.75 USDC, so 44 units = 33.00 USDC.
+2. **Slots = floor(N / 3).** Every slot is exactly 3 units: one A, or one B + one C, or three C. Remainder 1 = one extra C; remainder 2 = one extra B or two extra C.
+3. **Write the slot plan**, e.g. `3 × A, 8 × (B + C), 3 × (C + C + C), remainder 2 = B`. B picks must equal the C picks used in B + C slots.
+4. **Merge per asset.** An asset's units = tier units × slots it appears in. One Convert per asset.
+5. **USDC to type = units × 0.75.** Every amount is a multiple of 0.75.
+6. **Check:** total units = N and total USDC = N × 0.75, exactly.
+7. **Venue:** crypto and bStocks (…B) through Binance Convert (no fee, 24/7). Avoid plain Binance Stocks (DUK, MDB, QBTS, IONQ, OKLO, XNDU, PSQL) for small amounts: 0.17 fee, ~5.17 minimum, market hours only.
+8. Only assets already held. No new players.
+
 ## Rules
 
 - The price worker refreshes at 03:00, 09:00, 15:00 and 21:00 Halifax, one hour before each slot (04, 10, 16, 22). So at every slot, the Prices tab is at most an hour old. Details: [`apps-script/README.md`](../apps-script/README.md).
