@@ -9,6 +9,12 @@
 >
 > Never mix the two yardsticks. Measuring a buy-side dip against a lot's anchor is the error that created this rule (2026-10-16, NVDAB).
 
+> ## ⏱ CHECKPOINT ROUTINE — every slot
+>
+> Slot status lives in the book's **`Slots` tab** (summary on `Dashboard!A18`): `UP TO DATE`, `CATCH UP · N units` or `AHEAD · WAIT`.
+> Follow [`protocols/catch-up-process.md`](protocols/catch-up-process.md): time → latest move → harvest → invest → log the slot.
+> When ahead, follow [`protocols/ahead-wait-process.md`](protocols/ahead-wait-process.md).
+
 A model-independent trading research, knowledge, experimentation, and decision system.
 
 ## Core Principle
