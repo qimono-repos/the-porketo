@@ -22,7 +22,7 @@
 const PRICES_SHEET = 'Prices';
 const LOG_SHEET = 'Price Log';
 const RUN_HOURS = [3, 9, 15, 21];   // Halifax local time
-const TZ = 'America/Paramaribo'   // GMT-3 all year; same as Halifax until 1 Nov 2026 (decision 2026-10-24);
+const TZ = 'America/Paramaribo';   // GMT-3 all year; same as Halifax until 1 Nov 2026 (decision 2026-10-24)
 const RETRY_MINUTES = 10;
 const MAX_RETRIES = 5;
 
