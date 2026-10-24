@@ -19,6 +19,22 @@ Adopted: 2026-10-21 (ART). Replaces odd-amount harvests.
 4. If no step fits (excess below 0.30), do not harvest; wait.
 5. Harvests still settle in USDT; venue fees must not turn the harvest into a net loss.
 
+## Amendment 2026-10-24: never round up past 50%
+
+Operator rule (Albert, 2026-10-24): **snap to the closest ladder step, unless that step is more than 50% of the excess. Then take the next step down.** If no step is at or below 50% of the excess, do not harvest; wait.
+
+So rule 3's cap becomes **50% of the excess** instead of the full excess. The original rule 3 is kept above for history.
+
+- Consequence: a harvest needs at least **0.60 excess** (so that 50% ≥ 0.30, the lowest step).
+- Why: rounding up to the closest step could sell more than half the gain (for example 50% = 0.21 → step 0.30 = 73% of the excess). The 50% rule (2026-10-06) is the anchor-protecting principle; the ladder must not undo it.
+
+| Case (2026-10-24) | Excess | 50% | Closest step | Result |
+|---|---|---|---|---|
+| IBMB @ 220.29 (STT-0064) | 1.02 | 0.51 | 0.45 | harvest 0.45 ✅ |
+| IBMB @ 239.03 | 0.41 | 0.21 | 0.30 > 0.21 | **no harvest, wait** |
+
+The 2026-10-21 examples below all still comply (each step ≤ its 50%).
+
 ## Worked example (2026-10-21, 09:33 Halifax prices)
 
 | Lot | 50% of excess | Ladder step |
