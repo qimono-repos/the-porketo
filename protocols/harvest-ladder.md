@@ -26,6 +26,7 @@ Operator rule (Albert, 2026-10-24): **snap to the closest ladder step, unless th
 So rule 3's cap becomes **50% of the excess** instead of the full excess. The original rule 3 is kept above for history.
 
 - Consequence: a harvest needs at least **0.60 excess** (so that 50% ≥ 0.30, the lowest step).
+- Book: since 2026-10-24 the threshold columns use this floor: page Sprint column P and page Crypto Sprint column J, renamed "Min excess to harvest", = 0.60 on every lot. See `JOURNAL/2026-10-24-harvest-threshold-0-60.md`.
 - Why: rounding up to the closest step could sell more than half the gain (for example 50% = 0.21 → step 0.30 = 73% of the excess). The 50% rule (2026-10-06) is the anchor-protecting principle; the ladder must not undo it.
 
 | Case (2026-10-24) | Excess | 50% | Closest step | Result |
