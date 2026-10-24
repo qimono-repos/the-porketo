@@ -18,7 +18,7 @@
  */
 
 const NARRATIVE_SHEET = 'Narrative';
-const NARRATIVE_TZ = 'America/Halifax';
+const NARRATIVE_TZ = 'America/Paramaribo'   // GMT-3 all year; same as Halifax until 1 Nov 2026 (decision 2026-10-24);
 const NARRATIVE_HOUR = 6;   // Halifax, before the 10:00 slot
 const CHANNELS = [
   ['Crypto Banter (Ran Neuner)', 'UCN9Nj4tjXbVTLYWN0EKly_Q'],

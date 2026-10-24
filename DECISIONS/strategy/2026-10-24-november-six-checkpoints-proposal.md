@@ -1,6 +1,6 @@
 # November: 6 checkpoints a day (proposal, 2026-10-24)
 
-**Status:** PROPOSAL. Albert asked for shorter gaps between checkpoints from November (6 a day instead of 4) to catch more candles. Open points are at the bottom.
+**Status:** APPROVED 2026-10-24 (Albert): option A, 2 units per slot, Paramaribo time. Originally a proposal: Albert asked for shorter gaps between checkpoints from November (6 a day instead of 4) to catch more candles. Decisions are at the bottom.
 
 ## Schedule
 
@@ -30,7 +30,9 @@ The November budget is **270 USDC** (already funded, CRF-NOV-0001).
   - `protocols/catch-up-process.md`: "a slot is 2 units" from 1 Nov;
   - `three-units-per-slot-fibonacci-tiers.md`: amended for November.
 
-## Open points for Albert
+## Decided (Albert, 2026-10-24)
 
-1. Option A, B or C?
-2. **Clock change:** Halifax moves to GMT-4 on Sunday 1 Nov; Buenos Aires stays GMT-3. October used "Halifax/ART" because they matched. Which clock runs November? The scripts use `America/Halifax`.
+1. **Option A:** 2 units (1.50 USDC) per slot, 180 slots, 270 USDC.
+2. **Clock:** when Halifax moves to GMT-4 (Sunday 1 Nov), the project **switches to Paramaribo time** (`America/Paramaribo`, GMT-3 all year, no daylight saving). It matches Buenos Aires and the October slot times.
+   - From 1 Nov, every "Halifax" time in the book and the docs reads as Paramaribo.
+   - The scripts' `TZ` becomes `America/Paramaribo`.

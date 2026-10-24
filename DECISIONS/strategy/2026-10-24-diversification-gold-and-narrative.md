@@ -9,12 +9,12 @@ On 24 Oct only a few assets were above their harvest threshold. The review found
 ## Decisions
 
 1. **PAX Gold (PAXG) enters** as a new player: the exception to "no new players since 2026-10-11". Tokenised gold on Binance Convert (24/7, no fee). Role: the hedge that rises when stocks fall, so something is harvestable on bad days.
-2. **One asset goes out** to make room. Not quantum, not gaming (see below). The choice is pending Albert's pick. "Out" means **no new units**. It is sold only when it is back at or above its anchor, so no loss is locked in.
+2. **One asset goes out** to make room. Not quantum, not gaming (see below). Rule (Albert, 2026-10-24): **remove the asset with the fewest harvests, or the lowest harvested total, in the book's logged history**. Shortlist: [`PORTFOLIO/reviews/2026-10-24-harvest-history-ranking.md`](../../PORTFOLIO/reviews/2026-10-24-harvest-history-ranking.md). "Out" means **no new units**. It is sold only when it is back at or above its anchor, so no loss is locked in.
 3. **Quantum stays.** Albert's view: when the quantum sector is down, the rest of the portfolio should back it up. Note from the review: quantum moved with AI in Oct (correlation 0.74), so it is a conviction sleeve, not a hedge.
 4. **Gaming stays and grows, starting with GALA**, widening to other gaming ecosystems (not only Axie / Ronin / Immutable).
 5. **Candles are the "gold mine".** Two changes:
    - **Alerts:** [`apps-script/candle-alert.gs`](../../apps-script/candle-alert.gs) checks every hour. It emails when a ladder step fits, or when a price moves 4% or more in an hour.
-   - **Cadence:** more checkpoints per day from November. Proposal: [`2026-10-24-november-six-checkpoints-proposal.md`](2026-10-24-november-six-checkpoints-proposal.md).
+   - **Cadence:** more checkpoints per day from November. Approved: [`2026-10-24-november-six-checkpoints-proposal.md`](2026-10-24-november-six-checkpoints-proposal.md).
    - Binance Convert *Limit* orders are allowed, but Albert prefers not to rely on them.
 6. **Narrative input for long-term crypto:**
    - **Sources:** Crypto Banter (Ran Neuner) and the Paul Barron Network, on YouTube, X and forums.
