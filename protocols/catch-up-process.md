@@ -15,7 +15,7 @@ Adopted: 2026-10-24. Use this at **every** checkpoint, whoever runs it: Albert, 
 
 ## Rules
 
-- The price worker refreshes at 03:00, 09:00, 15:00 and 21:00 Halifax, one hour before each slot (04, 10, 16, 22). So at every slot, the Prices tab is at most an hour old. Script: [`apps-script/price-updater.gs`](../apps-script/price-updater.gs).
+- The price worker refreshes at 03:00, 09:00, 15:00 and 21:00 Halifax, one hour before each slot (04, 10, 16, 22). So at every slot, the Prices tab is at most an hour old. Details: [`apps-script/README.md`](../apps-script/README.md).
 - A slot is 3 units of 0.75 = 2.25 USDC. Missed slots carry forward. They are never forgiven silently.
 - Slot N's window runs from its time until the next slot (04:00, 10:00, 16:00, 22:00 Halifax).
 - The full amount paid, including the fee, counts against the slots.
