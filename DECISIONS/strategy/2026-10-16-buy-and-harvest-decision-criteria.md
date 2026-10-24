@@ -23,7 +23,7 @@ If any other file appears to contradict this one, this file wins until it is exp
 
 ## 1. BUY / INVEST criteria
 
-**Eligible universe:** assets already held (no new players since 2026-10-11), except urgent outside-crisis news.
+**Eligible universe:** assets already held (no new players since 2026-10-11), except urgent outside-crisis news, and PAXG (tokenised gold), admitted 2026-10-24 for diversification ([`2026-10-24-diversification-gold-and-narrative.md`](2026-10-24-diversification-gold-and-narrative.md)).
 
 **Score (weights):**
 - Dip, 40%: (2-month swing high − live price) / swing high. Swing high = highest price in the last ~2 months, read from the live chart (e.g. Binance Convert 1W/1M view).
@@ -31,6 +31,11 @@ If any other file appears to contradict this one, this file wins until it is exp
 - Volatility / beta, 10%: does it move the needle week to week.
 - Momentum, 5%: last ~2 months, trend line through points 2 weeks apart.
 - News research, 25%: latest meaningful news for the asset and its sector.
+  - **Crypto, long-term (amended 2026-10-24):** split into news 15% + **narrative 10%**.
+  - Narrative sources: Crypto Banter (Ran Neuner) and Paul Barron Network, on YouTube, X and forums.
+  - Read the book's `Narrative` tab (latest YouTube titles and descriptions, with held assets mentioned) and check X by hand.
+  - Score: mentioned positively in the last 7 days = full 10%; neutral or not mentioned = 5%; negative = 0.
+  - Record the source, title and time. Narrative never decides a buy on its own.
 
 **Both price and news are always checked together.** Dip without news is incomplete; news without the dip number is incomplete.
 

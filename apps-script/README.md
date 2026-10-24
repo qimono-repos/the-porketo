@@ -31,4 +31,13 @@ The slot is the decision moment. Refreshing one hour earlier leaves time for a f
 - The API key lives only in the live script (or in Script Properties). Never commit it.
 - `price-updater.gs` in this folder is an earlier version (retries plus a CryptoCompare fallback). The script running in the book (as of 2026-10-24) is the simpler single-call version described above. Both keep the same schedule and the 13 h rule.
 
+## Other scripts in this folder
+
+| File | Runs | Does |
+|---|---|---|
+| [`candle-alert.gs`](candle-alert.gs) | Every hour | Live prices (CoinGecko for crypto, GOOGLEFINANCE for stocks). Adds every lot's excess per asset, checks the harvest ladder (step ≤ 50% of excess), and flags a move of 4% or more in an hour. Emails the script owner and logs to the `Alerts` tab. Repeats the same alert at most every 6 h. Install: `setupAlerts()`. |
+| [`narrative-feed.gs`](narrative-feed.gs) | Daily 06:00 Halifax | Reads the YouTube RSS of Crypto Banter and Paul Barron Network into the `Narrative` tab (title, held assets mentioned, link, description). Install: `setupNarrative()`. |
+
+Paste each into the same Apps Script project as a new file. They don't share function names with the price worker.
+
 See also: [`protocols/catch-up-process.md`](../protocols/catch-up-process.md) (step 3) and [`protocols/harvest-ladder.md`](../protocols/harvest-ladder.md).
