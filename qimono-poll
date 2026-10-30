@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+#
+# Qimono Simple Poll command
+#
+# Usage:
+#   ./qimono-poll "Question?" "Option A" "Option B"
+#   ./qimono-poll --publish "Question?" "Option A" "Option B"
+#
+# Dry-run is the default. Add --publish only when ready to post.
+
+set -Eeuo pipefail
+umask 077
+
+readonly API_URL="https://simplepoll.rocks/api/v1/polls/"
+readonly CHANNEL_ID="C0CD1U79YTH"
+readonly ENV_FILE="/etc/qimono/simplepoll.env"
+
+usage() {
+  cat <<'USAGE'
+Qimono Simple Poll
+
+  ./qimono-poll "Question?" "Choice 1" "Choice 2" [up to 5 choices]
+      Validate the poll with a dry run. Does not publish.
+
+  ./qimono-poll --publish "Question?" "Choice 1" "Choice 2"
+      Publish the poll to #trading.
+
+  ./qimono-poll --help
+      Show this help.
+
+The API key is read from /etc/qimono/simplepoll.env.
+USAGE
+}
+
+die() {
+  printf 'ERROR: %s\n' "$*" >&2
+  exit 1
+}
+
+[[ "${EUID}" -eq 0 ]] || die "Run as root: sudo ./qimono-poll ..."
+[[ -r "${ENV_FILE}" ]] || die "Missing API credentials at ${ENV_FILE}. Run setup-simple-poll first."
+command -v curl >/dev/null 2>&1 || die "curl is required."
+command -v jq >/dev/null 2>&1 || die "jq is required."
+
+publish=false
+if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
+  usage
+  exit 0
+elif [[ "${1:-}" == "--publish" ]]; then
+  publish=true
+  shift
+fi
+
+[[ "$#" -ge 3 && "$#" -le 6 ]] || { usage; exit 2; }
+
+question="$1"
+shift
+choices=("$@")
+
+for value in "$question" "${choices[@]}"; do
+  [[ -n "${value//[[:space:]]/}" ]] || die "Question and choices cannot be empty."
+done
+
+# Simple Poll's free plan supports up to five choices.
+text="\\"$question\\""
+for choice in "${choices[@]}"; do
+  escaped="${choice//\\\\/\\\\\\\\}"
+  escaped="${escaped//\\\"/\\\\\\\"}"
+  text+=" \\"$escaped\\""
+done
+
+set -a
+# shellcheck disable=SC1090
+source "${ENV_FILE}"
+set +a
+[[ -n "${SIMPLEPOLL_API_KEY:-}" ]] || die "SIMPLEPOLL_API_KEY is missing from ${ENV_FILE}."
+
+if [[ "${publish}" == true ]]; then
+  payload="$(jq -cn --arg channel_id "${CHANNEL_ID}" --arg text "${text}" \
+    '{channel_id:$channel_id,text:$text}')"
+  action="Publishing"
+else
+  payload="$(jq -cn --arg channel_id "${CHANNEL_ID}" --arg text "${text}" \
+    '{channel_id:$channel_id,text:$text,dry_run:true}')"
+  action="Checking dry run for"
+fi
+
+printf '%s poll: %s\n' "${action}" "${question}"
+curl --silent --show-error --fail-with-body \
+  --connect-timeout 15 --max-time 45 \
+  -X POST "${API_URL}" \
+  -H "Authorization: Bearer ${SIMPLEPOLL_API_KEY}" \
+  -H 'Content-Type: application/json' \
+  --data "${payload}" | jq .
+
+unset SIMPLEPOLL_API_KEY payload text
