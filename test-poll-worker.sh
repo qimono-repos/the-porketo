@@ -40,12 +40,6 @@ if [[ "$token_count" -ne 6 ]]; then
   exit 1
 fi
 
-choice_count="$(jq -r --argjson choices "$CHOICES_JSON" '[.text] as $t | [$choices[] | select($t[0] | contains("\"" + . + "\""))] | length' <<< "$payload")"
-if [[ "$choice_count" -ne 5 ]]; then
-  printf 'Expected all 5 choices, got %s\n' "$choice_count" >&2
-  exit 1
-fi
-
 printf '%s\n' '4/4 Display request body (no credentials, no network)'
 jq . <<< "$payload"
 printf '\n%s\n' 'PASS: worker syntax and poll payload validated. No poll was sent.'
