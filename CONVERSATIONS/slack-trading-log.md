@@ -30,3 +30,6 @@
 
 ## 2026-10-30 16:53 (America/Halifax)
 - "done" (ALB Lemon receipt) + "any last move? solar research" (poll thread) → booked TRD-0070 in Trades row 45 (24.00 USDt = 23.88 + 0.12 fee, 0.264480003 sh @ 90.37) and Slots F118 = 36.17, G118 = STT-0069, TRD-0070; owed now 43.92 → 19.92 USDC (22.17 at slot 98); Positions has no ALB row yet; no solar research found in the repo, asked where it lives; US bell at 17:00, PAXG is the 24/7 plan option — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793390027675329?thread_ts=1793375701.885449&cid=C0CD1U79YTH
+
+## 2026-10-30 16:57 (America/Halifax)
+- "look in our conversations about solar" (poll thread) → searched Slack, the whole repo (incl. CONVERSATIONS/*), the book (Sprint/Positions), Drive and Gmail: no solar thesis on record; closest is AES (watch) in the Daily Brief Energy Opportunity Radar (2026-10-19 AM); offered to open RESEARCH/solar-thesis.md as a November item seeded with AES + Grok's FSLR/NXT/ENPH/NEE/CWEN — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793390232743809?thread_ts=1793375701.885449&cid=C0CD1U79YTH
