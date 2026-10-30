@@ -36,7 +36,7 @@ install -m 0755 "$SOURCE_WORKER" "$TARGET_WORKER"
 cat > "$CRON_FILE" <<'CRON'
 SHELL=/bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-40 23 * * * root /opt/qimono/poll-worker.sh
+40 11 * * * root /opt/qimono/poll-worker.sh
 55 15 30 10 * root /opt/qimono/poll-worker.sh --once
 CRON
 chmod 0644 "$CRON_FILE"
