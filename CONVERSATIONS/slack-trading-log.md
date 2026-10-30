@@ -11,3 +11,6 @@
 
 ## 2026-10-30 14:06 (America/Halifax)
 - Quantum-proxy poll market check (IONQ vote) → all five poll names are held as real shares in Positions (IONQ B3 −15%, QBTS B6 −31% + QBTSB wrapper, FLKR B7, RGTI B23, QUBT B25; ≈ $56); IONQUSDT perp ≠ shares, implies ~−22% vs entry, so refresh L3; FLKR is the only Korea proxy and trades in US hours — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793380009059049?thread_ts=1793371554.120429&cid=C0CD1U79YTH
+
+## 2026-10-30 14:56 (America/Halifax)
+- "done, do the books" (IONQ Binance Stocks screenshot) → booked STT-0068 in Trades-October row 53 (5.43 USDC = 5.26 + 0.17 fee, ≈0.182765809 sh @ 28.78, new lot) and Slots slot 96 (F117/G117); owed now 65.27 → 59.84 USDC; flagged it was booked from the order preview, verify fill/wallet ≈0.304901721 IONQ — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793383008125349?thread_ts=1793371554.120429&cid=C0CD1U79YTH
