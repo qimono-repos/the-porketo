@@ -24,3 +24,6 @@
 
 ## 2026-10-30 15:57 (America/Halifax)
 - FLKR Lemon receipt (6 USDt, 15:09 ART) + ChatGPT OCR (poll thread) → booked TRD-0069 in Trades row 44 (5.97 + 0.03 fee, 0.119361804 sh @ 50.02); Slots F117 = 11.43, G117 = STT-0068, TRD-0069; owed now 59.84 → 53.84 USDC (56.09 at slot 97, 58.34 at slot 98); Positions FLKR B7 0.388832, avg F7 $57.55 — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793386627573509?thread_ts=1793375701.885449&cid=C0CD1U79YTH
+
+## 2026-10-30 16:39 (America/Halifax)
+- "done, books" (QBTS Binance Stocks preview + My Assets screenshots) + "plan to let go CVX and MDB?" (poll thread) → booked STT-0069 in Trades-October row 54 (12.17 USDC = 12.00 + 0.17 fee, 1.133358519 sh @ 10.588 from wallet 0.91521256 → 2.048571079) and Slots slot 97 (F118 = 12.17, G118 = STT-0069); owed now 56.09 → 43.92 USDC; repo plan (DECISIONS/strategy/2026-10-24-exits-mdb-dot-entries-paxg-alb.md) is MDB→PAXG and DOT→ALB, CVX is in the defensive sleeve to grow (not an exit); ALB buy still not booked, so ALB is the plan-aligned stock before close, PAXG is 24/7 — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793389151960249?thread_ts=1793375701.885449&cid=C0CD1U79YTH
