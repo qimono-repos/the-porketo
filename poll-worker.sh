@@ -73,4 +73,4 @@ if ! jq -e '.ok == true' "$response_file" >/dev/null; then
 fi
 
 PUBLISHED=true
-log "SUCCESS: poll published. Choices: IONQ, QBTS, RGTI, QUBT, FLKR."
+log "SUCCESS: poll published (HTTP $http_code; API confirmed ok=true). Choices: IONQ, QBTS, RGTI, QUBT, FLKR."
