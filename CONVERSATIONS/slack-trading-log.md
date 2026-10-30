@@ -40,3 +40,6 @@
 
 ## 2026-10-30 18:57 (America/Halifax)
 - ETH + LINK Convert receipts, "triangulate and update the book", ChatGPT receipt check (newest thread) → booked CRT-0085 ETH (2.25 USDC → 0.00100312 @ 2242.98) and CRT-0086 LINK (6 USDC → 0.5314172 @ 11.2906) in Crypto Trades rows 109–110; Slots F118 = 44.42, G118 updated; owed now 11.67 (B15), 13.92 to close October (J119); 18:01 wallet screenshot matches book for USDT/BTC/AXS/IBMB/QBTS, but USDC 218.65 vs expected 194.54 → +24.11 unbooked in Funding (asked if it's a November top-up) — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793397474353469?thread_ts=1793393444.152619&cid=C0CD1U79YTH
+
+## 2026-10-30 19:56 (America/Halifax)
+- "check among my positions" for a sharper crypto candidate + nuclear plants (newest thread) → CMC 7d ranking of held cryptos: IMX −12.2% 7d and still red, at entry 0.1247 (Crypto Positions E5), best fit; AXS −10.8% 7d next; NEAR/LINK/DOT already +5% today; flagged DOT still OPEN in the book (B17 5.88616292) despite "exited"; nuclear plants already held via DUK (+DUKB wrapper), OKLO has no operating plants — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793401003479519?thread_ts=1793393444.152619&cid=C0CD1U79YTH
