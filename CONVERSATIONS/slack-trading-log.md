@@ -43,3 +43,6 @@
 
 ## 2026-10-30 19:56 (America/Halifax)
 - "check among my positions" for a sharper crypto candidate + nuclear plants (newest thread) → CMC 7d ranking of held cryptos: IMX −12.2% 7d and still red, at entry 0.1247 (Crypto Positions E5), best fit; AXS −10.8% 7d next; NEAR/LINK/DOT already +5% today; flagged DOT still OPEN in the book (B17 5.88616292) despite "exited"; nuclear plants already held via DUK (+DUKB wrapper), OKLO has no operating plants — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793401003479519?thread_ts=1793393444.152619&cid=C0CD1U79YTH
+
+## 2026-10-30 20:57 (America/Halifax)
+- "imx traded! do the books pls" + Convert receipt (newest thread) → booked CRT-0087 IMX (6 USDC → 47.95210183 @ 0.125125, 0 fee) in Crypto Trades row 111; Crypto Positions IMX B5 = 105.70083778, E5 = 0.12483; Slots F118 = 50.42, G118 adds CRT-0087; receipt balances match book exactly (USDC 204.40385027, IMX 105.70083778); owed now 5.67 (B15), 7.92 to close October (J119), nuclear 6 leaves 1.92; +24.11 Funding USDC still unbooked — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793404638358479?thread_ts=1793393444.152619&cid=C0CD1U79YTH
