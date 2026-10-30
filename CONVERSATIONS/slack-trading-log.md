@@ -27,3 +27,6 @@
 
 ## 2026-10-30 16:39 (America/Halifax)
 - "done, books" (QBTS Binance Stocks preview + My Assets screenshots) + "plan to let go CVX and MDB?" (poll thread) → booked STT-0069 in Trades-October row 54 (12.17 USDC = 12.00 + 0.17 fee, 1.133358519 sh @ 10.588 from wallet 0.91521256 → 2.048571079) and Slots slot 97 (F118 = 12.17, G118 = STT-0069); owed now 56.09 → 43.92 USDC; repo plan (DECISIONS/strategy/2026-10-24-exits-mdb-dot-entries-paxg-alb.md) is MDB→PAXG and DOT→ALB, CVX is in the defensive sleeve to grow (not an exit); ALB buy still not booked, so ALB is the plan-aligned stock before close, PAXG is 24/7 — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793389151960249?thread_ts=1793375701.885449&cid=C0CD1U79YTH
+
+## 2026-10-30 16:53 (America/Halifax)
+- "done" (ALB Lemon receipt) + "any last move? solar research" (poll thread) → booked TRD-0070 in Trades row 45 (24.00 USDt = 23.88 + 0.12 fee, 0.264480003 sh @ 90.37) and Slots F118 = 36.17, G118 = STT-0069, TRD-0070; owed now 43.92 → 19.92 USDC (22.17 at slot 98); Positions has no ALB row yet; no solar research found in the repo, asked where it lives; US bell at 17:00, PAXG is the 24/7 plan option — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793390027675329?thread_ts=1793375701.885449&cid=C0CD1U79YTH
