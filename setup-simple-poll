@@ -1,0 +1,156 @@
+#!/usr/bin/env bash
+#
+# Qimono Simple Poll bootstrap
+#
+# Usage:
+#   ./setup-simple-poll --start
+#   ./setup-simple-poll -code 1234-5678
+#
+# The first command requests a fresh one-time code from Simple Poll and stores
+# its request token locally on this server. The second redeems that code and
+# stores the resulting API key outside the repository.
+#
+# Requires: bash, curl, jq
+# Designed for Ubuntu/Debian VPS hosts. Run as root.
+
+set -Eeuo pipefail
+umask 077
+
+readonly TEAM_ID="T04E0RN1S2W"
+readonly USER_ID="U04DXT85LS1"
+readonly CLIENT_NAME="Qimono"
+readonly API_BASE="https://simplepoll.rocks/api/v1"
+readonly STATE_DIR="/var/lib/qimono-simple-poll"
+readonly CONFIG_DIR="/etc/qimono"
+readonly TOKEN_FILE="${STATE_DIR}/request_token"
+readonly ENV_FILE="${CONFIG_DIR}/simplepoll.env"
+
+usage() {
+  cat <<'USAGE'
+Qimono Simple Poll setup
+
+  ./setup-simple-poll --start
+      Request a fresh verification code. Simple Poll will DM you in Slack.
+
+  ./setup-simple-poll -code 1234-5678
+      Redeem the code from the Slack DM and securely save the API key.
+
+  ./setup-simple-poll --help
+      Show this help.
+
+After successful setup, the API key is stored in:
+  /etc/qimono/simplepoll.env
+
+That file is root-owned and readable only by root. Do not commit it or paste
+its contents into chat.
+USAGE
+}
+
+die() {
+  printf 'ERROR: %s\n' "$*" >&2
+  exit 1
+}
+
+require_root() {
+  [[ "${EUID}" -eq 0 ]] || die "Run this script as root: sudo ./setup-simple-poll ..."
+}
+
+ensure_dependencies() {
+  if ! command -v curl >/dev/null 2>&1 || ! command -v jq >/dev/null 2>&1; then
+    printf 'Installing required packages (curl, jq)...\n'
+    export DEBIAN_FRONTEND=noninteractive
+    apt-get update
+    apt-get install -y curl jq
+  fi
+}
+
+api_post() {
+  local endpoint="$1"
+  local payload="$2"
+  curl --silent --show-error --fail-with-body \
+    --connect-timeout 15 --max-time 45 \
+    -X POST "${API_BASE}/${endpoint}" \
+    -H 'Content-Type: application/json' \
+    --data "${payload}"
+}
+
+start_connection() {
+  install -d -m 700 "${STATE_DIR}"
+  local payload response request_token
+  payload="$(jq -cn --arg team_id "${TEAM_ID}" --arg user_id "${USER_ID}" \
+    '{team_id:$team_id,user_id:$user_id}')"
+
+  printf 'Requesting a fresh Simple Poll verification code...\n'
+  response="$(api_post 'connect/start' "${payload}")" || die "Simple Poll could not start the connection. Check the response above."
+
+  if ! jq -e '.ok == true and (.request_token | type == "string" and length > 0)' >/dev/null <<<"${response}"; then
+    printf '%s\n' "${response}" | jq . 2>/dev/null || printf '%s\n' "${response}"
+    die "Simple Poll did not return a request token."
+  fi
+
+  request_token="$(jq -r '.request_token' <<<"${response}")"
+  printf '%s\n' "${request_token}" > "${TOKEN_FILE}"
+  chmod 600 "${TOKEN_FILE}"
+
+  printf '\nSUCCESS: Simple Poll sent a new verification code to your Slack DM.\n'
+  printf 'Next, run: ./setup-simple-poll -code YOUR-DM-CODE\n'
+}
+
+redeem_code() {
+  local code="$1"
+  [[ -s "${TOKEN_FILE}" ]] || die "No pending request token. Run ./setup-simple-poll --start first."
+  [[ "${code}" =~ ^[A-Za-z0-9-]{4,32}$ ]] || die "The code format looks invalid. Pass the code exactly as shown in the Slack DM."
+
+  local request_token payload response api_key
+  request_token="$(<"${TOKEN_FILE}")"
+  payload="$(jq -cn \
+    --arg request_token "${request_token}" \
+    --arg code "${code}" \
+    --arg client_name "${CLIENT_NAME}" \
+    '{request_token:$request_token,code:$code,client_name:$client_name}')"
+
+  printf 'Redeeming the one-time code...\n'
+  response="$(api_post 'connect/redeem' "${payload}")" || die "Redemption failed. The code may have expired or already been used. Run --start to request a fresh code."
+
+  if ! jq -e '.ok == true and (.api_key | type == "string" and startswith("sp_"))' >/dev/null <<<"${response}"; then
+    printf '%s\n' "${response}" | jq . 2>/dev/null || printf '%s\n' "${response}"
+    die "Simple Poll did not return an API key."
+  fi
+
+  api_key="$(jq -r '.api_key' <<<"${response}")"
+  install -d -m 700 "${CONFIG_DIR}"
+  local tmp_file
+  tmp_file="$(mktemp "${CONFIG_DIR}/.simplepoll.env.XXXXXX")"
+  printf 'SIMPLEPOLL_API_KEY=%s\n' "${api_key}" > "${tmp_file}"
+  chmod 600 "${tmp_file}"
+  mv -f "${tmp_file}" "${ENV_FILE}"
+  rm -f "${TOKEN_FILE}"
+
+  unset api_key request_token payload response
+  printf '\nSUCCESS: Qimono is authenticated with Simple Poll.\n'
+  printf 'API key saved securely to %s (permissions 600).\n' "${ENV_FILE}"
+  printf 'The key was not printed and is not stored in the Git repository.\n'
+}
+
+main() {
+  [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]] && { usage; exit 0; }
+  require_root
+  ensure_dependencies
+
+  case "${1:-}" in
+    --start)
+      [[ "$#" -eq 1 ]] || die "--start takes no additional arguments."
+      start_connection
+      ;;
+    -code|--code)
+      [[ "$#" -eq 2 ]] || { usage; exit 2; }
+      redeem_code "$2"
+      ;;
+    *)
+      usage
+      exit 2
+      ;;
+  esac
+}
+
+main "$@"
