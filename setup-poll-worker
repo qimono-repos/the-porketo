@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+if [[ "$EUID" -ne 0 ]]; then
+  printf 'Run as root: sudo bash setup-poll-worker\n' >&2
+  exit 1
+fi
+
+REPO_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+SOURCE_WORKER="$REPO_DIR/poll-worker.sh"
+TARGET_DIR="/opt/qimono"
+TARGET_WORKER="$TARGET_DIR/poll-worker.sh"
+CRON_FILE="/etc/cron.d/qimono-poll-worker"
+ENV_FILE="/etc/qimono/simplepoll.env"
+
+for command_name in bash curl jq flock crontab install; do
+  if ! command -v "$command_name" >/dev/null 2>&1; then
+    printf 'Missing required command: %s\n' "$command_name" >&2
+    exit 1
+  fi
+done
+
+if [[ ! -f "$SOURCE_WORKER" ]]; then
+  printf 'Worker script not found: %s\n' "$SOURCE_WORKER" >&2
+  exit 1
+fi
+if [[ ! -f "$ENV_FILE" ]]; then
+  printf 'Credential file not found: %s\n' "$ENV_FILE" >&2
+  exit 1
+fi
+
+bash -n "$SOURCE_WORKER"
+install -d -m 0755 "$TARGET_DIR" /var/log/qimono
+install -m 0755 "$SOURCE_WORKER" "$TARGET_WORKER"
+
+cat > "$CRON_FILE" <<'CRON'
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+40 23 * * * root /opt/qimono/poll-worker.sh
+55 15 30 10 * root /opt/qimono/poll-worker.sh --once
+CRON
+chmod 0644 "$CRON_FILE"
+
+if command -v systemctl >/dev/null 2>&1; then
+  systemctl enable --now cron
+else
+  service cron start
+fi
+
+printf 'Poll worker installed. Daily production poll: 23:40 UTC.\n'
+printf 'One-time first production poll: today at 15:55 UTC.\n'
+printf 'Logs: /var/log/qimono/poll-worker.log\n'
+printf 'Credentials remain in %s and were not changed.\n' "$ENV_FILE"
