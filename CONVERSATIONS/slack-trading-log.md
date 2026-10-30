@@ -8,3 +8,6 @@
 
 ## 2026-10-30 12:54 (America/Halifax)
 - Budget question + "buy opportunity" + 12:40 follow-up brief → skipped-slot budget 65.27 USDC / 87 units at slot 96 (Slots B15; last logged slot 71; 67.52 at 16:00, 69.77 at slot 98); buys work but stay in Binance custody, README dip+news check needed per ticker, AAVE has protocol risk; flagged CVX in the book looks like a Binance token, not Chevron — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793375646938479?thread_ts=1793371554.120429&cid=C0CD1U79YTH
+
+## 2026-10-30 14:06 (America/Halifax)
+- Quantum-proxy poll market check (IONQ vote) → all five poll names are held as real shares in Positions (IONQ B3 −15%, QBTS B6 −31% + QBTSB wrapper, FLKR B7, RGTI B23, QUBT B25; ≈ $56); IONQUSDT perp ≠ shares, implies ~−22% vs entry, so refresh L3; FLKR is the only Korea proxy and trades in US hours — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793380009059049?thread_ts=1793371554.120429&cid=C0CD1U79YTH
