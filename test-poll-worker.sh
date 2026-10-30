@@ -29,20 +29,20 @@ payload="$(jq -cn --arg channel_id "$CHANNEL_ID" --arg question "$QUESTION" --ar
   '{channel_id:$channel_id,text:("\"" + $question + "\" " + ($choices | map("\"" + . + "\"") | join(" ")))}')"
 
 printf '%s\n' '3/4 Validate request structure and poll text'
-jq -e --arg channel_id "$CHANNEL_ID" '
+jq -e --arg channel_id "$CHANNEL_ID" --arg question "$QUESTION" --argjson choices "$CHOICES_JSON" '
   .channel_id == $channel_id and
-  (.text | type == "string") and
-  (.text | startswith("\"Which AI / quantum proxy are you watching as the Korea market opens?\"")) and
-  (.text | contains("\"IONQ\"")) and
-  (.text | contains("\"QBTS\"")) and
-  (.text | contains("\"RGTI\"")) and
-  (.text | contains("\"QUBT\"")) and
-  (.text | contains("\"FLKR\""))
+  .text == ("\"" + $question + "\" " + ($choices | map("\"" + . + "\"") | join(" ")))
 ' <<< "$payload" >/dev/null
 
-choice_count="$(jq -r '.text | scan("\"[^\"]+\"") | length' <<< "$payload")"
-if [[ "$choice_count" -ne 6 ]]; then
-  printf 'Expected 6 quoted tokens (1 question + 5 choices), got %s\n' "$choice_count" >&2
+token_count="$(jq -r '[.text | scan("\"[^\"]+\"")] | length' <<< "$payload")"
+if [[ "$token_count" -ne 6 ]]; then
+  printf 'Expected 6 quoted tokens (1 question + 5 choices), got %s\n' "$token_count" >&2
+  exit 1
+fi
+
+choice_count="$(jq -r --argjson choices "$CHOICES_JSON" '[.text] as $t | [$choices[] | select($t[0] | contains("\"" + . + "\""))] | length' <<< "$payload")"
+if [[ "$choice_count" -ne 5 ]]; then
+  printf 'Expected all 5 choices, got %s\n' "$choice_count" >&2
   exit 1
 fi
 
