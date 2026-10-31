@@ -2,6 +2,8 @@
 
 Adopted: 2026-10-24. Use this at **every** checkpoint, whoever runs it: Albert, ChatGPT, Claude or any other agent.
 
+> **From 1 Nov 2026:** fills are booked in MongoDB (`the_porketo_db.trades`, stocks and crypto in one collection), not in the Sheet's trade tabs. See [`no-sql/the_porketo_db/README.md`](../no-sql/the_porketo_db/README.md). The Sheet is the October archive. Steps 2 and 5 below still name the Sheet tabs until the November slot tracking moves too.
+
 ## The 5 steps
 
 1. **Time.** Write down the current Halifax time (GMT-3) and the current slot #. The book shows both: `Slots!B13` and `Slots!B14`.

@@ -1,0 +1,62 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "title": "the_porketo_db.trades: one booked event (stocks and crypto unified)",
+    "required": ["_id", "executedAt", "executedAtLocal", "assetClass", "asset", "action", "venue", "method", "anchorUsdc", "usdcEqCashFlow"],
+    "properties": {
+      "_id": { "bsonType": "string", "pattern": "^EVT-[0-9]{4,}$", "description": "Event ID, e.g. EVT-0001. Unique by construction (it is the _id)." },
+      "executedAt": { "bsonType": "date", "description": "Execution time in UTC." },
+      "executedAtLocal": { "bsonType": "string", "description": "Execution time as read on the receipt, e.g. '2026-11-01 08:03:12 Paramaribo'." },
+      "executedAtPrecision": { "enum": ["second", "minute", "approx", "day"], "description": "How exact executedAt is." },
+      "assetClass": { "enum": ["stock", "crypto", "cash"], "description": "Economic exposure. Tokenized stocks (TSLAB, NVDAB) are 'stock'. USDC/USDT moves are 'cash'." },
+      "asset": { "bsonType": "string", "minLength": 1, "description": "Ticker as held, e.g. TSLAB, MU, BTC, USDC." },
+      "underlying": { "bsonType": ["string", "null"], "description": "Underlying ticker when the asset is a proxy, e.g. TSLAB -> TSLA. Null otherwise." },
+      "action": { "enum": ["BUY", "SELL", "FUND", "WITHDRAW", "RECON", "CORRECTION", "PENALTY", "FX"] },
+      "harvest": { "bsonType": "bool", "description": "true when a SELL is a harvest per protocols/harvest-ladder.md." },
+      "lotId": { "bsonType": ["string", "null"], "pattern": "^[A-Z0-9]+@[0-9.]+(!![0-9]{12,17})?$", "description": "Lot this event opens (BUY) or draws from (SELL): TICKER@price!!yyyyMMddHHmmss." },
+      "quoteAsset": { "bsonType": ["string", "null"] },
+      "anchorUsdc": { "bsonType": ["decimal", "double", "int", "long"], "description": "Report Amount / Anchor (USDC eq.)." },
+      "executionPrice": { "bsonType": ["decimal", "double", "int", "long", "null"], "description": "Execution price in the native quote asset." },
+      "units": { "bsonType": ["decimal", "double", "int", "long", "null"] },
+      "signedUnits": { "bsonType": ["decimal", "double", "int", "long", "null"], "description": "+units on BUY, -units on SELL." },
+      "fee": {
+        "bsonType": ["object", "null"],
+        "properties": {
+          "asset": { "bsonType": ["string", "null"] },
+          "qty": { "bsonType": ["decimal", "double", "int", "long"] }
+        }
+      },
+      "venue": { "bsonType": "string", "description": "Where the event happened: Binance, Lemon Cash, Robinhood, ..." },
+      "method": { "bsonType": "string", "description": "How: Binance Convert, Binance Instant, Binance Stocks (market), Binance Spot Market, Internal transfer, Reconciliation, ..." },
+      "venueOrderId": { "bsonType": ["string", "null"], "description": "Order / transaction number from the receipt, when there is one." },
+      "relatedEvents": { "bsonType": "array", "items": { "bsonType": "string" }, "description": "Other event IDs (or group tags) this event belongs with." },
+      "notes": { "bsonType": "string" },
+      "usdcEqCashFlow": { "bsonType": ["decimal", "double", "int", "long"], "description": "USDC-eq portfolio cash flow: negative on BUY, positive on SELL/FUND." },
+      "usdcWalletFlow": { "bsonType": ["decimal", "double", "int", "long", "null"] },
+      "usdtWalletFlow": { "bsonType": ["decimal", "double", "int", "long", "null"] },
+      "tier": { "bsonType": ["string", "null"], "description": "Tier at slot (A, B, ...)." },
+      "slots": {
+        "bsonType": ["object", "null"],
+        "required": ["first", "last"],
+        "properties": {
+          "first": { "bsonType": "int", "minimum": 1 },
+          "last": { "bsonType": "int", "minimum": 1 }
+        },
+        "description": "Trading slot(s) of the exercise this event pays for. One slot: first == last."
+      },
+      "forecast": {
+        "bsonType": ["object", "null"],
+        "properties": {
+          "range": { "bsonType": ["string", "null"] },
+          "value": { "bsonType": ["decimal", "double", "int", "long", "null"] },
+          "targetTime": { "bsonType": ["date", "null"] },
+          "result": { "bsonType": ["string", "null"] },
+          "squareError": { "bsonType": ["decimal", "double", "int", "long", "null"] },
+          "spe": { "bsonType": ["decimal", "double", "int", "long", "null"] }
+        }
+      },
+      "bookedAt": { "bsonType": "date", "description": "When the row was written (not when the trade happened)." },
+      "bookedBy": { "bsonType": "string", "description": "Who wrote it: Albert, Claude, ChatGPT, Grok, script name..." }
+    }
+  }
+}
