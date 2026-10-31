@@ -71,3 +71,6 @@
 
 ## 2026-10-31 15:56 (America/Halifax)
 - ChatGPT's 15:48 IONQ AFRL catalyst post + 15:47 PoR correction (poll thread) → replied in 31 Oct daily thread: IONQ book side Positions B3 0.961351 @ F3 37.45, J3 cost 36.00, ≈ −20% at L3 30.04; IONQUSDT +5.97% is the perp, not shares; flagged M3 Previous Market Close 42.54 as stale; STT-0068/0069 lot rows + CRT-0088 → Slots F98 still await Albert's go; AFRL $7.5M is a follow-on, PoR correction changes nothing in the book — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793473017720739?thread_ts=1793447138.924129&cid=C0CD1U79YTH
+
+## 2026-10-31 16:56 (America/Halifax)
+- Albert's 16:04 "BTC move is inside October, all moves until 11:59 PM Paramaribo (GMT-3) are October, discount it from the October budget" → done: Slots F119 (slot 98) = 2.25, G119 = CRT-0088, note in I119; Slots B15 Owed now 7.92 → 5.67 USDC (B16 7.56 units), B19 last logged slot = 98; Crypto Trades M112 note re-classified to slot 98 / October; 5.67 USDC left to invest before 31 Oct 23:59 GMT-3 (02:59 UTC 1 Nov); STT-0068/0069 Sprint lot rows and Dashboard K4 #REF! still open; Binance U.S. Stock Trading maintenance 20:50–22:30 UTC — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793476598825479?thread_ts=1793447138.924129&cid=C0CD1U79YTH
