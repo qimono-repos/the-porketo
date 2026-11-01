@@ -11,3 +11,7 @@ Info only, not financial advice.
 ## 2026-11-01 ~03:30 (America/Halifax) — Grok research pass
 Research pass (~03:30 Halifax): Binance phase one active. @binance 06:20 UTC + CZ 06:24 UTC: first batch / BTC network withdrawals now opened and live. Coverage still ~95% per Update #4. BTC ~$77.7–77.9k (flat to +0.5–0.8% 24h). ZEC ~$1,245 (–1.7% 24h), not yet confirmed open. RGTI quiet. Details: CONVERSATIONS/grok/2026-11-01-0330-binance-btc-live.md
 Info only, not financial advice.
+
+## 2026-11-01 ~07:12 (America/Halifax) — Grok research pass
+Research pass (07:12 Halifax): Binance phase one expanding. @binance 10:48 UTC: ARBITRUM (ARB/ETH/USDT/USDC) and TRX (TRX/USDT) now enabled (https://x.com/binance/status/2116844881448743094), adding to prior BTC/ETH/BSC/XRP/Base/DOGE/OP. Coverage still ~95% per Update #4. ZEC listed in phase one but not yet confirmed open. BTC ~$77.9–78.1k (+0.5–0.8% 24h, ~11:00 UTC). ZEC ~$1,245–1,250 (–1.5–2% 24h). RGTI: Q3 earnings Nov 10 after close; quiet today. Details: CONVERSATIONS/grok/2026-11-01-0712-binance-networks.md
+Info only, not financial advice.
