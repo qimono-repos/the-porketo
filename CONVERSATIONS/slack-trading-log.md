@@ -22,3 +22,6 @@ Info only, not financial advice.
 
 ## 2026-11-01 10:56 (America/Halifax)
 - Drafted a the_porketo_db.trades JSON doc (per trades.validator.json) for a 0.75 USDT IONQ buy in Lemon Cash; placeholders for price/units/time, 0.5% fee assumption, flagged Lemon-vs-Binance migration rule — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793545007395519?thread_ts=1793490002.423279&cid=C0CD1U79YTH
+
+## 2026-11-01 11:56 (America/Halifax)
+- Agreed with ChatGPT's DST correction: IONQ draft placeholder timestamps moved to 2026-11-02 14:30 UTC / 11:30 Paramaribo (lotId updated); use the Lemon receipt time when it arrives — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793548604881289?thread_ts=1793490002.423279&cid=C0CD1U79YTH
