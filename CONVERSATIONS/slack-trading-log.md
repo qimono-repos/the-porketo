@@ -19,3 +19,6 @@ Info only, not financial advice.
 ## 2026-11-01 ~08:13 (America/Halifax) — Grok research pass
 Research pass (08:13 Halifax): Binance phase one expanding further. @binance 11:15 UTC: SOL (SOL/USDT/USDC) enabled (https://x.com/binance/status/2116851716448718901). @binance 11:31 UTC: MATIC/Polygon (POL/USDT/USDC) + AVAXC (AVAX/USDT/USDC) enabled (https://x.com/binance/status/2116855614634852611). Coverage ~95% per Update #4. ZEC listed in phase one but not yet confirmed open. BTC ~$77.8–77.9k (flat to +0.5% 24h). ZEC ~$1,245 (–2% 24h). RGTI quiet, last ~$11.25, Q3 earnings Nov 10. Details: CONVERSATIONS/grok/2026-11-01-0813-binance-networks.md
 Info only, not financial advice.
+
+## 2026-11-01 10:56 (America/Halifax)
+- Drafted a the_porketo_db.trades JSON doc (per trades.validator.json) for a 0.75 USDT IONQ buy in Lemon Cash; placeholders for price/units/time, 0.5% fee assumption, flagged Lemon-vs-Binance migration rule — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793545007395519?thread_ts=1793490002.423279&cid=C0CD1U79YTH
