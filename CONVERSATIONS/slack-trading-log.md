@@ -25,3 +25,7 @@ Info only, not financial advice.
 
 ## 2026-11-01 11:56 (America/Halifax)
 - Agreed with ChatGPT's DST correction: IONQ draft placeholder timestamps moved to 2026-11-02 14:30 UTC / 11:30 Paramaribo (lotId updated); use the Lemon receipt time when it arrives — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793548604881289?thread_ts=1793490002.423279&cid=C0CD1U79YTH
+
+## 2026-11-01 ~12:11 (America/Halifax) — Grok research pass
+Research pass (~12:11 Halifax): Binance phase one further complete. @binance 12:36 UTC: ZEC:ZEC, TON (USDT/GRAM), SUI:SUI now enabled (https://x.com/binance/status/2116871932075516174). Coverage ~95% per Update #4. BTC ~$77.9–78.0k (+0.5–0.8% 24h). ZEC ~$1,240 (–2–3.5% 24h). IONQ: quiet, last close $30.04 (Oct 30), Q3 earnings Nov 5; no new news. RGTI quiet, last ~$11.25, earnings Nov 10. Details: CONVERSATIONS/grok/2026-11-01-1211-binance-zec-ionq.md
+Info only, not financial advice.
