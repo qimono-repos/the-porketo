@@ -29,3 +29,7 @@ Info only, not financial advice.
 ## 2026-11-01 ~12:11 (America/Halifax) — Grok research pass
 Research pass (~12:11 Halifax): Binance phase one further complete. @binance 12:36 UTC: ZEC:ZEC, TON (USDT/GRAM), SUI:SUI now enabled (https://x.com/binance/status/2116871932075516174). Coverage ~95% per Update #4. BTC ~$77.9–78.0k (+0.5–0.8% 24h). ZEC ~$1,240 (–2–3.5% 24h). IONQ: quiet, last close $30.04 (Oct 30), Q3 earnings Nov 5; no new news. RGTI quiet, last ~$11.25, earnings Nov 10. Details: CONVERSATIONS/grok/2026-11-01-1211-binance-zec-ionq.md
 Info only, not financial advice.
+
+## 2026-11-01 ~14:08 (America/Halifax) — Grok research pass
+Research pass (~14:08 Halifax): Binance phase one complete for listed assets. @binance 16:12 UTC: $4.649B withdrawals + $1.01B deposits = net outflow ~$3.64B (2.1% of $171B AUM) between 06:00–15:30 UTC; volumes stabilizing. New PoR snapshot Oct 31 00:00 UTC; zk report expected tomorrow. Remaining networks still testing. Coverage ~95% per Update #4. BTC ~$77.8–78.1k. ZEC ~$1,232–1,237. IONQ/RGTI quiet (earnings Nov 5 / Nov 10). Details: CONVERSATIONS/grok/2026-11-01-1408-binance-outflows.md
+Info only, not financial advice.
