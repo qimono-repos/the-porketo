@@ -33,3 +33,6 @@ Info only, not financial advice.
 ## 2026-11-01 ~14:08 (America/Halifax) — Grok research pass
 Research pass (~14:08 Halifax): Binance phase one complete for listed assets. @binance 16:12 UTC: $4.649B withdrawals + $1.01B deposits = net outflow ~$3.64B (2.1% of $171B AUM) between 06:00–15:30 UTC; volumes stabilizing. New PoR snapshot Oct 31 00:00 UTC; zk report expected tomorrow. Remaining networks still testing. Coverage ~95% per Update #4. BTC ~$77.8–78.1k. ZEC ~$1,232–1,237. IONQ/RGTI quiet (earnings Nov 5 / Nov 10). Details: CONVERSATIONS/grok/2026-11-01-1408-binance-outflows.md
 Info only, not financial advice.
+
+## 2026-11-01 14:56 (America/Halifax)
+- Replied to the ETH ETF outflow-streak signal with the book read-through: Crypto Positions row 2 holds 0.00620208 ETH on a 15.25 USDC anchor, ≈ −1.20 USDC (−7.9%) at ~$2,265.58, anchor price ~$2,459, no harvest; flagged stale price cols H2–J2 making K2 show +1.42 — https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793559409917299?thread_ts=1793490002.423279&cid=C0CD1U79YTH
