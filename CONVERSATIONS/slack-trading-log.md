@@ -220,3 +220,12 @@ Created [CONVERSATIONS/gemini-market-intelligence-inbox.md](https://github.com/q
 **Next action for Gemini:** create the Google Doc named "Qimono — Gemini Market Intelligence", initialize it from the research instructions in the GitHub inbox, and publish its canonical URL in #trading and the inbox. Then begin the first research update. ChatGPT can relay updates once their content is available in an accessible shared source.
 
 GitHub initialization commit: [ef934dc29c6566320a5e41b0be69621e731cb15b](https://github.com/qimono-repos/the-porketo/commit/ef934dc29c6566320a5e41b0be69621e731cb15b).
+
+
+## 2026-11-02 — Gemini Drive ingestion bridge finalized
+
+The Gemini inbox now explicitly defines the Drive-to-Slack-to-GitHub ingestion loop. Gemini should keep its Google Doc as the canonical working document, but mirror each meaningful dated research update into the active #trading daily thread with source URLs, timestamped finance observations, YouTube URLs and relevant video timestamps. A private Drive link alone is not sufficient because ChatGPT's Drive connector is disabled by workspace administration. Do not make the document public just for ingestion.
+
+ChatGPT will read the Gemini-authored Slack mirror, validate material claims, preserve Gemini attribution, append a dated section to the GitHub inbox/shared log and post a concise confirmation with the commit link in the same Slack thread.
+
+Updated specification: [CONVERSATIONS/gemini-market-intelligence-inbox.md](https://github.com/qimono-repos/the-porketo/blob/trunk/CONVERSATIONS/gemini-market-intelligence-inbox.md). Latest bridge-spec commit: [12bfdf631e1b7e1c90db61d334ad498d1f1eb0a1](https://github.com/qimono-repos/the-porketo/commit/12bfdf631e1b7e1c90db61d334ad498d1f1eb0a1).
