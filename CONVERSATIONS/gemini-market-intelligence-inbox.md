@@ -153,3 +153,40 @@ This is the intended operating loop until an authorized Google Drive connector b
 ## 8. Canonical document status
 
 Albert has supplied the canonical Google Docs document created for Gemini's market-intelligence work. Gemini should use that Google Doc as its editable working source and continue to mirror substantive updates into the active Slack #trading thread. ChatGPT has not yet been able to read the Doc directly because no Google Docs connector action is available in this session. The document's permissions have not been independently verified.
+
+
+## 9. Communication architecture update: Gmail is the Gemini message bus
+
+**This section supersedes the earlier proposal to use Google Docs → Slack as the primary communication path.**
+
+The canonical roles are now:
+- **Gmail:** primary two-way conversation and event-notification channel between Gemini and ChatGPT.
+- **Google Doc:** Gemini's research notebook / long-form source workspace, not the conversation endpoint.
+- **Slack #trading:** live shared room where ChatGPT publishes concise, attributed Gemini research summaries and relevant discussion updates.
+- **GitHub CONVERSATIONS/:** durable versioned handoff and audit trail.
+
+### Gmail bridge convention
+
+- Gmail label created: `QIMONO/Gemini Bridge`.
+- Subject convention: `[QIMONO][GEMINI-BRIDGE] Research conversation`.
+- Keep one ongoing Gmail thread for the model conversation when possible; reply in-thread rather than starting a new email for every exchange.
+- Start each model message with an explicit author tag and UTC timestamp, e.g. `[FROM GEMINI] 2026-11-02 22:30 UTC` or `[FROM CHATGPT] ...`.
+- Gemini sends research updates, source links, YouTube timestamps, Google Finance / Yahoo Finance observations, questions and corrections by replying in the same thread.
+- ChatGPT reads the incoming email, validates material facts, replies by email when useful, appends an attributed GitHub handoff, and posts a concise summary in the established Slack daily thread.
+- Do not infer a separate Gemini sender address. The initial bridge assumes Gemini can access the same connected Gmail mailbox and reply in the shared thread. Confirm this capability before treating the loop as operational.
+
+### Current bootstrap state
+
+- Gmail label `QIMONO/Gemini Bridge`: created successfully.
+- Initial email seed: saved as a Gmail draft addressed to the connected mailbox, subject `[QIMONO][GEMINI-BRIDGE] Research conversation with ChatGPT`. Draft must be reviewed and manually sent to initialize the thread; it has not been sent.
+- ChatGPT Gmail connector: profile/search/read/draft/send operations are exposed.
+- ChatGPT event-trigger configuration: the event-source discovery action returned NOT_FOUND in the current tool session, so ChatGPT has not created the Gmail webhook trigger from this session.
+- Official ChatGPT help documentation says eligible Plus users can create Work event-triggered tasks for new Gmail messages, optionally filtered by sender or subject, through Work on web or mobile. The trigger must be configured and authorized in the Work task UI. A time-based hourly check is a fallback, not equivalent to push/event-triggered delivery.
+
+### Required next steps
+
+1. Albert reviews and sends the prepared Gmail draft to initialize the message thread.
+2. Confirm Gemini can access this same Gmail mailbox and reply to the thread using its Gmail integration.
+3. In ChatGPT Work on web/mobile, create an event-triggered task for new Gmail messages with subject containing `QIMONO][GEMINI-BRIDGE`. Have it read the thread, validate Gemini-authored research, reply in-thread when useful, append GitHub and relay to Slack.
+4. Keep the Google Doc as the long-form research workspace. Gemini can link it in email updates; no public sharing is required.
+5. Do not claim the event loop is active until a test incoming Gemini reply triggers ChatGPT and the end-to-end relay succeeds.
