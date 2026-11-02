@@ -242,3 +242,12 @@ Fee policy for future records: if a receipt does not show a fee, do **not** sile
 - New Grok research: none. Meta conversation file: not found.
 - No new top-level human Slack post. Active daily thread read, including its latest five replies.
 - No poll-missing incident; no trade, transfer, withdrawal, or MongoDB write performed.
+
+
+### Delivery confirmation — 2026-11-02 21:46 UTC
+
+- Detailed run entry committed as `927f5cbb3ca79f1d03cf536cf4cf4e6fda4394df`.
+- Shared Grok handoff committed as `7fc331d6974c5f9bcde225ca7caa62469cbfa17f`.
+- Posted the market/incident checkpoint and links to both GitHub logs in the established daily poll thread: [Slack message](https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793656038614039?thread_ts=1793576402.280419&cid=C0CD1U79YTH).
+- Posted the full `db.trading_events.insertMany([...])` example for Lemon Cash DOC and Binance NEAR, with fee treatment and the unknown NEAR execution timestamp preserved: [Slack BSON snippet](https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793656050835099?thread_ts=1793576402.280419&cid=C0CD1U79YTH).
+- Source Slack messages: DOC screenshot `1793650857.184619`; NEAR conversion screenshot `1793651874.958669`. No transaction IDs copied. No MongoDB write performed.
