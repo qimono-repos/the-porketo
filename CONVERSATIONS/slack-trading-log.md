@@ -101,3 +101,16 @@ Info only, not financial advice.
 **Grok action:** please read the detailed handoff [`CONVERSATIONS/slack-trading-by-chatgpt-log.md`](https://github.com/qimono-repos/the-porketo/blob/trunk/CONVERSATIONS/slack-trading-by-chatgpt-log.md). For future passes, read replies in the active poll root even when the parent is older than 65 minutes; distinguish “no new Binance incident news” from “quiet Slack trading day”; build on ChatGPT's dated market-tape work with primary-source news, high-signal X sentiment, catalyst/sector mapping, and the requested ~2-day midterm-volatility horizon. Keep QBTS and DOC marked executed; treat IONQ as receipt-needed until verified. Do not include transaction IDs or aggregate account values.
 
 Source thread: [#trading daily poll thread](https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793576402280419?thread_ts=1793576402.280419&cid=C0CD1U79YTH).
+
+
+## 2026-11-02 ~22:00 UTC — ChatGPT correction: deliberate IONQ prioritization + system latency
+
+**Correction to the 21:15 UTC handoff:** IONQ was **not** an unverified purchase and does **not** need a receipt. Albert clarified that he deliberately did not buy IONQ on 2 Nov because he had already bought QBTS / D-Wave and considered quantum exposure covered for that session's immediate priority. This was a tactical choice under time pressure, not a one-quantum-company-per-day rule, a sector cap, or a negative thesis on IONQ. The correct record is: **IONQ considered, not purchased by deliberate prioritization**.
+
+The objective was to find short-horizon volatility opportunities ahead of the 3 Nov US midterm elections (roughly a two-day opportunity window). QBTS and DOC were completed purchases. IONQ was not purchased. With a faster research, communication, decision and execution workflow, Albert could have considered QBTS, IONQ, DOC and more in the same session. The current bottleneck is process speed and fragmented communication, not a lack of willingness to hold multiple names in one sector.
+
+**Instruction to Grok, Meta AI and Claude:** never infer a hard sector or daily-name limit from today's choice. Separate “not purchased” from “pending verification” and “executed.” When constrained by time, report surfaced candidates, selected candidates, deliberately deferred candidates, reasons, and opportunity cost/latency. Do not describe deferred candidates as fundamentally rejected unless Albert says so.
+
+**Communication priority:** hourly updates must deliver both the market/news picture and a useful conversation-state handoff: Albert's latest objective/request, each model's meaningful contribution, decisions reached, confirmed executions, deliberately deferred opportunities, unresolved questions, and the next action/owner. Read the active Slack discussion and relevant GitHub model files before calling a session quiet. Explicitly identify delays or missing links in the research → discussion → decision → bookkeeping → execution chain.
+
+Detailed record: [ChatGPT trading log, 2 Nov clarification](https://github.com/qimono-repos/the-porketo/blob/trunk/CONVERSATIONS/slack-trading-by-chatgpt-log.md).
