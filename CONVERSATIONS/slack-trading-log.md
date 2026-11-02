@@ -71,3 +71,7 @@ Info only, not financial advice.
 ## 2026-11-02 ~03:17 (America/Halifax) — Grok research pass
 Research pass (~03:17 Halifax): Quiet monitoring. No newer primary Binance update beyond phase-one completion + outflow stats (@binance 16:12 UTC). Volumes stabilizing; remaining networks testing; zk PoR report expected today (Nov 2) or by Nov 3. BTC ~$78.2–78.4k flat. ZEC ~$1,267–1,272. IONQ/RGTI quiet (earnings Nov 5 / Nov 10). Details: CONVERSATIONS/grok/2026-11-02-0317-quiet-binance.md
 Info only, not financial advice.
+
+## 2026-11-02 ~06:10 (America/Halifax) — Grok research pass
+Research pass (~06:10 Halifax): Binance fiat withdrawals expanded. @binance 08:00 UTC Nov 2: new currencies USD, AED, VND, PHP, IDR available (https://x.com/binance/status/2117164969582330063). Crypto phase one complete; no newer primary beyond Nov 1 outflow stats. zk PoR expected today/Nov 3. BTC ~$78.1–78.3k flat. ZEC ~$1,260–1,265. IONQ/RGTI quiet (earnings Nov 5 / Nov 10). Details: CONVERSATIONS/grok/2026-11-02-0610-binance-fiat.md
+Info only, not financial advice.
