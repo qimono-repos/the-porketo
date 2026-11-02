@@ -251,3 +251,47 @@ Fee policy for future records: if a receipt does not show a fee, do **not** sile
 - Posted the market/incident checkpoint and links to both GitHub logs in the established daily poll thread: [Slack message](https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793656038614039?thread_ts=1793576402.280419&cid=C0CD1U79YTH).
 - Posted the full `db.trading_events.insertMany([...])` example for Lemon Cash DOC and Binance NEAR, with fee treatment and the unknown NEAR execution timestamp preserved: [Slack BSON snippet](https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793656050835099?thread_ts=1793576402.280419&cid=C0CD1U79YTH).
 - Source Slack messages: DOC screenshot `1793650857.184619`; NEAR conversion screenshot `1793651874.958669`. No transaction IDs copied. No MongoDB write performed.
+
+
+## 2026-11-02 22:43 UTC — Early Bird hourly check: symbolic finance proposal and Gmail bridge
+
+### Sources, checkpoints and relay deduplication
+
+- Prior detailed checkpoint: 2026-11-02 21:46 UTC; shared delivery confirmation commit `aebe2bfa69381c130a0c6b8b39f99be6d32d774a`.
+- Reviewed 30 recent trunk commits and their relevant paths, including the 22:03–22:40 UTC Gemini-inbox/Gmail architecture sequence. Latest source commit `dcfb3e79db80df0f7042d5b87b32e059d15327f1` modifies `CONVERSATIONS/slack-trading-log.md`; `128279c9e78de63cc6fb7c14089f1430bdc5b07d` modifies `CONVERSATIONS/gemini-market-intelligence-inbox.md`. Both are ChatGPT-origin bridge setup, already announced in Slack, not new Gemini-authored research.
+- Read `CONVERSATIONS/slack-trading-by-chatgpt-log.md`, `CONVERSATIONS/slack-trading-log.md`, `CONVERSATIONS/gemini-market-intelligence-inbox.md`, and listed `CONVERSATIONS/grok/`. Latest Grok research file `CONVERSATIONS/grok/2026-11-02-1709-quiet-binance.md`, source commit `c52b537850f67b778eaadc3834d7deb36fd21df1` at 21:10:38 UTC, was already addressed in earlier handoffs; no newer Grok commit or new direct Grok conversation message was found. `CONVERSATIONS/slack-trading-by-meta-log.md` absent; no new Meta message found. **New Grok/Meta verbatim relays: none; no duplicate relays.**
+- Read #trading top-level history for the last 65 minutes and the full active Simple Poll root thread `1793576402.280419` (2026-11-01 23:40:02 UTC), including its 11 replies after 21:35 UTC. Root currently displays **1 respondent and IONQ 1 ballot**; full thread shows **47 discussion replies**, not 47 votes. ChatGPT already expressed `My vote: QBTS` in this root; that was not a registered poll ballot. Next poll is expected at ~2026-11-02 23:40 UTC and is not late.
+- In the latest slice, most replies are prior ChatGPT posts, one Grok bot error, and two duplicated Albert questions about symbolic finance. There were no new independent top-level human posts or separate active human threads requiring a reply.
+
+### New user requirement: finance as formulas, not floating-point literals
+
+Albert posted the same new request at [22:12:05 UTC](https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793657525312559?thread_ts=1793576402.280419&cid=C0CD1U79YTH) and [22:40:14 UTC](https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793659214589949?thread_ts=1793576402.280419&cid=C0CD1U79YTH). Exact excerpts: **"For finance everything is a Formula, instead of a number"** and **"with this we expect to have infinit decimals, and do calculations only at execution time."** Albert cites the ladder 0.75, 1.5, 2.25 USD, golden-ratio movement and representing 1.4142 as sqrt(2).
+
+Interpretation / design recommendation, not a confirmed implementation:
+- Model planned values as **symbolic expression trees** with typed units/currencies, rational constants and named operators. Example `3/4 USD * n` for ladder steps `n=1,2,3`; `phi=(1+sqrt(5))/2` and `sqrt(2)` remain symbolic until evaluation. The arithmetic ladder 0.75/1.50/2.25 is not itself a geometric golden-ratio ladder; a golden-ratio ladder would use e.g. `(3/4 USD)*phi^n`.
+- Store expressions and parameters as canonical BSON documents / ASTs with an expression version; store the exact rational numerator/denominator where possible. Decimal128 avoids binary-float artifacts for finite decimals but cannot encode an irrational number such as phi or sqrt(2) exactly. Keeping the symbolic formula avoids premature rounding.
+- At quote/execution boundary, evaluate with explicit arbitrary/controlled decimal precision, currency/tick-size rules and rounding mode. Persist both the symbolic source expression and the actual executed/quoted decimal outcome, exchange timestamp, unit, fee evidence and rounding metadata. Never overwrite receipt-confirmed execution values with recomputed theoretical values.
+- This is a **new domain requirement**, not an instruction to write to MongoDB in this run. No database write performed.
+
+### Conversation / decision status
+
+- **Objective:** short-horizon (~two-day) event-volatility research ahead of the 2026-11-03 US midterms, while reducing research → discussion → decision → bookkeeping → execution latency. No sector-level one-purchase cap.
+- **Confirmed executions:** QBTS/D-Wave and DOC/Healthpeak purchases from earlier user-provided receipts. A Binance Convert USDC→NEAR was also screenshot-confirmed; its execution timestamp was not shown. The repeat DOC screenshot was not a new fill.
+- **Deliberately deferred:** IONQ was evaluated but **not purchased** for the 2 Nov session, because QBTS was prioritized; no IONQ receipt is pending and no negative IONQ thesis is implied.
+- **New workstream:** event-driven `trading_events` BSON collection remains proposed only. Albert now requires symbolic expression storage for planned financial values alongside exact recorded execution facts.
+- **Gemini bridge:** ChatGPT-created Gmail label `QIMONO/Gemini Bridge` and draft subject `[QIMONO][GEMINI-BRIDGE] Research conversation with ChatGPT`; draft remains recorded as **unsent** in latest shared handoff, and the event-trigger subscription is **not configured**. Gmail is intended as two-way conversation bus; Google Doc is research notebook; GitHub is durable history; Slack is the live relay. No actual Gemini email contribution was observed in this Slack/GitHub pass.
+- **Owners:** Albert reviews/sends Gmail draft and decides whether to implement formula-first storage; Gemini supplies timestamped research once mailbox loop is active; ChatGPT validates/relays and specifies AST representation; Grok researches midterm catalysts and reads the shared log; Claude reviews the election/event book and implementation.
+
+### Market / Binance incident monitoring (2026-11-02 ~22:42 UTC)
+
+Binance public 24h ticker checks, single-symbol calls (no account/holding inference):
+- **Crypto spot:** 17/17 tracked USDT pairs negative over 24h. NEAR $3.878 (−8.903%), ZEC $1,149.97 (−5.531%), AAVE $126.61 (−5.345%), ILV $2.88 (−3.679%), PUMP $0.003963 (−3.624%). BTC $76,822.78 (−1.243%); ETH $2,251.20 (−0.332%). Compared with 21:43 UTC, risk-off breadth persists, with no confirmed broad reversal.
+- **Equity-linked Binance TradFi perpetual references:** 6/13 active, all negative 24h: ORCL −9.128%, OKLO −7.563%, IONQ −6.588%, HOOD −2.264%, AVGO −1.533%, NVDA −0.895%. These are **perpetual reference prices**, not underlying-share prints. No matching perps for QBTS, FLKR, DUK, RGTI, INFQ, QUBT; CVXUSDT is Convex Finance crypto, not Chevron.
+- **Tokenized bStock spot wrappers:** 4/6 active: TSLAB +1.215%, SPCXB −0.327%, IBMB −2.060%, HOODB −2.220%. QBTSB and DUKB spot queries returned invalid-symbol errors. Wrappers are not underlying shares. Coverage remains **27/36** across 17 crypto spot + 6 equity perps + 4 wrappers.
+- **Incident status:** Official [Binance Recovery Update #5](https://www.binance.com/en/support/announcement/detail/185bd9a4717f44088b3be70287b8237f), published 2026-11-02 12:45 UTC, remains the latest announcement listed at this check. It states the 2026-10-31 00:00 UTC ZK proof is complete for ten specified tokens, ~95% replenishment, next withdrawal expansion planned for 3 Nov, and a wider PoR snapshot for 4 Nov. No newer #6 was located; no withdrawal route or account-specific status was tested. [Reuters, 2 Nov](https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/) remains independent context; not a new incident change.
+- **Tool issue:** Binance multi-symbol ticker call returned `Duplicate values for parameter 'symbols'`; per-symbol requests succeeded and were used instead.
+
+### Delivery status / next action
+
+- This entry is a detailed append-only ChatGPT log. A concise shared handoff will follow to `CONVERSATIONS/slack-trading-log.md`, then a substantive response to Albert's formula-first requirement will be posted in the existing poll thread with the commit links.
+- No new Grok/Meta verbatim relay, no new trade, no MongoDB write, no second poll root.
