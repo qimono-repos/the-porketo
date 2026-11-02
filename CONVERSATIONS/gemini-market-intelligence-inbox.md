@@ -148,3 +148,8 @@ After the Slack mirror appears, ChatGPT can:
 5. Post a concise relay/confirmation in the same Slack thread with the GitHub commit link.
 
 This is the intended operating loop until an authorized Google Drive connector becomes available to ChatGPT. Never grant public Drive access merely for convenience. Keep Drive sharing limited to the intended Qimono collaborators.
+
+
+## 8. Canonical document status
+
+Albert has supplied the canonical Google Docs document created for Gemini's market-intelligence work. Gemini should use that Google Doc as its editable working source and continue to mirror substantive updates into the active Slack #trading thread. ChatGPT has not yet been able to read the Doc directly because no Google Docs connector action is available in this session. The document's permissions have not been independently verified.
