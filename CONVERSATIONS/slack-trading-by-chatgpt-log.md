@@ -97,3 +97,148 @@ This is a session-specific tactical decision, **not** a portfolio rule or sector
 **Communication requirement:** Albert expects ChatGPT to deliver both (a) the news/market picture and (b) the current conversation status: what Albert asked, what each model contributed, what has been decided, what remains open, and what needs the next model's attention. A news-only report is incomplete when the room contains active decisions or handoffs. Every hourly pass must distinguish new facts from conversation state and identify actionable latency blockers.
 
 This clarification supersedes the earlier sentence in this log stating that a possible IONQ/Lemon Cash purchase was “unverified / receipt needed.” That interpretation is withdrawn.
+
+
+
+## 2026-11-02 21:45 UTC — Binance / Slack checkpoint and event-driven BSON examples
+
+### GitHub intake and model bridge
+
+- Recent trunk commits: Grok's latest is `c52b537850f67b778eaadc3834d7deb36fd21df1` (21:10:38 UTC), adding only `CONVERSATIONS/grok/2026-11-02-1709-quiet-binance.md`. The full diff was inspected. Its incident summary matches official Recovery Update #5; it does not cover the active Slack discussion.
+- Since that Grok commit, the only repo commits found were ChatGPT's prior handoff commits `6d29f8bf4cf145f30861940c85f7bdf829e08b8c` and `b70f99a8841dd3ba75e0cf3fe0b8bc160699830a`. No new Grok or Meta commit was found.
+- `CONVERSATIONS/slack-trading-by-meta-log.md` and the tested alternate Meta path were not found (404); repository code search returned no Meta conversation file. Do not infer Meta participation from absence.
+- Read the current ChatGPT log and shared legacy log before appending. The previous shared handoff is already present.
+
+### Slack activity and current daily root
+
+- Read #trading top-level history for the last 65 minutes. It contained GitHub app commit notifications only; no new human top-level post.
+- Read the full active daily Simple Poll thread. Root: 2026-11-01 23:40:02 UTC. Candidates: IONQ, QBTS, RGTI, QUBT, FLKR. Parent currently shows **1 respondent, with IONQ at 1**. The thread has **38 replies**; replies are discussion and are not votes. ChatGPT's earlier `My vote: QBTS` was an expressed view, not a submitted ballot.
+- The next normal poll is expected around 2026-11-02 23:40 UTC; at this checkpoint that window had not arrived, so there is no missing-poll incident.
+- New relevant user content in the latest thread slice:
+  - 2026-11-02 20:37:54 UTC: completed Binance Convert screenshot and request for a NEAR event/BSON record.
+  - 2026-11-02 20:20:57 UTC: duplicate Lemon Cash DOC execution screenshot, confirming the already-recorded DOC purchase; this is not a new fill.
+  - The user's ~2-day US-midterm volatility horizon and event-driven first MongoDB collection were already captured in the previous handoff.
+- ChatGPT posted the prior GitHub handoff into the established root at 21:42:10 UTC. Grok's Slack bot then emitted an error response at 21:42:14 UTC; this is tool noise, not Grok research.
+
+### New execution evidence: Binance NEAR conversion
+
+The screenshot attached to the 20:37:54 UTC Slack reply shows a successful Binance Convert operation:
+
+- From: **2.25 USDC**
+- To: **0.57376787 NEAR**
+- Displayed rate: **1 NEAR = 3.92145 USDC**
+- Wallet route: **Spot Wallet + Funding Wallet**
+- Displayed transaction fee: **0 NEAR**
+- The screenshot does not show the execution timestamp. Store `occurred_at: null` and the Slack observation timestamp separately; do not invent the fill time.
+- The fee is explicitly displayed as zero, so do not apply the 0.2% fallback to this event. Note that any conversion spread is not separately itemized in the screenshot.
+- Evidence: [Slack message with Binance Convert screenshot](https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793651874958669?thread_ts=1793576402.280419&cid=C0CD1U79YTH).
+
+### Reconfirmed Lemon Cash DOC purchase
+
+The 20:20:57 UTC screenshot is the same completed DOC purchase already captured in the earlier log, not a third/new execution:
+
+- Execution time shown: 2026-11-02 16:59 ART = 19:59 UTC
+- 0.384179627 DOC, average price USD 19.42
+- Amount debited: 7.50 USDT; fee: 0.04 USDT (0.5%); net invested: 7.46 USDT
+- Evidence: [Slack message with Lemon Cash DOC receipt](https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793650857184619?thread_ts=1793576402.280419&cid=C0CD1U79YTH).
+- Transaction IDs are deliberately not copied into project logs or shared messages.
+
+### Proposed event-driven collection
+
+Albert asked for the first MongoDB collection to be event-driven and for examples spanning Lemon Cash and Binance. Suggested collection name: `trading_events`. Treat it as an append-only event ledger, not a mutable positions/holdings table. Preserve `occurred_at` separately from `observed_at`, identify the source platform/product, and use BSON Decimal128 for quantities, prices, and fees.
+
+The following `mongosh` snippet creates the collection on first insert. It is a proposal only; **no MongoDB write or collection creation was performed**.
+
+```javascript
+db.trading_events.insertMany([
+  {
+    schema_version: 1,
+    event_type: "trade.execution.completed",
+    occurred_at: ISODate("2026-11-02T19:59:00.000Z"),
+    observed_at: ISODate("2026-11-02T20:20:57.184Z"),
+    source: { platform: "lemon_cash", product: "market_purchase" },
+    instrument: {
+      symbol: "DOC",
+      name: "Healthpeak Properties",
+      instrument_type: "platform_listed_equity_exposure"
+    },
+    execution: {
+      status: "completed",
+      side: "buy",
+      order_type: "market",
+      quantity: NumberDecimal("0.384179627"),
+      average_price: NumberDecimal("19.42"),
+      price_currency: "USD",
+      amount_debited: NumberDecimal("7.50"),
+      settlement_currency: "USDT",
+      net_invested: NumberDecimal("7.46")
+    },
+    fees: {
+      amount: NumberDecimal("0.04"),
+      currency: "USDT",
+      rate_pct: NumberDecimal("0.5"),
+      status: "explicitly_shown"
+    },
+    evidence: {
+      type: "user_screenshot",
+      slack_permalink: "https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793650857184619?thread_ts=1793576402.280419&cid=C0CD1U79YTH"
+    },
+    verification: { status: "screenshot_confirmed", transaction_id_stored: false }
+  },
+  {
+    schema_version: 1,
+    event_type: "asset.conversion.completed",
+    occurred_at: null,
+    occurred_at_status: "not_visible_in_receipt",
+    observed_at: ISODate("2026-11-02T20:37:54.958Z"),
+    source: {
+      platform: "binance",
+      product: "convert",
+      wallet_route: ["spot_wallet", "funding_wallet"]
+    },
+    from: { symbol: "USDC", quantity: NumberDecimal("2.25") },
+    to: { symbol: "NEAR", quantity: NumberDecimal("0.57376787") },
+    exchange_rate: {
+      base: "NEAR",
+      quote: "USDC",
+      value: NumberDecimal("3.92145")
+    },
+    fees: {
+      amount: NumberDecimal("0"),
+      currency: "NEAR",
+      rate_pct: null,
+      status: "explicitly_shown_zero",
+      note: "UI shows 0 NEAR; any conversion spread is not separately itemized."
+    },
+    evidence: {
+      type: "user_screenshot",
+      slack_permalink: "https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793651874958669?thread_ts=1793576402.280419&cid=C0CD1U79YTH"
+    },
+    verification: { status: "screenshot_confirmed", transaction_id_stored: false }
+  }
+]);
+```
+
+Fee policy for future records: if a receipt does not show a fee, do **not** silently store zero. Store the fee as estimated/assumed with a minimum `rate_pct: NumberDecimal("0.2")`, and label the amount as estimated. When the UI explicitly shows zero, preserve that fact and separately note any unitemized spread.
+
+### Binance public market snapshot (~21:43 UTC, 2026-11-02)
+
+- **Crypto spot: 17/17 negative over the rolling 24h window.** Largest drawdowns: NEAR −9.192% ($3.912), ZEC −6.589% ($1,159.97), AAVE −5.051% ($127.63), PUMP −4.441% ($0.003981), ILV −4.000% ($2.88). BTC $76,992.20 (−1.234%); ETH $2,258.59 (−0.323%).
+- **TradFi perpetual references: 6/13 active, all six negative 24h:** ORCL −8.959% ($119.71), OKLO −7.039% ($23.77), IONQ −6.448% ($28.58), HOOD −1.953% ($84.34), AVGO −1.299% ($323.57), NVDA −0.931% ($203.17). These are Binance TradFi perpetual references, not underlying-share prints. No matching equity perp was found for QBTS, FLKR, DUK, RGTI, INFQ or QUBT. CVXUSDT remains Convex Finance, not Chevron.
+- **Tokenized bStock spot wrappers: 4/6 active:** TSLAB $404.24 (+1.151%), SPCXB $137.22 (−0.320%), IBMB $252.40 (−2.072%), HOODB $84.24 (−2.012%). QBTSB and DUKB are invalid spot symbols in the current metadata. Only TSLAB was green among the four active wrappers.
+- Selected incomplete 21:00–22:00 UTC candles showed a tentative rebound at the snapshot: BTC about +0.25%, NEAR +0.98%, ZEC +1.74% from the 21:00 open. This is not a completed hour and is not a full-watchlist breadth reading.
+- Interpretation: broad risk-off conditions persist over 24h across the crypto basket and all six active equity-linked perp references, with a small late-hour rebound in three selected crypto pairs. Do not label that rebound a confirmed reversal.
+
+### Binance incident / custody status
+
+- Latest official source located: [Binance Recovery Update #5, published 2026-11-02 12:45 UTC](https://www.binance.com/en/support/announcement/detail/185bd9a4717f44088b3be70287b8237f). Binance says the zk-SNARK proof for the 2026-10-31 00:00 UTC snapshot is complete and users can verify 1:1 backing for BTC, ETH, USDT, BNB, SOL, USDC, XRP, USD1, RLUSD and ZEC. This is a point-in-time snapshot and covers those ten tokens, not every asset or route.
+- Binance says approximately 95% of the impacted amount has been replenished; the remaining 5% is primarily less-liquid assets outside the top ten. The next additional-network/asset withdrawal phase is planned for 3 Nov as a progressive rollout; details were still pending in Update #5. The next broader PoR snapshot is planned for 4 Nov, with a further 40–50 hours estimated for its proof.
+- Independent context: [Reuters, 2 Nov 2026](https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/) reports $4.72B net customer outflows since reopening (about 3% of Binance assets), while Binance reported $2.7B in customer inflows since Sunday and stabilizing withdrawals. These are reported exchange-wide flows, not evidence about Albert's account.
+- No newer official recovery update beyond #5 was located in this run. No deposit/withdrawal route was tested; market-data availability is not route-level withdrawal confirmation.
+
+### Run status
+
+- GitHub accessible; Slack accessible; Binance public market data accessible.
+- New Grok research: none. Meta conversation file: not found.
+- No new top-level human Slack post. Active daily thread read, including its latest five replies.
+- No poll-missing incident; no trade, transfer, withdrawal, or MongoDB write performed.
