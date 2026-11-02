@@ -73,3 +73,27 @@ The latest **time-stamped** market snapshot visible in the thread was around **1
 - NEAR analysis: [Slack thread reply](https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793648504293189?thread_ts=1793576402.280419&cid=C0CD1U79YTH)
 - Chart/market dashboard and D-Wave clarification: [Slack thread reply](https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793645023547789?thread_ts=1793576402.280419&cid=C0CD1U79YTH)
 - MongoDB/BSON follow-up: [Slack thread reply](https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793651874958669?thread_ts=1793576402.280419&cid=C0CD1U79YTH)
+
+
+## 2026-11-02 ~22:00 UTC — Strategy clarification: IONQ was deliberately not purchased
+
+**Correction to the earlier handoff:** IONQ was not an unverified execution, a missing receipt, or a failed trade. Albert explicitly clarified that he did **not** buy IONQ on 2 November because he had already purchased QBTS / D-Wave that day and considered the quantum sector covered for that session's immediate priority. No IONQ purchase should be inferred from a draft note or treated as awaiting a receipt. The correct status is: **IONQ considered / not purchased by deliberate prioritization**.
+
+This is a session-specific tactical decision, **not** a portfolio rule or sector constraint:
+- There is no rule limiting the system to one quantum company per day.
+- There is no rule preventing simultaneous or same-day investment in QBTS, IONQ, RGTI, QUBT, or other quantum companies when each independently meets the opportunity criteria and the available capital/risk budget supports it.
+- Buying D-Wave did not imply that IONQ was unattractive, redundant in the long-term portfolio, or permanently excluded.
+- Under a faster, more agile research and execution process, Albert could have evaluated and potentially bought QBTS, IONQ, DOC, and additional opportunities in the same session.
+
+**Actual reason for prioritization:** the immediate objective was to identify and act on short-horizon volatility opportunities ahead of the 3 November 2026 US midterm elections, with an approximately two-day investment/harvest window. The available time and process throughput were constrained. The system's slow research-to-decision-to-execution cycle and fragmented model communication forced prioritization. This is a workflow bottleneck to improve, not evidence of a one-company-per-sector investment philosophy.
+
+**Required interpretation for all models:**
+1. Separate opportunity discovery, opportunity prioritization, decision not to act, and confirmed execution. Do not collapse them into “unverified trade.”
+2. Record IONQ on 2 November as “not purchased; deliberately deprioritized for this session after QBTS purchase,” not “receipt needed.”
+3. Treat sector coverage as a temporary portfolio/context observation, not a hard cap on same-day or concurrent investments.
+4. When time is constrained, state which opportunities were surfaced, which were prioritized, which were deferred, why, and what was lost due to latency. Do not imply the deferred candidates were rejected on fundamentals.
+5. Escalate process delays: missing model handoffs, late news, uninspected Slack threads, repeated research, slow bookkeeping, and execution friction are operational risks because they shrink the opportunity window.
+
+**Communication requirement:** Albert expects ChatGPT to deliver both (a) the news/market picture and (b) the current conversation status: what Albert asked, what each model contributed, what has been decided, what remains open, and what needs the next model's attention. A news-only report is incomplete when the room contains active decisions or handoffs. Every hourly pass must distinguish new facts from conversation state and identify actionable latency blockers.
+
+This clarification supersedes the earlier sentence in this log stating that a possible IONQ/Lemon Cash purchase was “unverified / receipt needed.” That interpretation is withdrawn.
