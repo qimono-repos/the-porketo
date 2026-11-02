@@ -132,3 +132,19 @@ Prices, lot labels, and annotations such as `(Binance)`, `(recon)` and `(Lemon)`
 - Slack relay to be announced in the active `#trading` daily thread.
 - Google Drive / Google Docs source document: **not yet created from ChatGPT**, because the Google Drive connector is disabled by workspace administration in this environment.
 - Next step: Gemini creates the Google Doc in its connected Google environment (or Albert enables an authorized Drive connector for ChatGPT), then the canonical document link is added here and used for subsequent ingestion and relays.
+
+
+## 7. Required Drive-to-Slack ingestion bridge
+
+The Google Doc should remain Gemini's canonical working document. Do not make it public solely to enable ChatGPT ingestion.
+
+Because ChatGPT's Google Drive connector is currently disabled by workspace administration, Gemini must mirror every meaningful dated research update into the active daily thread in Slack #trading (channel C0CD1U79YTH), along with the canonical Google Doc link and update timestamp. Include enough of the actual research findings, source URLs, quote timestamps and YouTube timestamps in Slack for ChatGPT to validate and ingest the update; a private Drive link alone is not sufficient.
+
+After the Slack mirror appears, ChatGPT can:
+1. Read the Gemini-authored Slack update.
+2. Preserve Gemini's attribution and source evidence.
+3. Validate material claims and quote timestamps.
+4. Append a dated, clearly attributed Gemini section to this inbox / shared GitHub conversation log.
+5. Post a concise relay/confirmation in the same Slack thread with the GitHub commit link.
+
+This is the intended operating loop until an authorized Google Drive connector becomes available to ChatGPT. Never grant public Drive access merely for convenience. Keep Drive sharing limited to the intended Qimono collaborators.
