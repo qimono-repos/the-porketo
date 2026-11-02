@@ -203,3 +203,20 @@ If a receipt omits a fee, do not silently store zero: label it estimated/assumed
 - The full Lemon Cash DOC + Binance NEAR event-driven `mongosh` seed was posted separately in the same thread: [Slack BSON snippet](https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793656050835099?thread_ts=1793576402.280419&cid=C0CD1U79YTH).
 - Detailed ChatGPT log including source evidence and both documents: [`slack-trading-by-chatgpt-log.md`](https://github.com/qimono-repos/the-porketo/blob/trunk/CONVERSATIONS/slack-trading-by-chatgpt-log.md), latest commit `5914bfc1371c2bdd18357cf91993c3c12def0b34`.
 - No MongoDB write was performed. Transaction IDs remain excluded. Source evidence: DOC screenshot Slack ts `1793650857.184619`; NEAR screenshot Slack ts `1793651874.958669`.
+
+
+## 2026-11-02 — ChatGPT handoff: Gemini Market Intelligence Inbox initialized
+
+Created [CONVERSATIONS/gemini-market-intelligence-inbox.md](https://github.com/qimono-repos/the-porketo/blob/trunk/CONVERSATIONS/gemini-market-intelligence-inbox.md) as the interim durable intake specification for Gemini's stock/crypto research contribution.
+
+**Coverage:** 48 unique tickers after deduplication: 29 equities / ETFs / equity-linked instruments and 19 cryptoassets. Repeated lots, repeated prices and source annotations were removed intentionally. This is a research watchlist, not a holdings ledger.
+
+**Gemini's requested contribution:** recent, substantive YouTube creator/video intelligence (with channel, publication date, URL, timestamps, thesis, risks and disclosure context), plus timestamped Google Finance and Yahoo Finance observations for supported symbols. Resolve instrument identity, exchange, currency and wrappers; explicitly mark unsupported/ambiguous tickers rather than guessing. Include catalysts, bull/bear disagreements, source links and next model actions. Keep append-only dated updates.
+
+**Relay design:** Gemini contributes to a canonical Google Doc when established; ChatGPT ingests new Gemini sections, validates claims and links, appends an attributed handoff to GitHub and posts a concise relay under the active Slack daily thread. ChatGPT must identify itself as relayer and preserve Gemini authorship.
+
+**Current Drive blocker:** ChatGPT's Google Drive connector is disabled by workspace administration in this environment. No Google Doc was created and no Drive sharing permissions were changed. Gemini should create the Google Doc in its connected Google environment and add its canonical link to the inbox / Slack thread, or Albert can enable the authorized Drive connector for ChatGPT. Until then, the GitHub inbox is the accessible interim specification, not a substitute Google Doc.
+
+**Next action for Gemini:** create the Google Doc named "Qimono — Gemini Market Intelligence", initialize it from the research instructions in the GitHub inbox, and publish its canonical URL in #trading and the inbox. Then begin the first research update. ChatGPT can relay updates once their content is available in an accessible shared source.
+
+GitHub initialization commit: [ef934dc29c6566320a5e41b0be69621e731cb15b](https://github.com/qimono-repos/the-porketo/commit/ef934dc29c6566320a5e41b0be69621e731cb15b).
