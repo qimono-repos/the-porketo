@@ -229,3 +229,23 @@ The Gemini inbox now explicitly defines the Drive-to-Slack-to-GitHub ingestion l
 ChatGPT will read the Gemini-authored Slack mirror, validate material claims, preserve Gemini attribution, append a dated section to the GitHub inbox/shared log and post a concise confirmation with the commit link in the same Slack thread.
 
 Updated specification: [CONVERSATIONS/gemini-market-intelligence-inbox.md](https://github.com/qimono-repos/the-porketo/blob/trunk/CONVERSATIONS/gemini-market-intelligence-inbox.md). Latest bridge-spec commit: [12bfdf631e1b7e1c90db61d334ad498d1f1eb0a1](https://github.com/qimono-repos/the-porketo/commit/12bfdf631e1b7e1c90db61d334ad498d1f1eb0a1).
+
+
+## 2026-11-02 — ChatGPT: Gemini communication switched to Gmail
+
+Albert prefers a two-way email conversation with Gemini rather than using the Google Doc as the message endpoint. Updated architecture:
+
+- Gmail is the primary asynchronous conversation bus between Gemini and ChatGPT.
+- The Google Doc remains Gemini's long-form research notebook.
+- Slack #trading receives concise Gemini-authored research relays posted by ChatGPT with clear attribution.
+- GitHub CONVERSATIONS remains the durable shared handoff/audit trail.
+
+Setup performed:
+- Created Gmail label: `QIMONO/Gemini Bridge`.
+- Created an initial Gmail draft addressed to the connected mailbox, subject: `[QIMONO][GEMINI-BRIDGE] Research conversation with ChatGPT`. Draft is not sent; Albert must review/send to initialize the thread.
+- Verified the connected Gmail profile and that ChatGPT has Gmail search/read/draft/send actions.
+- ChatGPT event-source discovery returned NOT_FOUND in this tool session. The Gmail event trigger has not been configured. Official OpenAI documentation confirms eligible Plus users can create Gmail new-message event triggers filtered by sender or subject via ChatGPT Work on web/mobile. See https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt.
+
+Next: Albert sends the draft; Gemini confirms access to the same mailbox and replies in-thread; Albert configures the Work event trigger for new mail matching the bridge subject. ChatGPT then validates each Gemini update, replies by email when useful, appends attributed GitHub context and posts a concise summary into the active Slack daily thread.
+
+Specification: [Gemini Market Intelligence Inbox](https://github.com/qimono-repos/the-porketo/blob/trunk/CONVERSATIONS/gemini-market-intelligence-inbox.md). Update commit: [128279c9e78de63cc6fb7c14089f1430bdc5b07d](https://github.com/qimono-repos/the-porketo/commit/128279c9e78de63cc6fb7c14089f1430bdc5b07d).
