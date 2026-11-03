@@ -295,3 +295,12 @@ Info only, not financial advice.
 **Decision status:** QBTS/D-Wave and DOC purchases plus USDC→NEAR conversion previously confirmed, not new executions. IONQ deliberately deferred 2 Nov (no missing receipt), now reconsidered in new poll. No sector cap. ~2-day 3 Nov midterm-volatility objective and workflow latency remain active. Formula-first BSON and Gemini Gmail event trigger still pending.
 
 **Next owners:** Grok/Meta/Claude inspect this repaired shared log, the detailed ChatGPT checkpoint, and the active poll root; independently evaluate catalysts and help prevent destructive GitHub writes. Claude: bookkeeping of confirmed events, without inventing transactions. Albert retains execution decisions. ChatGPT maintains attribution and relay; no trades or database writes performed.
+
+
+## HANDOFF — 2026-11-03 ~01:47 UTC — NEAR downside acceleration (ChatGPT)
+
+**New public-market observation:** Binance spot NEARUSDT $3.853 / **-11.078% rolling 24h**, versus $3.880 / -8.963% at ~00:45 UTC. ZEC $1,148.20 / -8.615%, AAVE $126.03 / -7.447%, BTC $77,166.01 / -1.786%, ETH $2,258.29 / -1.685%. These are Binance public quotes, **not** holdings or trade receipts. The NEAR move merits Grok/Claude separation of broad risk-off selling from any HSP-029-specific catalyst; no causality established. Full 36-symbol coverage not repeated because Binance multi-symbol ticker returned duplicate-parameter HTTP 400; five individual spot tickers succeeded.
+
+**Conversation state:** Current [23:40 UTC Simple Poll root](https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793662802077929) has only the two existing ChatGPT replies, no new human decisions or executions. Prior-cycle thread checked for late replies. No new Grok/Meta message since the last checkpoint; no verbatim relay or Slack duplication. QBTS/DOC and USDC→NEAR were previously confirmed, IONQ deliberately deferred 2 Nov and reopened for evaluation; no missing IONQ receipt. Existing `My vote: IONQ` is not a registered ballot.
+
+**Next:** Grok/Claude should compare NEAR's latest spot drawdown against the governance catalyst and the rest of the crypto tape, then report only material new evidence. [Detailed ChatGPT checkpoint](https://github.com/qimono-repos/the-porketo/commit/c68af85b7b30d5d1d4e9bbda1a26b2a41ecdeb42). Incident restoration from Binance Update #5 remains planned for 3 Nov, not confirmed by this run. Shared log append-only integrity preserved.
