@@ -43,8 +43,10 @@ The existing `@ChatGPT` app is unrelated and can stay in the channel.
 ## One-time GitHub token setup
 
 Create a fine-grained personal access token restricted to
-`qimono-repos/the-porketo`. Grant **Contents: Read and write**. Save it only in
-the VPS environment file; never add it to Git.
+`qimono-repos/the-porketo`. Grant **Contents: Read and write**. For the
+optional reactive ChatGPT bridge, also grant **Pull requests: Read and write**
+so the listener can post its wake marker on the dedicated bridge PR. Save it
+only in the VPS environment file; never add it to Git.
 
 ## Install on the VPS
 
