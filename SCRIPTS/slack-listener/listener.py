@@ -39,6 +39,7 @@ class Config:
     github_token: str
     github_repository: str
     github_branch: str
+    github_trigger_pr: int | None
 
     @classmethod
     def from_environment(cls) -> "Config":
@@ -55,10 +56,15 @@ class Config:
         if missing:
             raise RuntimeError(f"Missing required environment variables: {', '.join(missing)}")
 
+        trigger_pr_text = os.environ.get("GITHUB_TRIGGER_PR", "").strip()
+        if trigger_pr_text and not trigger_pr_text.isdigit():
+            raise RuntimeError("GITHUB_TRIGGER_PR must be a pull request number when set")
+
         return cls(
             **values,
             github_repository=os.environ.get("GITHUB_REPOSITORY", "qimono-repos/the-porketo").strip(),
             github_branch=os.environ.get("GITHUB_BRANCH", "trunk").strip(),
+            github_trigger_pr=int(trigger_pr_text) if trigger_pr_text else None,
         )
 
 
@@ -115,14 +121,14 @@ class GitHubContents:
     def __init__(self, config: Config) -> None:
         self._config = config
 
-    def _url(self, path: str) -> str:
+    def _api_url(self, endpoint: str) -> str:
         repository = quote(self._config.github_repository, safe="/")
-        return f"{GITHUB_API}/repos/{repository}/contents/{quote(path, safe='/')}"
+        return f"{GITHUB_API}/repos/{repository}/{quote(endpoint, safe='/')}"
 
-    def _request(self, method: str, path: str, payload: dict[str, Any] | None = None) -> tuple[int, str]:
+    def _request(self, method: str, endpoint: str, payload: dict[str, Any] | None = None) -> tuple[int, str]:
         data = None if payload is None else json.dumps(payload).encode("utf-8")
         request = Request(
-            self._url(path),
+            self._api_url(endpoint),
             data=data,
             method=method,
             headers={
@@ -142,7 +148,7 @@ class GitHubContents:
             raise RuntimeError(f"GitHub request failed: {error.reason}") from error
 
     def exists(self, path: str) -> bool:
-        status, body = self._request("GET", path)
+        status, body = self._request("GET", f"contents/{path}")
         if status == 200:
             return True
         if status == 404:
@@ -160,7 +166,7 @@ class GitHubContents:
             "content": encoded,
             "branch": self._config.github_branch,
         }
-        status, body = self._request("PUT", path, payload)
+        status, body = self._request("PUT", f"contents/{path}", payload)
         if status in (200, 201):
             return True
 
@@ -170,6 +176,30 @@ class GitHubContents:
         if status in (409, 422) and self.exists(path):
             return False
         raise RuntimeError(f"GitHub could not create {path} (HTTP {status}): {body}")
+
+    def trigger_reactive_worker(self, path: str, message_ts: str, thread_ts: Any) -> None:
+        """Post a machine-readable marker that wakes the GitHub webhook worker."""
+        if self._config.github_trigger_pr is None:
+            return
+
+        marker = "\n".join(
+            [
+                "<!-- qimono-slack-event -->",
+                f"slack_record: `{path}`",
+                f"message_ts: `{message_ts}`",
+                f"thread_ts: `{thread_ts if thread_ts else 'null'}`",
+            ]
+        )
+        status, body = self._request(
+            "POST",
+            f"issues/{self._config.github_trigger_pr}/comments",
+            {"body": marker},
+        )
+        if status == 201:
+            return
+        raise RuntimeError(
+            f"GitHub could not trigger reactive worker (HTTP {status}): {body}"
+        )
 
 
 class Listener:
@@ -201,6 +231,15 @@ class Listener:
                 created = self.github.create_once(path, content, message_ts)
             if created:
                 LOG.info("Captured Slack message %s at %s", message_ts, path)
+                try:
+                    self.github.trigger_reactive_worker(path, message_ts, event.get("thread_ts"))
+                    if self.config.github_trigger_pr is not None:
+                        LOG.info("Triggered reactive worker for Slack message %s", message_ts)
+                except Exception:
+                    # Source capture is the durable record. A failed optional
+                    # wake marker must not cause the same Slack event to be
+                    # re-captured or block the listener.
+                    LOG.exception("Failed to trigger reactive worker for %s", message_ts)
             else:
                 LOG.info("Skipped duplicate Slack message %s", message_ts)
         except Exception:

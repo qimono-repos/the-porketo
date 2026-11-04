@@ -78,3 +78,14 @@ slack: capture Albert message <message-ts>
 
 Posting the same Slack event twice is safe: the listener detects the existing
 file and makes no second commit.
+
+## Reactive ChatGPT bridge
+
+The capture service can also wake a GitHub pull-request comment webhook after
+each successful record. Set `GITHUB_TRIGGER_PR` to the number of the dedicated
+open bridge PR. The listener will post a marker containing only the record path
+and timestamps; the reactive ChatGPT worker fetches that exact record and
+replies in its originating Slack thread.
+
+The bridge is optional. Leaving `GITHUB_TRIGGER_PR` blank keeps the listener in
+capture-only mode.
