@@ -1,0 +1,20 @@
+[Unit]
+Description=Qimono Slack-to-GitHub listener
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=qimono-listener
+Group=qimono-listener
+WorkingDirectory=/opt/qimono/slack-listener
+EnvironmentFile=/etc/qimono/slack-listener.env
+ExecStart=/opt/qimono/slack-listener/venv/bin/python /opt/qimono/slack-listener/listener.py
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
