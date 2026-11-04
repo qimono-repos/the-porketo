@@ -9,6 +9,7 @@ desktop.ini
 *.bak
 *.swp
 *.swo
+*.pre-vps-deploy.*
 
 # Logs
 *.log

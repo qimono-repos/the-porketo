@@ -2,25 +2,31 @@ package com.qimono.porketo
 
 import com.mongodb.kotlin.client.coroutine.MongoClient
 import io.ktor.http.ContentType
+import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
 import io.ktor.server.response.respondText
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
-import kotlinx.coroutines.runBlocking
 import org.bson.Document
+import org.slf4j.LoggerFactory
 
 fun main() {
     val port = System.getenv("PORT")?.toIntOrNull() ?: 8080
+    val host = System.getenv("HOST")?.takeIf { it.isNotBlank() } ?: "127.0.0.1"
     val mongoUri = System.getenv("MONGODB_URI")
     val databaseName = System.getenv("MONGODB_DATABASE") ?: "porketo"
     val mongoClient = mongoUri?.takeIf { it.isNotBlank() }?.let(MongoClient::create)
     val database = mongoClient?.getDatabase(databaseName)
+    LoggerFactory.getLogger("com.qimono.porketo").info(
+        "event=service_starting host={} port={} database={} atlas_configured={}",
+        host, port, databaseName, database != null
+    )
 
     Runtime.getRuntime().addShutdownHook(Thread { mongoClient?.close() })
 
-    embeddedServer(Netty, host = "0.0.0.0", port = port) {
+    embeddedServer(Netty, host = host, port = port) {
         porketoModule(database, databaseName)
     }.start(wait = true)
 }
@@ -41,14 +47,23 @@ fun Application.porketoModule(
         }
         get("/ready") {
             if (database == null) {
-                call.respondText("""{"service":"the-porketo-api","status":"not_ready","detail":"MONGODB_URI is not configured"}""", ContentType.Application.Json)
+                call.respondText(
+                    """{"service":"the-porketo-api","status":"not_ready","detail":"MONGODB_URI is not configured"}""",
+                    ContentType.Application.Json,
+                    HttpStatusCode.ServiceUnavailable
+                )
                 return@get
             }
             try {
-                runBlocking { database.runCommand(Document("ping", 1)) }
+                database.runCommand(Document("ping", 1))
                 call.respondText("""{"service":"the-porketo-api","status":"ready","database":"$databaseName"}""", ContentType.Application.Json)
-            } catch (exception: Exception) {
-                call.respondText("""{"service":"the-porketo-api","status":"not_ready","detail":"MongoDB ping failed"}""", ContentType.Application.Json)
+            } catch (_: Exception) {
+                LoggerFactory.getLogger("com.qimono.porketo").warn("event=mongodb_ping_failed")
+                call.respondText(
+                    """{"service":"the-porketo-api","status":"not_ready","detail":"MongoDB ping failed"}""",
+                    ContentType.Application.Json,
+                    HttpStatusCode.ServiceUnavailable
+                )
             }
         }
     }

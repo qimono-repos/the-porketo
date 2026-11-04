@@ -80,6 +80,13 @@ The Wear OS UI is deliberately a **pre-trade calculator**, not an execution clie
 
 See `TRADING/harvest-cli.md` and `src/kotlin/README.md`.
 
+## Porketo Kotlin API
+
+The Ktor API and its loopback-only VPS deployment live in
+[`no-sql/kotlin-service/`](no-sql/kotlin-service/). Deployment instructions,
+service lifecycle, Atlas configuration, and rollback notes are in that
+directory's `README.md` and `deploy/README.md`.
+
 ## Crisis Harvest
 
 The project has a formal crisis-harvest specification for anti-stagnation operation.

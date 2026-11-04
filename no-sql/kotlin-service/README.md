@@ -25,6 +25,7 @@ Set environment variables on the VPS:
 ```bash
 export MONGODB_URI='mongodb+srv://<username>:<url-encoded-password>@<cluster-host>/?retryWrites=true&w=majority&appName=the-porketo-nosql'
 export MONGODB_DATABASE='porketo'
+export HOST='127.0.0.1'
 export PORT='8080'
 ```
 
@@ -55,11 +56,13 @@ The readiness route performs a lightweight MongoDB ping and reports whether the 
 ## Initial routes
 
 - `GET /health` process liveness, no database dependency
-- `GET /ready` MongoDB connectivity check
+- `GET /ready` MongoDB connectivity check (HTTP 503 until Atlas is reachable)
 - `GET /` service metadata
 
 ## Deployment notes
 
 For first boot, run on localhost or behind an existing reverse proxy. Do not expose port 8080 directly to the public internet before configuring HTTPS and an application authentication strategy. Add the VPS public egress IP to Atlas Network Access; do not use `0.0.0.0/0`.
 
-The app binds to `0.0.0.0` inside the VPS so a reverse proxy/container can reach it. Configure firewall rules to expose only the reverse proxy's public ports.
+The app binds to `127.0.0.1` by default. `HOST` can override the bind address
+for a private container network, but keep it on loopback on the VPS until a
+deliberate reverse-proxy and exposure plan is in place.
