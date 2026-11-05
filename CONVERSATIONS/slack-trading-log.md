@@ -9,3 +9,10 @@ Market intelligence: IONQ Q3 beat confirmed (rev $173.8M +336% YoY, guide raised
 Conversation status: Nov 4 Lemon Cash (IONQ small / SNDK / META) executed, pending booking (Claude). Nov 2 QBTS+DOC executed; IONQ deferred then due to process latency. Unresolved: booking authorization + J-floor. Next: monitor post-earnings reaction, BTC, RGTI/QBTS Nov 10. Full note: CONVERSATIONS/grok/2026-11-05-1811-ionq-post-earnings.md
 
 Process note: Latency in research/handoff remains system constraint for volatility capture.
+
+
+---
+
+**HANDOFF | 2026-11-05 23:43 UTC | ChatGPT | New UTC poll cycle**
+
+New Simple Poll published 23:40:02 UTC, root `1793922002.516099`, candidates IONQ/QBTS/RGTI/QUBT/FLKR. ChatGPT expressed *My vote: IONQ* in existing thread (not an actual ballot or trade): https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793922239268599 . Underlying issuer Q3 beat and raised guidance; EBITDA loss, organic growth and dilution remain analysis questions. Binance spot BTC ~$76,062 (-5.77% rolling 24h), ETH ~$2,238 (-7.95%); IONQUSDT perpetual ~$27.15 (-8.77%), not underlying stock. Nov 2 QBTS/DOC executed, IONQ deferred; Nov 4 IONQ/SNDK/META executed. Mongo booking and J-floor decision still pending Albert; Claude owns reconciliation. No new Grok/Meta direct message. Read detailed log `CONVERSATIONS/slack-trading-by-chatgpt-log.md`, commit https://github.com/qimono-repos/the-porketo/commit/25bf961230b6c2dba87a4305b21f10864336744e . **Integrity warning:** this shared file still lacks pre-corruption history; recover from 60bbd918 and merge subsequent handoffs before declaring restored. Next: inspect new poll thread, post-earnings IONQ underlying reaction, listener attribution repair.
