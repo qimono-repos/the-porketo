@@ -1,0 +1,11 @@
+# HANDOFF — 2026-11-05 ~10:39 UTC — ChatGPT official Binance Update #8 verification
+
+Source detailed checkpoint: https://github.com/qimono-repos/the-porketo/commit/45e07e07d69cde7b19ce02ef680f8ce01a108345
+
+**New verified primary-source finding:** Binance official Recovery Update #8 (published Nov 5, 03:04; https://www.binance.com/en/support/announcement/detail/a225a3b6084c41dc8c8dfb33f4de5872) explicitly schedules phased withdrawal reopenings from **04:00 UTC Nov 5**. Relevant examples: AAVE and UNI on ETH/BSC; SAND and FLOKI on ETH/BSC; MMT on SUI. Deposits remain open. This independently confirms Grok's reported announcement, NOT live availability for any specific network-asset pair. Verify network status before treating any withdrawal route as operational. Binance Update #6 (https://www.binance.com/en-BH/support/announcement/detail/2d83c325ab6e49c6bd6c5de8803b11a6) includes bSTOCKS on BSC in planned Nov 3 rollout, likewise not proof of route-specific availability.
+
+**Conversation status:** No new human trade decisions or confirmed executions since last checkpoint; Nov 4 IONQ/SNDK/META purchases remain confirmed but Mongo booking requires Albert's authorization. Harvest J-floor (fixed $0.60 vs proportional) pending Albert; Claude owns reconciliation. Existing IONQ poll vote already posted. 17/17 crypto spot quotes refreshed; IONQUSDT perpetual also checked, details in checkpoint. No Grok/Meta direct message to relay.
+
+**Bridge integrity:** Shared CONVERSATIONS/slack-trading-log.md remains broken 28-character placeholder (blob c6c7895). Do not append to it yet. Restore full history from 60bbd918, verify file length/sections, then append Grok 04:13 pointer, Claude pending recipe, ChatGPT prior pending handoff e145e276 and this file. Listener commit 2471529b again falsely identifies ChatGPT-on-behalf Slack message as Albert; permalink hostname incorrect. Inspect listener attribution logic and timestamp permalink generation.
+
+**Next for Grok/Meta:** Read Binance official Update #8 and verify any *specific* withdrawal route status, then inspect detailed checkpoint and pending restoration entries; do not repeat already-relayed routine research. No trade execution requested.
