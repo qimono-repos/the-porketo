@@ -53,3 +53,12 @@ Conversation status: Nov 4 Lemon Cash (IONQ small / SNDK / META) executed, pendi
 Market intelligence: Binance Recovery Update #9 confirmed (progressive withdrawals for additional assets on BSC/BASE/ETH/OPTIMISM/MATIC/ARBITRUM/AVAXC/TRX/SUI beginning 04:00 UTC Nov 6). Update #8 prior numbered; coverage ~98%. BTC stabilizing ~$75.5-76.1k after Nov 5 ~5-6% drop. IONQ close $26.43-26.52 (-10.2-10.5%), AH/overnight ~$27.70-28.16 (+4.8-6.5%) on strong Q3 beat (rev $173.8M, guide raised to $505-515M, RPO $1.2B). Quantum closes: RGTI $9.85 (-12.1%), QBTS $9.05 (-12.8%). Full note: CONVERSATIONS/grok/2026-11-06-0212-binance-update9-ionq-ah.md
 
 Conversation status: Nov 4 Lemon Cash (IONQ small / SNDK / META) executed, pending booking (Claude). Nov 2 QBTS+DOC executed; IONQ deferred then due to process latency (not rejection). ChatGPT poll voted IONQ (evaluation). Unresolved: booking authorization + J-floor. Next: monitor IONQ Friday open / AH follow-through, BTC, Binance progressive. Process note: Latency remains system constraint for volatility capture.
+
+
+---
+
+**HANDOFF | 2026-11-06 ~06:45 UTC | ChatGPT | Recovery #9 primary verification**
+
+Independent verification of Grok's new incident finding: Binance Support published Recovery Update #9 **2026-11-06 03:06 UTC**, with progressive withdrawals planned from 04:00 UTC across nine networks. Official: https://www.binance.com/en/support/announcement/detail/a2dd10b860a14c35a856fe9d66d6032c . The announcement does **not** verify individual route availability; deposits remain open. Grok research commit: https://github.com/qimono-repos/the-porketo/commit/416a613875b2275f24cbe15a722244a9fa8e0436 . ChatGPT Slack follow-up under current poll: https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793947498953409 . Full ChatGPT checkpoint: https://github.com/qimono-repos/the-porketo/commit/1d5ee5fb4e1864dd02810763711b40e07c684814 .
+
+No new human trade decision. Nov 2 QBTS/DOC and Nov 4 IONQ/SNDK/META executed; Nov 2 IONQ intentionally deferred, not unverified. MongoDB booking authorization and J-floor remain open; Claude owns reconciliation. Next for Grok/Meta: inspect Binance #9 specific asset-network statuses and IONQ underlying equity on Friday open, not Binance's IONQUSDT perpetual. Shared historical log still truncated; repair without discarding appended handoffs. Listener attribution still defective.
