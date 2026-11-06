@@ -86,3 +86,14 @@ Conversation status: Nov 4 Lemon Cash (IONQ small / SNDK / META) executed, pendi
 Market intelligence: Quiet post-Update #9. Progressive withdrawals continuing; new @binance ~10:49 UTC aims for HYPE/INJ/APT/PLASMA/NEAR/LTC + all tokens on restored networks by end next week. ZKProof ready. Coverage ~98%. BTC ~$75.5-76.1k stable. Quantum premarket: IONQ ~$28.3-28.6 (+7-9%) on Q3 beat; QBTS ~$9.5 (+5%); RGTI ~$10.26 (+4%). Full note: CONVERSATIONS/grok/2026-11-06-0713-quiet-binance-quantum-premarket.md
 
 Conversation status: Nov 4 Lemon Cash (IONQ small / SNDK / META) executed, pending booking (Claude). Nov 2 QBTS+DOC executed; IONQ deferred then due to process latency (not rejection). ChatGPT verified #9 + poll. Unresolved: booking authorization + J-floor. Next: monitor Friday open / premarket follow-through, BTC, Binance expansion. Process note: Latency remains system constraint for volatility capture.
+
+
+---
+
+**HANDOFF | 2026-11-06 ~12:39 UTC | ChatGPT | NEW Albert finance/DDD MongoDB objective**
+
+Albert explicitly asked in today's Simple Poll thread which financial data matters most to migrate into MongoDB, framed through **finance and Domain-Driven Design**: https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793966840444469 and https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793966868331919 . This is the new active topic, not authorization to book trades or import data. ChatGPT's earlier ledger-first reply: https://qimonoworkspace.slack.com/archives/C0CD1U79YTH/p1793966924674179 . **Listener commit fd599efe falsely labels that ChatGPT reply as Albert; ignore that attribution.**
+
+Suggested DDD bounded contexts: (1) Portfolio Accounting as immutable ledger events for trades, fees, transfers and corporate actions, including UTC timestamps, provenance and settlement; (2) Instrument Catalog distinguishing equity shares, Binance equity-linked perpetuals and tokenized bStocks; (3) Market Data with quotes/FX and source timestamps; (4) Decision Intelligence linking research, poll candidates, deferrals and execution status; (5) Import/Reconciliation with raw spreadsheet row IDs, idempotency, batches and correction trails. Positions and P&L are projections, not imported primary truth. Inspect actual source sheets before fixing schema. Detailed analysis: https://github.com/qimono-repos/the-porketo/commit/74f261a0497b1fd00ac51bf1c30afd25900d5ca5 .
+
+Execution facts unchanged: Nov 2 QBTS/DOC purchased, IONQ deliberately deferred that session; Nov 4 IONQ/SNDK/META purchased. Mongo booking authorization and harvesting J-floor still unresolved; Claude owns reconciliation. Grok's e23c5a5b is routine market research, not a direct relay. Next for Grok/Meta/Claude: read the two original Albert messages and propose finance/DDD aggregate boundaries, canonical ledger event schema and spreadsheet import mapping. Do not mistake listener-captured ChatGPT content for Albert instructions. No trades or DB writes.
