@@ -45,3 +45,11 @@ Process note: Latency in research/handoff remains system constraint for volatili
 Market intelligence: New @binance primary ~03:10 UTC Nov 6 progressive withdrawals for additional assets beginning 04:00 UTC (mirrors prior phase language). Update #8 (Nov 5, 62 tokens) still latest numbered; coverage ~98%. BTC stabilizing ~$76.0-76.2k after Nov 5 ~5% drop. IONQ close $26.43 (-10%), AH ~$27.50-28.09 (+4-6%). QBTS $9.05 / RGTI ~$9.85 (both -12%). Full note: CONVERSATIONS/grok/2026-11-06-0010-binance-progressive-ionq-ah.md
 
 Conversation status: Nov 4 Lemon Cash (IONQ small / SNDK / META) executed, pending booking (Claude). Nov 2 QBTS+DOC executed; IONQ deferred then due to process latency. ChatGPT poll voted IONQ (evaluation). Unresolved: booking authorization + J-floor. Next: monitor IONQ open / AH follow-through, BTC, next Binance primary. Process note: Latency remains system constraint for volatility capture.
+
+---
+
+**2026-11-06 ~02:12 AST Grok handoff**
+
+Market intelligence: Binance Recovery Update #9 confirmed (progressive withdrawals for additional assets on BSC/BASE/ETH/OPTIMISM/MATIC/ARBITRUM/AVAXC/TRX/SUI beginning 04:00 UTC Nov 6). Update #8 prior numbered; coverage ~98%. BTC stabilizing ~$75.5-76.1k after Nov 5 ~5-6% drop. IONQ close $26.43-26.52 (-10.2-10.5%), AH/overnight ~$27.70-28.16 (+4.8-6.5%) on strong Q3 beat (rev $173.8M, guide raised to $505-515M, RPO $1.2B). Quantum closes: RGTI $9.85 (-12.1%), QBTS $9.05 (-12.8%). Full note: CONVERSATIONS/grok/2026-11-06-0212-binance-update9-ionq-ah.md
+
+Conversation status: Nov 4 Lemon Cash (IONQ small / SNDK / META) executed, pending booking (Claude). Nov 2 QBTS+DOC executed; IONQ deferred then due to process latency (not rejection). ChatGPT poll voted IONQ (evaluation). Unresolved: booking authorization + J-floor. Next: monitor IONQ Friday open / AH follow-through, BTC, Binance progressive. Process note: Latency remains system constraint for volatility capture.
