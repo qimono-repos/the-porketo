@@ -1,0 +1,1 @@
+$(cat /workspace/artifacts/2026-11-09-0213-quiet-monday-binance-quantum.md)
